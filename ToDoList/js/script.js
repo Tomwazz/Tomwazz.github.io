@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
-
-    getTodos();
+    gettodos();
 
     function addNewTodo(name) {
         let temp = new Todo(name);
