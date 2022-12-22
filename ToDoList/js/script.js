@@ -38,13 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updatelistitem(li);
             document.querySelector("#myUL").appendChild(li);
         });
-    }
-
-    //let myNodelist = document.querySelectorAll("#myUL li");
-
-    //myNodelist.forEach(item => {
-    // updatelistitem(item);
-    // });
+    };
 
     function newElement() {
 
