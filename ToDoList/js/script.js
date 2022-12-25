@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
             errorOn();
         }
     }
-
     
     function errorOn() {
         document.querySelector("#error").style.display = "block";
