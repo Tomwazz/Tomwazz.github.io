@@ -4,7 +4,113 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
-
+@keyframes example {
+    0% {
+        background-color: #ff0000 ;
+        left: 0;
+        top: 0;
+    }
+    5% {
+        background-color: #ff0029;
+        left: 200px;
+        top: 0;
+    }
+    10% {
+        background-color: #ff00e1;
+        left: 200px;
+        top: 200px;
+    }
+    15% {
+        background-color: #f200ff;
+        left: 0;
+        top: 200px;
+    }
+    20% {
+        background-color: #dc00ff;
+        left: 0;
+        top: 0;
+    }    
+    25% {
+        background-color: #7a00ff;
+        left: 0;
+        top: 0;
+    }
+    30% {
+        background-color: #003eff;
+        left: 200px;
+        top: 0;
+    }
+    35% {
+        background-color:  #005fff;
+        left: 200px;
+        top: 200px;
+    }
+    40% {
+        background-color: #00abff        ;
+        left: 0;
+        top: 200px;
+    }
+    45% {
+        background-color: #00ff90;
+        left: 0;
+        top: 0;
+    }
+    50% {
+        background-color: #00ff23;
+        left: 0;
+        top: 0;
+    }
+    55% {
+        background-color: #29ff00;
+        left: 200px;
+        top: 0;
+    }
+    60% {
+        background-color: #a0ff00;
+        left: 200px;
+        top: 200px;
+    }
+    65% {
+        background-color: #d6ff00;
+        left: 0;
+        top: 200px;
+    }
+    70% {
+        background-color:  #fff200;
+        left: 0;
+        top: 0;
+    }
+    75% {
+        background-color: #ffa600;
+        left: 0;
+        top: 0;
+    }
+    80% {
+        background-color:  #ff6f00 ;
+        left: 200px;
+        top: 0;
+    }
+    85% {
+        background-color:  #ff4400;
+        left: 200px;
+        top: 200px;
+    }
+    90% {
+        background-color: #ff2e00;
+        left: 0;
+        top: 200px;
+    }
+    95% {
+        background-color: #ff1900 ;
+        left: 0;
+        top: 0;
+    }
+    100% {
+        background-color: #ff0000;
+        left: 0;
+        top: 0;
+    }
+}
 ul {
     margin: 0;
     padding: 0;
@@ -15,7 +121,7 @@ ul li {
     position: relative;
     padding: 12px 8px 12px 40px;
     background: #eee;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     transition: 0.2s;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -52,10 +158,13 @@ ul li.checked::before {
 
 
 .header {
-    background-color: darkblue;
     padding: 30px 40px;
     color: white;
     text-align: center;
+    background-color: #555;
+    animation-name: example;
+    animation-duration: 30s;
+    animation-iteration-count: 50;
 }
 
 input {
@@ -120,3 +229,15 @@ h2 {
     color: white;
     font-size: 3rem;
 }
+ul {
+    counter-reset: section;
+  }
+  
+  li::before {
+    counter-increment: section;
+    content: "" counter(section) ": ";
+    display: flex;
+    justify-content:last baseline;
+    font-size: x-large;
+    font: bold;
+  }
