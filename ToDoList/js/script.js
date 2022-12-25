@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector("#addBtn").onclick = newElement;
     document.querySelector("#error").onclick = errorOff;
+    
     console.log("DOM loaded.")
 
     let todos = [];
