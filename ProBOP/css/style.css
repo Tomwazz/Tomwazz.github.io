@@ -197,6 +197,17 @@ h2 {
 .container {
     display: flex;
 }
+.left {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+}
+
+.left:hover {
+    background-color: #f44336;
+    color: white;
+}
 
 .close {
     position: absolute;
@@ -209,6 +220,7 @@ h2 {
     background-color: #f44336;
     color: white;
 }
+
 
 #error {
     position: fixed;

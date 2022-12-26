@@ -61,11 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function errorOn() {
         document.querySelector("#error").style.display = "block";
     }
-
+    
     function errorOff() {
         document.querySelector(" #error").style.display = "none";
     }
-
     function updateListItem(item) {
         let span = document.createElement("span");
         let txt = document.createTextNode("\u00D7");
@@ -80,15 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         span.appendChild(txt);
         item.appendChild(span);
-        item.onclick = function () {
-            this.classList.toggle("checked");
-
-            console.log(this);
-            let temp = todos.find(i => i.name === (this.childNodes[0].textContent));
-            if (temp.completed) temp.completed = false;
-            else temp.completed = true;
-            saveTodos();
-        }
+        
     }
+
 })
 ;
