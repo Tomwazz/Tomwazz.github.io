@@ -176,11 +176,13 @@ editButton.addEventListener("click", () => {
   });
   // Add "edit-btn" class to edit button
 editButton.classList.add("cc");
+editButton.classList.add("hahaaa");
 // Add "copy-btn" class to copy button
 copyButton.addEventListener("click", function() {
   notificationOn(`Úspěšně jsi zkopíroval: "${item.firstChild.nodeValue}"`);
 });
 copyButton.classList.add("cc");
+copyButton.classList.add("hahaa");
 // Add event listener to copy button
 copyButton.addEventListener("click", function() {
   // Get the text of the list item

@@ -282,13 +282,16 @@ ul {
     background: none; /* remove the default button background */
     border: none; /* remove the default button border */
     cursor: pointer; /* change the cursor to a pointer on hover */
-    color: #00ff90; /* change the color of the text and icon */
+    color: greenyellow; /* change the color of the text and icon */
     margin-left: 5px;
     margin-right: 5px;
   }
+  .hahaa {
+    margin-left: 10px;
+  }
   
   .cc:hover {
-    color: #fff; /* change the color of the text and icon on hover */
+    color: darkblue; /* change the color of the text and icon on hover */
   }
   
   .cc i {
@@ -306,7 +309,8 @@ ul {
     margin-bottom: 5px;
   }
   .ccc:hover {
-    color: #fff; /* change the color of the text and icon on hover */
+    color: darkgreen; /* change the color of the text and icon on hover */
+
   }
   .ccc i {
     font-size: 1rem; /* adjust the icon size as needed */
