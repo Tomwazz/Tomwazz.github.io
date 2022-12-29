@@ -141,6 +141,7 @@ ul li:nth-child(odd) {
 
 ul li:hover {
     background: #ddd;
+    color: black;
 }
 
 ul li.checked {
