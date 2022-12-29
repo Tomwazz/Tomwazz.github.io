@@ -13,6 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
             this.completed = false;
         }
     }
+    // Enter tlačítko
+document.getElementById("myInput").onkeypress = function(event) {
+    if (event.key === "Enter") {
+        newElement();
+    }
+}
 
     getTodos();
 
