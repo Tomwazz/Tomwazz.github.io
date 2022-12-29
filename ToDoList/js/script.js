@@ -73,7 +73,7 @@ document.getElementById("myInput").onkeypress = function(event) {
       // Set a timeout to hide the error message after 2 seconds
       setTimeout(function() {
         document.querySelector("#error").style.display = "none";
-      }, 6000);
+      }, 2000);
     }
 
     function errorOff() {
