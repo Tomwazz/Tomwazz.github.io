@@ -30,10 +30,10 @@
 <div id="notification">Úspěšně jsi zkopíroval: <span id="copied-text"></span></div>
 </div>
 <script>
-    function myFunction() {
-    let text;
-    alert("Are you sure you want to stay on this 18+ website??!!");
-    }
+    if (!localStorage.getItem('visited')) {
+  alert('Vidím že zde jdeš poprvé. Radím ti si otevřít INFO, pro dostačující informace...');
+  localStorage.setItem('visited', true);
+}
     const saveButton = document.querySelector("buttton");
 const todoList = document.querySelector("ul");
 todoList.appendChild(saveButton);
