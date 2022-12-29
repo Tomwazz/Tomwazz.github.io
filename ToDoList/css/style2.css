@@ -31,8 +31,8 @@ h1 {
   li {
     cursor: pointer; /* Add a cursor to indicate that the list items are clickable */
     list-style: none; /* Remove the default bullet points from the list items */
-    margin: 10px 0; /* Add some space between the list items */
-    padding: 10px; /* Add some padding to the list items */
+    margin: 0; /* Add some space between the list items */
+    padding: 5px; /* Add some padding to the list items */
     animation: fade-in 0.5s ease-in-out; /* Animate the list items over a period of 0.5 seconds */
     animation-delay: 0.1s; /* Add a delay of 0.1 seconds between each list item's animation */
   }
