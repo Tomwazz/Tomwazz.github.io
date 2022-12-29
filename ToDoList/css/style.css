@@ -218,7 +218,7 @@ h2 {
 }
 
 #error {
-    position: fixed;
+    position: absolute;
     display: none;
     width: 100%;
     height: 100%;
@@ -231,10 +231,10 @@ h2 {
     justify-content: center;
     justify-items: center;
     color: white;
-    font-size: 3rem;
+    font-size: 5rem;
 }
 #notification {
-    position: fixed;
+    position: absolute;
     display: none;
     width: 100%;
     height: 100%;
@@ -247,7 +247,7 @@ h2 {
     justify-content: center;
     justify-items: center;
     color: white;
-    font-size: 3rem;
+    font-size: 5rem;
 }
 ul {
     counter-reset: section;
@@ -303,7 +303,7 @@ ul {
     font-size: 1rem; /* adjust the icon size as needed */
   }
   .lulw {
-    animation: shine 5s infinite linear;
+    animation: shine 5s infinite;
   }
   @keyframes shine {
     0% {
