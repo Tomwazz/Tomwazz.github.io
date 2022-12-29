@@ -59,6 +59,21 @@ body {
     font-size: 8rem;
     animation: shine 5s infinite linear;
 }
+#back-button {
+  position: absolute;
+    bottom: 0;
+    background-color: #171717;
+    justify-content: center;
+    margin-bottom: 7rem;
+    left: 50%;
+    background: none;
+    border: none;
+    font-size: xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+    font-weight: 700;
+    cursor: pointer;
+}
 
 
 @keyframes shine {

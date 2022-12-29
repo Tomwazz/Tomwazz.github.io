@@ -47,15 +47,17 @@
                 </div>
               </li>
           </ul>
+          <button id="back-button" style="display: none;" onclick="direct()">Back</button>
           <script>
             const button = document.getElementById('reveal-definitions-button');
             const definitionList = document.getElementById('definition-list');
             const definitionContainers = document.querySelectorAll('.definition-container');
-        
+            const backButton = document.getElementById('back-button');
             button.addEventListener('click', () => {
                 button.style.display = 'none';
       if (definitionList.style.display === 'none') {
         definitionList.style.display = 'block';
+        backButton.style.display = 'block';
         definitionContainers.forEach((container) => {
           setTimeout(() => {
             container.style.display = 'block';
@@ -91,6 +93,9 @@
     }
   }
 });
+function direct() {
+  window.location.href = "index.html";
+}
           </script>
           <script>
             document.body.style.backgroundColor = 'gray';
