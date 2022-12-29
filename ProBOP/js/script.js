@@ -78,9 +78,59 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         span.appendChild(txt);
-        item.appendChild(span);
-        
+        item.appendChild(span);        
     }
+    // Add event listener to edit button
+editButton.addEventListener("click", () => {
+    // Create input element
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = listItem.firstChild.nodeValue;
+  
+    // Replace text input with input element
+    listItem.replaceChild(input, listItem.firstChild);
+  
+    // Focus on input element
+    input.focus();
+  
+    // Save edited text when input element loses focus or user hits Enter key
+    input.onblur = function() {
+      // Check if input is a valid URL
+      const pattern = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+      if (pattern.test(this.value)) {
+        // Create anchor element
+        const a = document.createElement("a");
+        a.href = this.value;
+        a.innerHTML = this.value;
+        a.target = "_blank";
+  
+        // Replace input element with anchor element
+        listItem.replaceChild(a, listItem.firstChild);
+      } else {
+        // Replace input element with text node
+        listItem.replaceChild(document.createTextNode(this.value), listItem.firstChild);
+      }
+    }
+    input.onkeypress = function(event) {
+      if (event.key === "Enter") {
+        // Check if input is a valid URL
+        const pattern = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+        if (pattern.test(this.value)) {
+          // Create anchor element
+          const a = document.createElement("a");
+          a.href = this.value;
+          a.innerHTML = this.value;
+          a.target = "_blank";
+  
+          // Replace input element with anchor element
+          listItem.replaceChild(a, listItem.firstChild);
+        } else {
+          // Replace input element with text node
+          listItem.replaceChild(document.createTextNode(this.value), listItem.firstChild);
+        }
+      }
+    }
+  });
 
 })
 ;
