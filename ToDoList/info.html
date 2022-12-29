@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <title>Information Website</title>
+        <link rel="stylesheet" href="./css/style2.css">
+        </head>
+        <body>
+          <h1>Zde najdeš jednoduchý návod k To Do Listu</h1>
+          <button id="reveal-definitions-button">KLIKNI NA MĚ!</button>
+          <ul id="definition-list" style="display: none;">
+            <li>
+              <div class="definition-container">
+                Zápis
+                <div id="definitionU" style="display: none;">Jednoduše do task baru zadejte vámi zvolenou aktivitu. <br>
+                Následně po kliknutí na "Přidat" nebo zmáčknutí tlačítka "Enter" na klávesnici, vámi zadaná aktivita bude vepsána do pole.</div>
+              </div>
+            </li>
+            <li>
+              <div class="definition-container">
+                Copy
+                <div id="definitionU" style="display: none;">Po kliknutí na tlačítko "Copy" se vám zkopíruje ta daná aktivita. Abyste věděli co přesně se vám zkopírovalo, je níže přidaná animace, která vám zobrazí zkopírovanou věc.</div>
+              </div>
+            </li>
+            <li>
+              <div class="definition-container">
+                Edit
+                <div id="definitionU" style="display: none;">Po kliknutí na tlačítko "Edit" se vám otevře task bar, který vám umožní opravit jakýkoliv překlep jste udělali.</div>
+              </div>
+            </li>
+            <li>
+                <div class="definition-container">
+                  Checked
+                  <div id="definitionU" style="display: none;">Pokud je již vámi zadaná aktivita hotová a chcete si jí odkliknout. Při dvojkliku na aktivitu (mimo pole talčítek), se vaše aktivita dokončí.</div>
+                </div>
+              </li>
+              <li>
+                <div class="definition-container">
+                  Odebrání
+                  <div id="definitionU" style="display: none;">Pro odebrání aktivity je nutné kliknout na křížek umístěný na konci řádku.</div>
+                </div>
+              </li>
+              <li>
+                <div class="definition-container">
+                  Problém
+                  <div id="definitionU" style="display: none;">Pokud vám nastane zde nějaký problém, stačí mě kdekoliv kontaktovat.</div>
+                </div>
+              </li>
+          </ul>
+          <script>
+            const button = document.getElementById('reveal-definitions-button');
+            const definitionList = document.getElementById('definition-list');
+            const definitionContainers = document.querySelectorAll('.definition-container');
+        
+            button.addEventListener('click', () => {
+                button.style.display = 'none';
+      if (definitionList.style.display === 'none') {
+        definitionList.style.display = 'block';
+        definitionContainers.forEach((container) => {
+          setTimeout(() => {
+            container.style.display = 'block';
+          }, delay);
+          delay += 500;
+        });
+      } else {
+        definitionList.style.display = 'none';
+        definitionContainers.forEach((container) => {
+          container.style.display = 'none';
+        });
+        delay = 0;
+      }
+    });
+
+    definitionList.addEventListener('click', (event) => {
+  if (event.target.className === 'definition-container') {
+    const definitionElement = event.target.querySelector('div');
+    if (definitionElement.style.display === 'block') {
+      definitionElement.style.display = 'none';
+    } else {
+      definitionElement.style.display = 'block';
+      let i = 0;
+      const definitionText = definitionElement.textContent;
+      definitionElement.textContent = '';
+      const typingInterval = setInterval(() => {
+        definitionElement.textContent += definitionText[i];
+        i++;
+        if (i === definitionText.length) {
+          clearInterval(typingInterval);
+        }
+      }, 50);
+    }
+  }
+});
+          </script>
+          <script>
+            document.body.style.backgroundColor = 'gray';
+          </script>
+        </body>
+        </html>

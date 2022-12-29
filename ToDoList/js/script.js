@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    document.querySelector("#error").style.display = "none";
+    document.querySelector("#notification").style.display = "none";
     document.querySelector("#addBtn").onclick = newElement;
     document.querySelector("#error").onclick = errorOff;
     
@@ -65,12 +66,20 @@ document.getElementById("myInput").onkeypress = function(event) {
     }
     
     function errorOn() {
-        document.querySelector("#error").style.display = "block";
+      // Show the error message
+      document.querySelector("#error").style.display = "block";
+      // Display the error message letter by letter
+      displayMessage("Musíš zadat nějakou aktivitu!", "error");
+      // Set a timeout to hide the error message after 2 seconds
+      setTimeout(function() {
+        document.querySelector("#error").style.display = "none";
+      }, 6000);
     }
 
     function errorOff() {
         document.querySelector(" #error").style.display = "none";
     }
+    
 
     function updateListItem(item) {
         let span = document.createElement("span");
@@ -96,25 +105,44 @@ document.getElementById("myInput").onkeypress = function(event) {
             saveTodos();
           };
     }
+    function displayMessage(message, elementId) {
+      // Get the element where the message will be displayed
+      let element = document.getElementById(elementId);
+      // Set the element's text content to an empty string
+      element.textContent = "";
+      // Set the counter for the loop
+      let i = 0;
+      // Set an interval to add one letter at a time
+      let intervalId = setInterval(function() {
+        // Add the next letter to the element's text content
+        element.textContent += message[i];
+        // Increment the counter
+        i++;
+        // If we have reached the end of the message, clear the interval
+        if (i >= message.length) {
+          clearInterval(intervalId);
+        }
+      }, 100);
+    }
     const listItems = document.querySelectorAll("li");
       for (const listItem of listItems) {
         let item;
         // Create copy button
         const copyButton = document.createElement("button");
-        copyButton.innerHTML = "Copy";
+        copyButton.innerHTML = '<i class="fa fa-copy"></i>Copy';
         listItem.appendChild(copyButton);
       
         // Create edit button
         const editButton = document.createElement("button");
-        editButton.innerHTML = "Edit";
+        editButton.innerHTML = '<i class="fa fa-pen-square"></i>Edit';
         listItem.appendChild(editButton);
-      
         // Add event listener to copy button
         copyButton.addEventListener("click", () => {
           const text = listItem.firstChild.nodeValue;
           navigator.clipboard.writeText(text);
         });
       
+        
         // Add event listener to edit button
 editButton.addEventListener("click", () => {
     // Create input element
@@ -146,6 +174,45 @@ editButton.addEventListener("click", () => {
     originalText = listItem.firstChild.nodeValue;
     listItem.contentEditable = "false";
   });
+  // Add "edit-btn" class to edit button
+editButton.classList.add("cc");
+// Add "copy-btn" class to copy button
+copyButton.addEventListener("click", function() {
+  notificationOn(`Úspěšně jsi zkopíroval: "${item.firstChild.nodeValue}"`);
+});
+copyButton.classList.add("cc");
+// Add event listener to copy button
+copyButton.addEventListener("click", function() {
+  // Get the text of the list item
+  const text = listItem.firstChild.nodeValue;
+  // Call the notificationOn function and pass the text as an argument
+  notificationOn(text);
+});
+
+// Hide notification element after 2 seconds
+function notificationOn(item) {
+  // Show the notification message
+  document.querySelector("#notification").style.display = "block";
+  // Set the notification message to an empty string
+  document.querySelector("#notification").innerHTML = "";
+  // Set a counter to 0
+  let i = 0;
+  // Use a setInterval function to display each letter of the message with a delay
+  let interval = setInterval(function() {
+    // Append the next letter to the notification message
+    document.querySelector("#notification").innerHTML += item[i];
+    // Increment the counter
+    i++;
+    // If all the letters have been displayed, clear the interval
+    if (i >= item.length) {
+      clearInterval(interval);
+    }
+  }, 50); // 50ms delay between each letter
+  // Set a timeout to hide the notification message after 2 seconds
+  setTimeout(function() {
+    document.querySelector("#notification").style.display = "none";
+  }, 2000);
+}
       }
 })
 ;

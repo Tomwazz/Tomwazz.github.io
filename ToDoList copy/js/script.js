@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    document.querySelector("#error").style.display = "none";
+    document.querySelector("#notification").style.display = "none";
     document.querySelector("#addBtn").onclick = newElement;
     document.querySelector("#error").onclick = errorOff;
     
@@ -66,11 +67,13 @@ document.getElementById("myInput").onkeypress = function(event) {
     
     function errorOn() {
         document.querySelector("#error").style.display = "block";
+        
     }
 
     function errorOff() {
         document.querySelector(" #error").style.display = "none";
     }
+    
 
     function updateListItem(item) {
         let span = document.createElement("span");
@@ -145,6 +148,27 @@ editButton.addEventListener("click", () => {
   listItem.addEventListener("blur", () => {
     originalText = listItem.firstChild.nodeValue;
     listItem.contentEditable = "false";
+  });
+  // Add "edit-btn" class to edit button
+editButton.classList.add("edit-btn");
+
+// Add "copy-btn" class to copy button
+copyButton.classList.add("copy-btn");
+// Add event listener to copy button
+copyButton.addEventListener("click", () => {
+    // Get text of list item
+    const text = listItem.firstChild.nodeValue;
+  
+    // Update notification text
+    document.querySelector("#copied-text").innerHTML = text;
+  
+    // Show notification element
+    document.querySelector("#notification").style.display = "block";
+  
+    // Hide notification element after 2 seconds
+    setTimeout(() => {
+      document.querySelector("#notification").style.display = "none";
+    }, 1500);
   });
       }
 })

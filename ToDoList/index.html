@@ -5,9 +5,8 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-a9G8xDy7Y+Yd5lE7i2OsK4L5fDNEBH5uRHxVx5YYpG5gqY+MtL3zCKDTjn3SLzCQQRJE+zqqF1iXWPv0T/T+OQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.16.1/css/all.min.css">
     <script src="./js/script.js"></script>
 
     <title>Úkolník</title>
@@ -15,7 +14,7 @@
 <body>
 <div id="myDIV" class="header">
     <h2>Můj ToDoList</h2> 
-    <button class="buttton" onclick="XDDD">Save</button>
+    <button class="ccc lulw" onclick="redirect()"><i class="fas fa-info-circle"></i>INFO</button>
     <div class="container">
         <input type="text" id="myInput" placeholder="Název úkolu...">
         <span id="addBtn">Přidat</span>
@@ -26,8 +25,10 @@
 <ul id="myUL">
     
 </ul>
-
+<div id="container">
 <div id="error">Musíš zadat nějakou aktivitu!</div>
+<div id="notification">Úspěšně jsi zkopíroval: <span id="copied-text"></span></div>
+</div>
 <script>
     function myFunction() {
     let text;
@@ -40,6 +41,9 @@ saveButton.addEventListener("click", saveTodos);
 function XDDD() {
         saveTodos()
     } 
+    function redirect() {
+  window.location.href = "info.html";
+}
 </script>
 </body>
 
