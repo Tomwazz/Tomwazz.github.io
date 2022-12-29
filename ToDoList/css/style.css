@@ -182,7 +182,9 @@ input {
 }
 
 h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #000, 0 0 25px #000, 0 0 30px #000, 0 0 35px #000;
 }
 
 #addBtn {
@@ -307,6 +309,7 @@ ul {
   }
   .ccc i {
     font-size: 1rem; /* adjust the icon size as needed */
+    font-weight: bold;
   }
   .lulw {
     animation: shine 5s infinite;
