@@ -120,18 +120,17 @@ ul li {
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
-    background: #42423e;
+    background: #151515;
     font-size: 1.5rem;
     transition: 0.2s;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: #003eff;
 }
 
 ul li:nth-child(odd) {
-    background: #1f1f1f;
+    background: darkgray;
 }
 
 ul li:hover {
@@ -216,6 +215,7 @@ h2 {
     top: 0;
     padding: 12px 16px 12px 16px;
 }
+
 .close:hover {
     background-color: #f44336;
     color: white;
@@ -244,43 +244,13 @@ a {
     color: white;
     font-size: 3rem;
 }
-.lulw {
-    animation: shine 5s infinite;
-    font-size: x-large; /* adjust the font size as needed */
-    background: none; /* remove the default button background */
-    border: none; /* remove the default button border */
-    cursor: pointer; /* change the cursor to a pointer on hover */
-    color: #00ff90; /* change the color of the text and icon */
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: none;
-    margin-bottom: 5px;
-  }
-  .lulw:hover {
-    color: darkgreen; /* change the color of the text and icon on hover */
-  }
-  .lulw i {
-    font-size: xx-large; /* adjust the icon size as needed */
-    font-weight: bold;
-  }
-  @keyframes shine {
-    0% {
-      text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #000, 0 0 25px #000, 0 0 30px #000, 0 0 35px #000;
-    }
-    50% {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff, 0 0 30px #fff, 0 0 35px #fff;
-    }
-    100% {
-      text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #000, 0 0 25px #000, 0 0 30px #000, 0 0 35px #000;
-    }
+body {
+    background-color: black;
 }
 .favorite {
-    font-size: 40px;
+    font-size: 25px;
     display: inline-flex;
     left: 50%;
     position: relative;
     color: yellow;
-}
-body {
-    background-color: #000;
 }

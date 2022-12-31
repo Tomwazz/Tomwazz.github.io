@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     console.log("DOM loaded.")
 
-    let parky = [];
+    let todos = [];
 
     class Todo {
         constructor(name) {
@@ -15,28 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    getParky();
-    // Enter tlačítko
-document.getElementById("myInput").onkeypress = function(event) {
-    if (event.key === "Enter") {
-        newElement();
-    }
-  }
+    getTodos();
 
     function addNewTodo(name) {
         let temp = new Todo(name);
-        parky.push(temp);
+        todos.push(temp);
     }
 
-    function saveParky() {
-        localStorage.setItem("parky", JSON.stringify(parky));
+    function saveTodos() {
+        localStorage.setItem("todos", JSON.stringify(todos));
     }
 
-    function getParky() {
-        parky = JSON.parse(localStorage.getItem("parky"));
+    function getTodos() {
+        todos = JSON.parse(localStorage.getItem("todos"));
 
-        if (!parky) parky = [];
-        parky.forEach(item => {
+        if (!todos) todos = [];
+        todos.forEach(item => {
             let name = item.name;
             let completed = item.completed;
             let favorite = item.favorite;
@@ -60,7 +54,7 @@ document.getElementById("myInput").onkeypress = function(event) {
             updateListItem(li);
 
             addNewTodo(inputValue);
-            saveParky();
+            saveTodos();
 
         } else {
             errorOn();
@@ -92,9 +86,9 @@ document.getElementById("myInput").onkeypress = function(event) {
         span.onclick = function () {
             this.parentElement.style.display = "none";
 
-            let index = parky.findIndex(i => i.name === (item.childNodes[0].textContent));
-            parky.splice(index, 1);
-            saveParky();
+            let index = todos.findIndex(i => i.name === (item.childNodes[0].textContent));
+            todos.splice(index, 1);
+            saveTodos();
         }
 
         span.appendChild(txt);
@@ -105,9 +99,9 @@ document.getElementById("myInput").onkeypress = function(event) {
         star.className = "favorite";
         star.onclick = function () {
             this.parentElement.classList.toggle("favorite");
-            let index = parky.findIndex(i => i.name === (item.childNodes[0].textContent));
-            parky[index].favorite = !parky[index].favorite;
-            saveParky();
+            let index = todos.findIndex(i => i.name === (item.childNodes[0].textContent));
+            todos[index].favorite = !todos[index].favorite;
+            saveTodos();
         }
         
         star.appendChild(starTxt);
@@ -122,9 +116,9 @@ document.getElementById("myInput").onkeypress = function(event) {
       
       star.onclick = function () {
         this.parentElement.classList.toggle("favorite");
-        let index = parky.findIndex(i => i.name === (item.childNodes[0].textContent));
-        parky[index].favorite = !parky[index].favorite;
-        saveParky();
+        let index = todos.findIndex(i => i.name === (item.childNodes[0].textContent));
+        todos[index].favorite = !todos[index].favorite;
+        saveTodos();
     }
     }
 );
