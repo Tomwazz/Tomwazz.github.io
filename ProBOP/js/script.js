@@ -76,7 +76,7 @@ document.getElementById("myInput").onkeypress = function(event) {
     }
     function updateListItem(item) {
         let textContent = item.innerHTML;
-        let regex = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9]+)\.(com|org|net|edu|cz|sk)$/;
+        let regex = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9]+)\.(com|org|net|edu|cz|sk|gay)(\/.+)?\/?$/;
         let match = textContent.match(regex);
         if (match) {
             let link = document.createElement("a");
