@@ -116,3 +116,8 @@ body {
   cursor: crosshair;
 background: #00f;
 }
+iframe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
