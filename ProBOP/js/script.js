@@ -76,11 +76,13 @@ document.getElementById("myInput").onkeypress = function(event) {
     }
     function updateListItem(item) {
         let textContent = item.innerHTML;
-        let regex = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9]+)\.(com|org|net|edu)$/;
+        let regex = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9]+)\.(com|org|net|edu|cz|sk)$/;
         let match = textContent.match(regex);
         if (match) {
             let link = document.createElement("a");
             link.href = "https://" + match[0];
+             // Set the target attribute of the link to "_blank"
+        link.target = "_blank";
             link.innerHTML = match[0];
             item.innerHTML = "";
             item.appendChild(link);
