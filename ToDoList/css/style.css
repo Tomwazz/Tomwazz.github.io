@@ -191,8 +191,8 @@ h2 {
 #addBtn {
     padding: 10px;
     width: 25%;
-    background: #d9d9d9;
-    color: #555;
+    background: darkblue;
+    color: white;
     text-align: center;
     font-size: 1rem;
     cursor: pointer;
