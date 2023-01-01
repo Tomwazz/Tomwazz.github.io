@@ -147,17 +147,21 @@ ul li:hover {
 ul li.checked {
     background: #888;
     color: #fff;
-    text-decoration: line-through;
+    text-decoration: underline;
 }
-
 ul li.checked::before {
+    counter-increment: section;
+    content: "" counter(section) ".";
+}
+ul li.checked::after {
     content: '';
     position: absolute;
     border-color: #fff;
     border-style: solid;
     border-width: 0 2px 2px 0;
     top: 10px;
-    left: 16px;
+    left: 50%;
+    right: 50%;
     transform: rotate(45deg);
     height: 15px;
     width: 7px;
@@ -191,8 +195,8 @@ h2 {
 #addBtn {
     padding: 10px;
     width: 25%;
-    background: #d9d9d9;
-    color: #555;
+    background: darkblue;
+    color: white;
     text-align: center;
     font-size: 1rem;
     cursor: pointer;
@@ -265,7 +269,6 @@ ul {
   li::before {
     counter-increment: section;
     content: "" counter(section) ".";
-    display: flex;
     justify-content:last baseline;
     font-size: x-large;
     font: bold;
@@ -278,7 +281,6 @@ ul {
     align-items: center;
   }
   .cc {
-    font-size: x-large; /* adjust the font size as needed */
     background: none; /* remove the default button background */
     border: none; /* remove the default button border */
     cursor: pointer; /* change the cursor to a pointer on hover */
@@ -342,4 +344,14 @@ ul {
     100% {
       text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #000, 0 0 25px #000, 0 0 30px #000, 0 0 35px #000;
     }
+  }
+  .added-on {
+    display: inline;
+    position: absolute;
+    left: 75%;
+    top: 25px;
+    font-size: small;
+    font-family: "Comic Sans MS", cursive;
+    font: bold;
+    letter-spacing: 2px;
   }

@@ -8,8 +8,7 @@
         <body style="background-color: gray;">
           <h1>Zde najdeš jednoduchý návod k To Do Listu</h1>
           <button id="reveal-definitions-button">KLIKNI NA MĚ!</button>
-          <iframe id="tutorial" width="560" height="315" src="https://www.youtube.com/embed/FBOTn1i6t6U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
-          <button id="yt" style="display: none;">VIDEO</button> <button id="text" style="display: none;">TEXT</button>
+          <iframe id="tutorial" width="560" height="315" src="https://www.youtube.com/embed/0JqenS1WxTw" title="FULLSCREEN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <ul id="definition-list" style="display: none;">
             <li>
               <div class="definition-container">
@@ -49,6 +48,7 @@
                 </div>
               </li>
           </ul>
+          <button id="yt" class="proklik" style="display: none;">VIDEO</button>  <button class="proklik" id="text" style="display: none;">TEXT</button>
           <button id="back-button" style="display: none;" onclick="direct()">Back</button>
           <script>
             const button = document.getElementById('reveal-definitions-button');
@@ -57,11 +57,12 @@
             const textButton = document.getElementById('text');
             const tutorial = document.getElementById('tutorial');
             const backButton = document.getElementById('back-button');
-
+            backButton.style.display = 'block' ;
             button.addEventListener('click', () => {
+              tutorial.style.display = 'none';
               ytButton.style.display = 'inline-block';
               textButton.style.display = 'inline-block';
-              button.style.display = 'none'
+              button.style.display = 'none';
             });
 
             ytButton.addEventListener('click', () => {
@@ -94,9 +95,13 @@ textButton.addEventListener('click', () => {
       }, 50);
     }
   }
-            });
+});
+function direct() {
+  window.location.href = "index.html";
+}
+
           </script>
         </body>
 </html>
-        </body>
+
 </html>

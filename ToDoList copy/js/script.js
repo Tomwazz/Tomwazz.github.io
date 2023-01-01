@@ -24,10 +24,10 @@ document.getElementById("myInput").onkeypress = function(event) {
   getTodos();
 
   function addNewTodo(name) {
-      let temp = new Todo(name);
-      todos.push(temp);
-  }
-
+    let temp = new Todo(name);
+    temp.date = new Date();
+    todos.push(temp);
+}
   function saveTodos() {
       localStorage.setItem("todos", JSON.stringify(todos));
   }
@@ -43,7 +43,7 @@ document.getElementById("myInput").onkeypress = function(event) {
           let txt = document.createTextNode(name);
           li.appendChild(txt);
           if (completed) li.classList = "checked";
-          updateListItem(li);
+          updateListItem(li, new Date());
           document.querySelector("#myUL").appendChild(li);
       })
   }
@@ -55,7 +55,7 @@ document.getElementById("myInput").onkeypress = function(event) {
           li.innerHTML = inputValue;
           document.querySelector("#myUL").appendChild(li);
           document.querySelector("#myInput").value = "";
-          updateListItem(li);
+          updateListItem(li, new Date());
 
           addNewTodo(inputValue);
           saveTodos();
@@ -81,29 +81,52 @@ document.getElementById("myInput").onkeypress = function(event) {
   }
   
 
-  function updateListItem(item) {
-      let span = document.createElement("span");
-      let txt = document.createTextNode("\u00D7");
-      span.className = "close";
-      span.onclick = function () {
-          this.parentElement.style.display = "none";
+  function updateListItem(item, date) {
+    // Create the close button and add it to the list item
+    let span = document.createElement("span");
+    let txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.onclick = function () {
+        this.parentElement.style.display = "none";
+  
+        // Remove the item from the todos array and save it to local storage
+        let index = todos.findIndex(i => i.name === (item.childNodes[0].textContent));
+        todos.splice(index, 1);
+        saveTodos();
+    }
+    span.appendChild(txt);
+    item.appendChild(span);
+  
+    // Add a double click event to toggle the completed class
+    item.ondblclick = function() {
+        this.classList.toggle("checked");
+      
+        console.log(this);
+        let temp = todos.find(i => i.name === (this.childNodes[0].textContent));
+        if (temp.completed) temp.completed = false;
+        else temp.completed = true;
+        saveTodos();
+    };
+  
+    // Create the "Added on" element and add it to the list item
+    let addedOn = document.createElement("div");
+    addedOn.innerHTML = `Přidáno: ${getDateString(date)}`;
+    addedOn.classList.add('added-on');
+    item.appendChild(addedOn);
+  }
+  
+  // Returns a formatted date string
+  function getDateString(date) {
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
 
-          let index = todos.findIndex(i => i.name === (item.childNodes[0].textContent));
-          todos.splice(index, 1);
-          saveTodos();
-      }
-
-      span.appendChild(txt);
-      item.appendChild(span);
-      item.ondblclick = function() {
-          this.classList.toggle("checked");
-        
-          console.log(this);
-          let temp = todos.find(i => i.name === (this.childNodes[0].textContent));
-          if (temp.completed) temp.completed = false;
-          else temp.completed = true;
-          saveTodos();
-        };
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+    return `${hours}:${minutes} | ${day}. ${month}. ${year} 😣`;
   }
   function displayMessage(message, elementId) {
     // Get the element where the message will be displayed

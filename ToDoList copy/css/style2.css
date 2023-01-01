@@ -104,7 +104,6 @@ position: absolute;
   width: 50%;
   margin: 0 auto;
   font-size: x-large;
-  background: gray;
 }
 #definition-list #definitionU {
   display: block;
@@ -112,15 +111,29 @@ position: absolute;
   width: 75%;
   cursor: none;
 }
-body .tutorial {
-  display: none;
-  background: gray;
+.proklik {
+  background: transparent;
+  border: transparent;
+  font-size: 50px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
 }
-body .text {
-  display: none;
-  background: gray;
+#yt {
+  display: flex;
+  margin-top: 2%;
+
 }
-body .yt {
+#text {
+  display: flex;
+  margin-top: 10%;
+
+}
+#tutorial {
+  position: relative;
+  align-items: center;
+  margin-top: 8vh;
+  margin-left: 70vh;
   display: none;
-  background: gray;
 }
