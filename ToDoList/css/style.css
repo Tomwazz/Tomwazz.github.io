@@ -265,7 +265,6 @@ ul {
   li::before {
     counter-increment: section;
     content: "" counter(section) ".";
-    display: flex;
     justify-content:last baseline;
     font-size: x-large;
     font: bold;
@@ -278,7 +277,6 @@ ul {
     align-items: center;
   }
   .cc {
-    font-size: x-large; /* adjust the font size as needed */
     background: none; /* remove the default button background */
     border: none; /* remove the default button border */
     cursor: pointer; /* change the cursor to a pointer on hover */
