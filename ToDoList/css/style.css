@@ -149,15 +149,19 @@ ul li.checked {
     color: #fff;
     text-decoration: underline;
 }
-
 ul li.checked::before {
+    counter-increment: section;
+    content: "" counter(section) ".";
+}
+ul li.checked::after {
     content: '';
     position: absolute;
     border-color: #fff;
     border-style: solid;
     border-width: 0 2px 2px 0;
     top: 10px;
-    left: 16px;
+    left: 50%;
+    right: 50%;
     transform: rotate(45deg);
     height: 15px;
     width: 7px;
