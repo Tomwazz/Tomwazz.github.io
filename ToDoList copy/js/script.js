@@ -46,7 +46,7 @@ document.getElementById("myInput").onkeypress = function(event) {
           let txt = document.createTextNode(name);
           li.appendChild(txt);
           if (completed) li.classList = "checked";
-          updateListItem(li, new Date());
+          updateListItem(li, new Date(item.date));
           document.querySelector("#myUL").appendChild(li);
       })
   }
