@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       constructor(name) {
           this.name = name;
           this.completed = false;
+          this.date = date;
       }
   }
   // Enter tlačítko
@@ -30,10 +31,12 @@ document.getElementById("myInput").onkeypress = function(event) {
 }
   function saveTodos() {
       localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("date", JSON.stringify("date"))
   }
 
   function getTodos() {
       todos = JSON.parse(localStorage.getItem("todos"));
+      date = JSON.parse(localStorage.getItem("date"))
 
       if (!todos) todos = [];
       todos.forEach(item => {
