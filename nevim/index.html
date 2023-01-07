@@ -70,7 +70,9 @@ function translate(str, toSecret) {
   let output = "";
   for (let i = 0; i < str.length; i++) {
     const ch = str[i];
-    if (toSecret) {
+    if (ch === " ") {
+      output += " ";
+    } else if (toSecret) {
       output += secretAlphabet[ch.toLowerCase()] || ch;
     } else {
       for (const key in secretAlphabet) {
