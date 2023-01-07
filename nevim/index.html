@@ -35,16 +35,8 @@ form.addEventListener("submit", event => {
   event.preventDefault();
   const direction = document.querySelector('input[name="direction"]:checked').value;
   const translatedText = translate(input.value, direction === "to-secret");
-  let i = 0;
-  output.textContent = "";
-  const intervalId = setInterval(() => {
-    output.textContent += translatedText[i];
-    i++;
-    if (i >= translatedText.length) {
-      clearInterval(intervalId);
-      output.classList.add("translated");
-    }
-  }, 50);
+  output.textContent = translatedText;
+  output.classList.add("translated");
 });
 const secretAlphabet = {
   a: "♫",
