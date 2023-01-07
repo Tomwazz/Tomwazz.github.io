@@ -1,0 +1,42 @@
+h1 {
+    position: absolute;
+    left: 50%;
+    right: 20%;
+    top:5px;
+}
+p {
+    position: absolute;
+    left: 45%;
+    right: 20%;
+    top:55px;
+    font-size: 24px;
+}
+form {
+    position: absolute;
+    left: 45%;
+    right: 20%;
+    top:150px;
+    padding: 5px 5px 5px 5px;
+}
+.translated {
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 45%;
+    right: 20%;
+    top:300px;
+    font-size-adjust: initial;
+  }
+  form label {
+    font-size: x-large;
+  }
+  form button {
+    padding-left:  10px;
+    background-color: transparent;
+    border: transparent;
+    font-size: larger;
+    cursor: pointer;    
+  }
+body {
+    background-color: gray;
+}

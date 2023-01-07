@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="./css/style.css">
+    <title>XDDD
+    </title>
+</head>
+<body>
+    <div id="main">
+    <h1>Translate it lol</h1>
+    <p>UPOZORNĚNÍ, FUNKČNOST BEZ DIAKRITIKY</p>
+    <form id="translation-form">
+        <textarea id="input-text"></textarea>
+        <br>
+        <input type="radio" id="to-normal" name="direction" value="to-normal">
+        <label for="to-normal">Translate to normal language</label>
+        <br>
+        <input type="radio" id="to-secret" name="direction" value="to-secret">
+        <label for="to-secret">Translate to secret language</label>
+        <br>
+        <button type="submit">Translate</button>
+      </form>
+      <br>
+      <div id="output-text"></div>
+    </div>
+<script>
+    const form = document.getElementById("translation-form");
+const input = document.getElementById("input-text");
+const output = document.getElementById("output-text");
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  const direction = document.querySelector('input[name="direction"]:checked').value;
+  output.textContent = translate(input.value, direction === "to-secret");
+  output.classList.add("translated");
+});
+const secretAlphabet = {
+  a: "☺",
+  b: "♡",
+  c: "❤",
+  d: "❥",
+  e: "✿",
+  f: "❀",
+  g: "✾",
+  h: "✽",
+  i: "✺",
+  j: "✹",
+  k: "✸",
+  l: "✷",
+  m: "✶",
+  n: "✵",
+  o: "✴",
+  p: "✳",
+  q: "✲",
+  r: "✱",
+  s: "✰",
+  t: "✯",
+  u: "✮",
+  v: "✭",
+  w: "✬",
+  x: "✫",
+  y: "✪",
+  z: "✩"
+};
+
+function translate(str, toSecret) {
+  let output = "";
+  for (let i = 0; i < str.length; i++) {
+    const ch = str[i];
+    if (toSecret) {
+      output += secretAlphabet[ch.toLowerCase()] || ch;
+    } else {
+      for (const key in secretAlphabet) {
+        if (secretAlphabet[key] === ch) {
+          output += key;
+          break;
+        }
+      }
+    }
+  }
+  return output;
+}
+</script>
+</body>
+
+</html>
