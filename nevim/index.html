@@ -11,7 +11,7 @@
 <body>
     <div id="main">
     <h1>Translate it lol</h1>
-    <p>UPOZORNĚNÍ, FUNKČNOST BEZ DIAKRITIKY</p>
+    <p>Ta animace pak skočí kam má.. Neboj</p>
     <form id="translation-form">
         <textarea id="input-text"></textarea>
         <br>
@@ -27,43 +27,66 @@
       <div id="output-text"></div>
     </div>
 <script>
-    const form = document.getElementById("translation-form");
+const form = document.getElementById("translation-form");
 const input = document.getElementById("input-text");
 const output = document.getElementById("output-text");
 
 form.addEventListener("submit", event => {
   event.preventDefault();
   const direction = document.querySelector('input[name="direction"]:checked').value;
-  output.textContent = translate(input.value, direction === "to-secret");
-  output.classList.add("translated");
+  const translatedText = translate(input.value, direction === "to-secret");
+  let i = 0;
+  output.textContent = "";
+  const intervalId = setInterval(() => {
+    output.textContent += translatedText[i];
+    i++;
+    if (i >= translatedText.length) {
+      clearInterval(intervalId);
+      output.classList.add("translated");
+    }
+  }, 50);
 });
 const secretAlphabet = {
   a: "♫",
+  á: "◘",
   b: "♡",
   c: "▓",
+  č: "▒",
   d: "❥",
+  ď: "∟",
   e: "✿",
+  é: "○",
+  ě: "C",
   f: "❀",
   g: "✾",
   h: "✽",
   i: "✺",
+  í: "Q",
   j: "✹",
   k: "✸",
   l: "✷",
   m: "✶",
   n: "✵",
   o: "█",
+  ó: "˘",
   p: "Ű",
   q: "✲",
   r: "✱",
+  ř: "O",
   s: "✰",
+  š: "ľ",
   t: "✯",
+  ť: "←",
   u: "✮",
+  ů: "↓",
+  ú: "→",
   v: "✭",
   w: "✬",
   x: "✫",
   y: "✪",
-  z: "✩"
+  ý: "Ţ",
+  z: "✩",
+  ž: "'",
 };
 
 function translate(str, toSecret) {
@@ -72,6 +95,10 @@ function translate(str, toSecret) {
     const ch = str[i];
     if (ch === " ") {
       output += " ";
+    } else if (ch === ",") {
+      output += ",";
+    } else if (ch === ".") {
+      output += ".";
     } else if (toSecret) {
       output += secretAlphabet[ch.toLowerCase()] || ch;
     } else {
