@@ -109,7 +109,7 @@ function translate(str, toSecret) {
       output += ")";
     }
     else if (ch === "1") {
-      output += "!";
+      output += "€";
     }
     else if (ch === "2") {
       output += "@";
@@ -134,7 +134,17 @@ function translate(str, toSecret) {
     }
     else if (ch === "9") {
       output += "(";
-    } else if (toSecret) {
+    }
+    else if (ch === ":") {
+      output += ":";
+    }
+    else if (ch === "!") {
+      output += "!";
+    }
+    else if (ch === "?") {
+      output += "?";
+    }
+     else if (toSecret) {
       output += secretAlphabet[ch.toLowerCase()] || ch;
     } else {
       for (const key in secretAlphabet) {
