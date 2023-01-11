@@ -37,9 +37,15 @@
         font-size: 2rem;
       }
       #password {
-        position: absolute;
-        top: 20vh;
-        right: 75vh;
+        margin: 0 auto;
+
+        margin-top: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  width: max-content;
+  text-align: center;
+  width: 650px;
+  font-size: xx-large;
       }
       #lolol {
         position: absolute;
@@ -59,10 +65,22 @@
 </head>
 <body>
   <main>
-    <p>Please enter the password to access</p>
+    <p>Please enter the password to access!!! <br>
+    press enter after you are done</p>
 
     <input type="password" id="password">
-    <button id="lolol" onclick="checkPassword()">Submit</button>
+
+    <div id="number-buttons">
+      <button class="number-button">1</button>
+      <button class="number-button">2</button>
+      <button class="number-button">3</button>
+      <button class="number-button">4</button>
+      <button class="number-button">5</button>
+      <button class="number-button">6</button>
+      <button class="number-button">7</button>
+      <button class="number-button">8</button>
+      <button class="number-button">9</button>
+    </div>
     
     <div class="crash">
       <h1>Crashed!</h1>
@@ -87,15 +105,24 @@
       <div id="output-text"></div>
     </div>
 <script>
-  function checkPassword() {
-  var kick = document.getElementById("password").value;
+  const numberButtons = document.querySelectorAll(".number-button");
+const passwordInput = document.getElementById("password");
+numberButtons.forEach(button => {
+  button.addEventListener("click", function() {
+    passwordInput.value += this.textContent;
+  });
+});
+document.getElementById("password").addEventListener("keydown", function(event) {
+  if (event.keyCode === 13) {
+    var password = document.getElementById("password").value;
   var crashElem = document.querySelector(".crash");
   var input2 = document.querySelector("input");
   var button = document.querySelector("button");
   var text = document.querySelector("p");
-  var main = document.querySelector("main")
-  var main2 = document.getElementById("main")
-  if (kick == "817Gx9a44e2") {
+  var main = document.querySelector("main");
+  var main2 = document.getElementById("main");
+  var numbers = document.getElementById("number-buttons");
+  if (password == "31033103") {
     main.style.display = "none";
     main2.style.display = "block";
   }
@@ -104,8 +131,11 @@
     input2.style.display = "none";
     button.style.display = "none";
     text.style.display = "none";
+    numbers.style.display = "none";
   }
-}
+  }
+});
+
 const form = document.getElementById("translation-form");
 const input = document.getElementById("input-text");
 const output = document.getElementById("output-text");
