@@ -105,6 +105,15 @@
       <div id="output-text"></div>
     </div>
 <script>
+  window.onload = function() {
+  var storedPassword = localStorage.getItem("password");
+  if (storedPassword == "198273465") {
+    var main = document.querySelector("main")
+    var main2 = document.getElementById("main")
+    main.style.display = "none";
+    main2.style.display = "block";
+  }
+};
   const numberButtons = document.querySelectorAll(".number-button");
 const passwordInput = document.getElementById("password");
 numberButtons.forEach(button => {
@@ -123,9 +132,11 @@ document.getElementById("password").addEventListener("keydown", function(event) 
   var main2 = document.getElementById("main");
   var numbers = document.getElementById("number-buttons");
   if (password == "198273465") {
+    localStorage.setItem("password", password);
     main.style.display = "none";
     main2.style.display = "block";
   }
+  
    else {
     crashElem.classList.add("active");
     input2.style.display = "none";
