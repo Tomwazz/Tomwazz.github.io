@@ -115,3 +115,22 @@ body {
     grid-column: 1/3;
     grid-row: 4;
   }
+  .cc {
+    background: none; /* remove the default button background */
+    border: none; /* remove the default button border */
+    cursor: pointer; /* change the cursor to a pointer on hover */
+    color: greenyellow; /* change the color of the text and icon */
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .hahaa {
+    margin-left: 10px;
+  }
+  
+  .cc:hover {
+    color: darkblue; /* change the color of the text and icon on hover */
+  }
+  
+  .cc i {
+    font-size: 1rem; /* adjust the icon size as needed */
+  }
