@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Kostky</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Rubik's cube dokumentace</header>
+      <ul>
+        <li><a class="nav-link" href="#Intro">Intro</a></li>
+        <li>
+          <a class="nav-link" href="#Info"
+            >Info</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#2x2x2"
+            >2x2x2</a
+          >
+        </li>
+        <li><a class="nav-link" href="#3x3x3">3x3x3</a></li>
+        <li><a class="nav-link" href="#4x4x4">4x4x4</a></li>
+        <li>
+          <a class="nav-link" href="#5x5x5"
+            >5x5x5</a
+          >
+        </li>
+        <li><a class="nav-link" href="#Pyraminx">Pyraminx</a></li>
+        <li><a class="nav-link" href="#Reference">Reference</a></li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Intro">
+        <header>Intro</header>
+        <article>
+          <p>
+            Rubiková kostka je hlavolam složený z malých kostiček tvořící 3x3x3 kostku (v základní podobě).
+          </p>
+
+          <p>
+            Maďarský profesor architektury a sochař Erno Rubik
+vytvořil tento hlavolam původně pro své studenty v roce 1974.
+O šest let později se tento hlavolam začal sériově vyrábět pod názvem
+          </p>
+          <p>
+            Rubiková kostka má mnoho možných variací jako například:
+          </p>
+          <ul>
+            <li>
+              <code> <a  href="https://www.fyft.cz/rubikovy-kostky-2x2x2/"> 2x2x2  </a> </code>
+            </li>
+            <li>
+                <code> <a href="https://www.fyft.cz/rubikovy-kostky-3x3x3/"> 3x3x3 </a></code>
+            </li>
+            <li>
+                <code> <a href="https://www.fyft.cz/rubikovy-kostky-4x4x4/"> 4x4x4 </a></code>
+            </li>
+            <li>
+                <code> <a href="https://www.fyft.cz/rubikovy-kostky-5x5x5/"> 5x5x5 </a></code>
+            </li>
+            <li>
+                <code> <a href="https://www.fyft.cz/rubikovy-kostky-6x6x6/"> 6x6x6 </a></code>
+            </li>
+            <li>
+                <code>  <a href="https://www.fyft.cz/rubikovy-kostky-7x7x7/"> 7x7x7 </a></code>
+            </li>
+            <li>
+                <code>  <a href="https://www.fyft.cz/pyraminx/"> Pyraminx </a></code>
+            </li>
+            <li>
+                <code>  <a href="https://www.fyft.cz/skewb/"> Skewb </a></code>
+            </li>
+            <li>
+                <code> <a href="https://www.fyft.cz/clock/"> Clock </a></code>
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="Info">
+        <header>Info</header>
+        <article>
+          <p>Na této stránce se dozvíš následující:</p>
+
+          <ul>
+            <li>
+              Základní informace ke každé kostce co jsou v levém výběru.
+            </li>
+            <li> <a href="https://jperm.net/images/notation.png">Tahy</a> či algorithmy potřebné ke složení.</li>
+            <li>
+              Nějaké další zajímavé informace ke konkrétní kostce.
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="2x2x2">
+        <header>2x2x2</header>
+        <article>
+          <p>
+            Rubikova kostka 2x2x2 je složena z 8 hran. 
+          </p>
+
+          <p>
+            Na složení této kostky je dostačující složení jedné strany intuitivně. A pak pomocí sady algorithmů z metody Ortega složit zbytek kostky.
+          </p>
+          <p>
+            Ale jsou i možnosti jak to složit za pomocí tutoriůlu. Zde je příklad.
+          </p>
+          <iframe id="navod" width="560" height="315" src="https://www.youtube.com/embed/6vFF0VpbCdU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p>
+            <span class="wr">Světový rekord</span> za složení kostky drží Maciej Czapiewski s opravdu neskutečným časem.
+          </p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/4hvc-xmNj4s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </article>
+      </section>
+      <section class="main-section" id="3x3x3">
+        <header>3x3x3</header>
+        <article>
+          Rubikova kostka 3x3x3 se skládá z 26 kostiček → 8 vrcholů, 12 hran a 6 středů.
+          <code
+            >Celkový počet kombinací možných na kostce 3x3x3 je 43,252 triliónů.
+          </code>
+          <p>
+            Na složení 3x3x3 už je potřeba nějaký tutoriál, jelikož bez absolutní knowledge je tento hlavolam opravdu obtížný.
+          </p>
+          <p>
+            3x3x3 má mnoho speed-solving metod. Mezi nejpopulárnější patří CFOP [Center, First 2 layers, Orientation of last layer, Permutation of last layer]
+          </p>
+          <iframe id="navod" width="560" height="315" src="https://www.youtube.com/embed/CW0bvh6BXEU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p>
+            <span class="wr">Světový rekord</span> za složení 3x3x3 drží Yusheng Du(杜宇生).
+          </p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/SB3ut65SFUU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p>
+            <span class="wr">Světový rekord</span> za složení 3x3x3 blindfolded drží Tommy Cherry.
+          </p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/2_Crc0_kLtQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p>
+            <span class="wr">Světový rekord</span> za složení 3x3x3 jednou rukou drží Max Park.
+          </p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/LvFtz4QAP5g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </article>
+      </section>
+      <section class="main-section" id="4x4x4">
+        <header>4x4x4</header>
+        <p>
+          Kostka 4x4x4 je už mnohem náročnější a komplexnější hlaxolam.
+        </p>
+        <p>
+          Zde pro složení již záleží na preferencích.
+        </p>
+        <iframe id="navod" width="560" height="315" src="https://www.youtube.com/embed/J7FsHgs_8Vo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p>
+            <span class="wr">Světový rekord</span> za složení 3x3x3 drží Yusheng Du(杜宇生).
+        </p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/d3L26rJN_RE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </section>
+      <section class="main-section" id="5x5x5">
+        <header>5x5x5</header>
+        <article>
+          Pro kostku 5x5x5 platí to stejné co pro 4x4x4.
+          <p>
+            Složení této kostky je <code>OPRAVDU</code> náročné.
+          </p>
+          <iframe id="navod" width="560" height="315" src="https://www.youtube.com/embed/D9BmFU6t2Kg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p>
+            <span class="wr">Světový rekord</span> za složení kostky drží Max Park.
+          </p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/zd1MQVLTR3k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </article>
+      </section>
+      <section class="main-section" id="Pyraminx">
+        <header>Pyraminx</header>
+        <article>
+          <p>
+            Pyraminx patří mezi úplně jiné varianty hlavolamu. Je to nejlehčí variace z oficiálních kostek.
+          </p>
+
+          <p>
+            Složení tohoto hlavolamu je možné zvládnout i intuitivně. Případně za pomocí náhodných tahů. <br> Ale případný tutoriál pro lidi
+          </p>
+          <iframe id="navod" width="560" height="315" src="https://www.youtube.com/embed/_uP-Sz_89OY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p>
+            <span class="wr">Světový rekord</span> za složení Pyraminx drží Dominik Górny.
+          </p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/9nU4tvsPZEI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </article>
+      </section>
+      <section class="main-section" id="Reference">
+        <header>Reference</header>
+        <article>
+          <ul>
+            <li>
+              Všechny informace byly čerpány ze zkušeností, YouTube a WCA
+              <a
+                href="https://www.worldcubeassociation.org"
+                target="_blank"
+                >WCA</a
+              >
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
