@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: #eee;
+  background-color: rgba(59, 55, 55, 0.514);
   font-family: 'Lato', sans-serif;
 }
 
@@ -58,7 +58,69 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #eee;
+  background-color: transparent;
+}
+#pravidla
+{
+    display: inline;
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 50vw;
+    font-size:xx-large;
+font-weight: 500;
+    background-color: transparent;
+    border: transparent;
+}
+#informace
+{
+    display: inline;
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 25vw;
+    font-size:xx-large;
+font-weight: 500;
+    background-color: transparent;
+    border: transparent;
+}
+#cena {
+    display: inline;
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 75vw;
+    font-size:xx-large;
+    font-weight: 500;
+    background-color: transparent;
+    border: transparent;
+}
+#Normal {
+    display: inline;
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 33vw;
+    font-size:xx-large;
+    font-weight: 500;
+    background-color: transparent;
+    border: transparent;
+}
+#Back {
+    display: block;
+    position: absolute;
+    margin-top: 80vh;
+    margin-left: 50vw;
+    font-size:xx-large;
+    font-weight: 500;
+    background-color: transparent;
+    border: transparent;
+}
+#Fancy {
+    display: inline;
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 66vw;
+    font-size:xx-large;
+    font-weight: 500;
+    background-color: transparent;
+    border: transparent;
 }
 
 @media (max-width: 600px) {
@@ -114,7 +176,6 @@ nav {
     padding-bottom: 5px;
   }
 }
-
 nav > ul {
   width: 35vw;
   display: flex;
@@ -135,7 +196,7 @@ nav > ul {
   justify-content: center;
   text-align: center;
   height: 200px;
-  margin-top: 50px;
+  margin-top: 40vh;
 }
 
 #hero > h2 {
@@ -169,11 +230,12 @@ nav > ul {
   }
 }
 
-#features {
-  margin-top: 30px;
+#Info {
+  margin-top: 50px;
+  display: block;
 }
 
-#features .icon {
+#Info .icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,12 +245,12 @@ nav > ul {
 }
 
 @media (max-width: 550px) {
-  #features .icon {
+  #Info .icon {
     display: none;
   }
 }
 
-#features .desc {
+#Info .desc {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -198,7 +260,7 @@ nav > ul {
 }
 
 @media (max-width: 550px) {
-  #features .desc {
+  #Info .desc {
     width: 100%;
     text-align: center;
     padding: 0;
@@ -207,24 +269,62 @@ nav > ul {
 }
 
 @media (max-width: 650px) {
-  #features {
+  #Info {
     margin-top: 0;
   }
 }
 
-#how-it-works {
-  margin-top: 50px;
+#Rules {
+  margin-top: 100px;
   display: flex;
   justify-content: center;
 }
 
-#how-it-works > iframe {
+iframe {
+    margin-left: 15rem;
+  display: flex;
   max-width: 560px;
   width: 100%;
+  position: relative;
+  margin-top: 5rem;
+}
+#Rules #prav a {
+    animation: shine infinite 20s;
+    margin-left: 10rem;
+}
+@keyframes shine {
+    0% {
+      text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #ff0, 0 0 20px #ff0, 0 0 25px #ff0, 0 0 30px #ff0, 0 0 35px #ff0;
+    }
+    16.7% {
+      text-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 15px #f00, 0 0 20px #f00, 0 0 25px #f00, 0 0 30px #f00, 0 0 35px #f00;
+    }
+    33.3% {
+      text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0, 0 0 20px #0f0, 0 0 25px #0f0, 0 0 30px #0f0, 0 0 35px #0f0;
+    }
+    50% {
+      text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #00f, 0 0 20px #00f, 0 0 25px #00f, 0 0 30px #00f, 0 0 35px #00f;
+    }
+    66.7% {
+      text-shadow: 0 0 5px #f0f, 0 0 10px #f0f, 0 0 15px #f0f, 0 0 20px #f0f, 0 0 25px #f0f, 0 0 30px #f0f, 0 0 35px #f0f;
+    }
+    83.3% {
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 25px #0ff, 0 0 30px #0ff, 0 0 35px #0ff;
+    }
+    100% {
+      text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #ff0, 0 0 20px #ff0, 0 0 25px #ff0, 0 0 30px #ff0, 0 0 35px #ff0;
+    }
+}
+#Rules h2 {
+    margin-left: 5rem;
 }
 
-#pricing {
-  margin-top: 60px;
+#Rules p {
+    margin: 10px;
+}
+
+#Price {
+  margin-top: 80px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -275,7 +375,7 @@ nav > ul {
 }
 
 @media (max-width: 800px) {
-  #pricing {
+  #Price {
     flex-direction: column;
   }
   .product {
@@ -288,7 +388,7 @@ nav > ul {
 
 footer {
   margin-top: 30px;
-  background-color: #ddd;
+  background-color: rgba(19, 17, 17, 0.322);
   padding: 20px;
 }
 
@@ -307,4 +407,18 @@ footer > span {
   justify-content: flex-end;
   font-size: 0.9em;
   color: #444;
+}
+footer .pana {
+    margin-top: 20px;
+    margin-left: 20px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.9em;
+  color: #444;
+}
+footer i {
+    cursor: pointer;
+}
+#buttons {
+    cursor:context-menu;
 }

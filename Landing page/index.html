@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
   <head>
     <link rel="stylesheet" href="styles.css" />
     <link
@@ -10,21 +10,29 @@
     />
   </head>
   <body>
+    <section id="buttons">
+        <button id="Normal">Normálně?</button>
+        <button id="Fancy">Fancy?</button>
+        <button id="informace">Info</button>
+        <button id="pravidla">Rules</button>
+        <button id="cena">Price</button>
+        <button id="Back">ZPĚT</button>
+    </section>
     <div id="page-wrapper">
       <header id="header">
         <div class="logo">
           <img
             id="header-img"
-            src="https://cdn.freecodecamp.org/testable-projects-fcc/images/product-landing-page-logo.png"
-            alt="original trombones logo"
-          />
+            src="https://github.com/Tomwazz/Tomwazz.github.io/blob/main/Landing%20page/img/cube.png?raw=true"
+            alt="Rubik's cube"
+           style="height: 75px; width: 125px;"/>
         </div>
 
         <nav id="nav-bar">
           <ul>
-            <li><a class="nav-link" href="#features">Features</a></li>
-            <li><a class="nav-link" href="#how-it-works">How It Works</a></li>
-            <li><a class="nav-link" href="#pricing">Pricing</a></li>
+            <li><a class="nav-link" href="#Info">Info</a></li>
+            <li><a class="nav-link" href="#Rules">Rules</a></li>
+            <li><a class="nav-link" href="#Price">Price</a></li>
           </ul>
         </nav>
       </header>
@@ -32,93 +40,96 @@
       <div class="container"></div>
 
       <section id="hero">
-        <h2>Handcrafted, home-made masterpieces</h2>
+        <h2>Best rubik's cube competition</h2>
         <form id="form" action="https://www.freecodecamp.com/email-submit">
           <input
             name="email"
             id="email"
             type="email"
-            placeholder="Enter your email address"
+            placeholder="Vlož svou email adresu"
             required
           />
-          <input id="submit" type="submit" value="Get Started" class="btn" />
+          <input id="submit" type="submit" value="JOIN!" class="btn" />
         </form>
       </section>
-
+      
       <div class="container">
-        <section id="features">
+        <section id="Info">
           <div class="grid">
-            <div class="icon"><i class="fa fa-3x fa-fire"></i></div>
+            <div class="icon"><i class="fa fa-3x fa-cube"></i></div>
             <div class="desc">
-              <h2>Premium Materials</h2>
+              <h2>Mnoho kostek</h2>
               <p>
-                Our trombones use the shiniest brass which is sourced locally.
-                This will increase the longevity of your purchase.
+                Zde můžete soutěžit s mnoho různými kostkami.<br>
+                Je zde i mnoho oddílů pro jednotlivé kostky.
               </p>
             </div>
           </div>
           <div class="grid">
-            <div class="icon"><i class="fa fa-3x fa-truck"></i></div>
+            <div class="icon"><i class="fa fa-3x fa-globe"></i></div>
             <div class="desc">
-              <h2>Fast Shipping</h2>
+              <h2>Jsme kdekoliv</h2>
               <p>
-                We make sure you recieve your trombone as soon as we have
-                finished making it. We also provide free returns if you are not
-                satisfied.
+                Máte problém s dojezdem někam do zahraničí? <br>
+                Speciálně pro vás jsme připravili novinku. <br>
+                Nyní jsme v každém větším městě s 500k+ obyvateli.
               </p>
             </div>
           </div>
           <div class="grid">
             <div class="icon">
-              <i class="fa fa-3x fa-battery-full" aria-hidden="true"></i>
+              <i class="fa fa-3x fa-mask" aria-hidden="true"></i>
             </div>
             <div class="desc">
-              <h2>Quality Assurance</h2>
+              <h2>100% secured</h2>
               <p>
-                For every purchase you make, we will ensure there are no damages
-                or faults and we will check and test the pitch of your
-                instrument.
+                Nemusíte se bát žádné ztráty osobních dat. <br>
+                Za vše ručí WCA s.r.o.
               </p>
             </div>
           </div>
         </section>
-        <section id="how-it-works">
-          <iframe
-            id="video"
-            height="315"
-            src="https://www.youtube-nocookie.com/embed/y8Yv4pnO7qc?rel=0&amp;controls=0&amp;showinfo=0"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+        <section id="Rules">
+            <div id="prav">
+                <h2 id="prav2">PRAVIDLA PRO WCA</h2>
+                <p>
+                    Jakékoliv důležité info pro vstup na soutěž můžete najít zde
+                </p>
+                <a href="https://www.worldcubeassociation.org/regulations/" target="_blank">WCA info</a>
+                <p>
+                    Případně se i můžete podívat na toto video, které dává dodatečné rady.
+                </p>
+            </div>
         </section>
-        <section id="pricing">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1t39SkeEZ5g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <section id="Price">
           <div class="product" id="tenor">
-            <div class="level">Tenor Trombone</div>
-            <h2>$600</h2>
+            <div class="level">Berlín</div>
+            <h2>$300</h2>
             <ol>
-              <li>Lorem ipsum.</li>
-              <li>Lorem ipsum.</li>
-              <li>Lorem ipsum dolor.</li>
-              <li>Lorem ipsum.</li>
+              <li>Všechny kostky</li>
+              <li>Snadná obsluha</li>
+              <li>lehce doručitelné lístky</li>
+              <li>Nejlepší společnost</li>
             </ol>
             <button class="btn">Select</button>
           </div>
           <div class="product" id="bass">
-            <div class="level">Bass Trombone</div>
-            <h2>$900</h2>
+            <div class="level">Praha</div>
+            <h2>$250</h2>
             <ol>
-              <li>Lorem ipsum.</li>
-              <li>Lorem ipsum.</li>
-              <li>Lorem ipsum dolor.</li>
-              <li>Lorem ipsum.</li>
+              <li>Mnoho kostek</li>
+              <li>Nejlepší obsluha</li>
+              <li>Dodatečné kostky</li>
+              <li>dobrá lokalita</li>
             </ol>
             <button class="btn">Select</button>
           </div>
           <div class="product" id="valve">
-            <div class="level">Valve Trombone</div>
-            <h2>$1200</h2>
+            <div class="level">Brno</div>
+            <h2>$200</h2>
             <ol>
-              <li>Plays similar to a Trumpet</li>
+              <li>Všechny základní kostky</li>
               <li>Great for Jazz Bands</li>
               <li>Lorem ipsum dolor.</li>
               <li>Lorem ipsum.</li>
@@ -127,14 +138,103 @@
           </div>
         </section>
         <footer>
-          <ul>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-          <span>Copyright 2016, Original Trombones</span>
+            <div class="icon"><i class="fa fa-3x fa-copyright" onclick="redirect()"></i></div><div class="pana">WCA s. r. o.</div>
         </footer>
       </div>
     </div>
+    <script>
+        const rules = document.getElementById("Rules");
+        const price = document.getElementById("Price");
+        const info = document.getElementById("Info");
+        const navbar = document.getElementById("nav-bar");
+        const footer = document.querySelector("footer");
+        const hero = document.getElementById("hero");
+        const button = document.getElementById("submit");
+        const pravidla = document.getElementById("pravidla");
+        const informace = document.getElementById("informace");
+        const cena = document.getElementById("cena");
+        const normal = document.getElementById("Normal");
+        const fancy = document.getElementById("Fancy");
+        const wrapper = document.getElementById("page-wrapper");
+        const Back = document.getElementById("Back");
+        const video = document.querySelector("iframe");
+        Back.style.display = "none"; 
+        info.style.display = "none";
+        price.style.display = "none";
+        rules.style.display = "none";
+        navbar.style.display = "none";
+        footer.style.display = "none";
+        pravidla.style.display = "none";
+        informace.style.display = "none";
+        cena.style.display = "none";
+        normal.style.display = "none";
+        fancy.style.display = "none";
+        video.style.display = "none";
+        button.addEventListener('click', () => {
+              hero.style.display = 'none';
+              normal.style.display = "block";
+              fancy.style.display = "block";
+            });
+        normal.addEventListener('click', () => {
+            normal.style.display = "none";
+            fancy.style.display = "none";
+            info.style.display = "block";
+            rules.style.display = "flex";
+            navbar.style.display = "flex";
+            footer.style.display = "flex";
+            price.style.display = "flex";
+            video.style.display = "flex";
+        });
+        fancy.addEventListener('click', () => {
+            pravidla.style.display = "block";
+        informace.style.display = "block";
+        cena.style.display = "block";
+        normal.style.display = "none";
+            fancy.style.display = "none";
+            Back.style.display = "none";
+            video.style.display = "none";
+        });
+        pravidla.addEventListener('click', () => {
+            rules.style.display = "flex";
+            pravidla.style.display = "none";
+            informace.style.display = "none";
+            cena.style.display = "none";
+            Back.style.display = "block";
+            video.style.display = "flex";
+        });
+        informace.addEventListener('click', () => {
+            info.style.display = "block";
+            pravidla.style.display = "none";
+            informace.style.display = "none";
+            cena.style.display = "none";
+            Back.style.display = "block";
+            video.style.display = "none";
+        });
+        cena.addEventListener('click', () => {
+            price.style.display = "flex";
+            pravidla.style.display = "none";
+            informace.style.display = "none";
+            cena.style.display = "none";
+            Back.style.display = "block";
+            video.style.display = "none";
+        });
+        Back.addEventListener('click', () => {
+            pravidla.style.display = "block";
+        informace.style.display = "block";
+        cena.style.display = "block";
+        normal.style.display = "none";
+            fancy.style.display = "none";
+            Back.style.display = "none";
+            info.style.display = "none";
+        price.style.display = "none";
+        rules.style.display = "none";
+        navbar.style.display = "none";
+        footer.style.display = "none";
+        
+        });
+        function redirect() {
+  window.location.href = "https://www.worldcubeassociation.org";
+}
+    </script>
   </body>
 </html>
