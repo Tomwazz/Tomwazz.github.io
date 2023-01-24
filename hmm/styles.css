@@ -356,6 +356,22 @@
     border: transparent;
     background: transparent;
   }
+  .ml12 {
+    font-weight: 200;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    position: absolute;
+    display: block;
+    text-align: center;
+    left: 20vw;
+    top: 50vh;
+  }
+  
+  .ml12 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
   .ml9 {
     position: absolute;
     font-weight: 100;
