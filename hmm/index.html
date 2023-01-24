@@ -110,6 +110,10 @@
     </h1>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script>
+      if (!localStorage.getItem('visited')) {
+  alert('Můžeš si poklikat na tučňáka a pak tam máš tzv překvápko při kliknutí na slunce.');
+  localStorage.setItem('visited', true);
+}
       const button = document.getElementById('lol');
       const main = document.getElementById('main');
       // Wrap every letter in a span
