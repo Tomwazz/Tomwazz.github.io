@@ -1,0 +1,705 @@
+:root {
+    --penguin-face: white;
+    --penguin-picorna: orange;
+    --penguin-skin: gray;
+  }
+  
+  body {
+    background: linear-gradient(45deg, rgb(118, 201, 255), rgb(247, 255, 222));
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .left-mountain {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(80, 183, 255));
+    position: absolute;
+    transform: skew(0deg, 44deg);
+    z-index: 2;
+    margin-top: 100px;
+  }
+  
+  .back-mountain {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    transform: rotate(45deg);
+    left: 110px;
+    top: 225px;
+  }
+  .third-mountain {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    transform: rotate(45deg);
+    left: 250px;
+    top: 300px;
+  }
+  .fourth-mountain {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    transform: rotate(45deg);
+    left: 400px;
+    top: 200px;
+  }
+  .fifth-mountain {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    transform: rotate(45deg);
+    left: 700px;
+    top: 300px;
+  }
+  .sixth-mountain {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    transform: rotate(45deg);
+    left: 900px;
+    top: 300px;
+  }
+  .seventh-mountain {
+    width: 450px;
+    height: 450px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    transform: rotate(45deg);
+    left: 1200px;
+    top: 300px;
+  }
+  .eight-mountain {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    transform: rotate(45deg);
+    left: 1500px;
+    top: 350px;
+  }
+  .ninth-mountain {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    transform: rotate(45deg);
+    left: 1600px;
+    top: 300px;
+  } 
+
+  .sun {
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    position: absolute;
+    border-radius: 50%;
+    top: -75px;
+    right: -75px;
+  }
+  
+  #penguin {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 200px;
+    z-index: 4;
+    position: relative;
+    transition: transform 1s ease-in-out 0ms;
+  }
+  
+  #penguin * {
+    position: absolute;
+  }
+  
+   #penguin:active {
+    transform: scale(1.5);
+    cursor: not-allowed;
+  }
+  
+  .penguin-head {
+    width: 50%;
+    height: 45%;
+    background: linear-gradient(
+      45deg,
+      var(--penguin-skin),
+      rgb(239, 240, 228)
+    );
+    border-radius: 70% 70% 65% 65%;
+    top: 10%;
+    left: 25%;
+    z-index: 1;
+  }
+  
+  .face {
+    width: 60%;
+    height: 70%;
+    background-color: var(--penguin-face);
+    border-radius: 70% 70% 60% 60%;
+    top: 15%;
+  }
+  
+  .face.left {
+    left: 5%;
+  }
+  
+  .face.right {
+    right: 5%;
+  }
+  
+  .chin {
+    width: 90%;
+    height: 70%;
+    background-color: var(--penguin-face);
+    top: 25%;
+    left: 5%;
+    border-radius: 70% 70% 100% 100%;
+  }
+  
+  .eye {
+    width: 15%;
+    height: 17%;
+    background-color: black;
+    top: 45%;
+    border-radius: 50%;
+  }
+  
+  .eye.left {
+    left: 25%;
+  }
+  
+  .eye.right {
+    right: 25%;
+  }
+  
+  .eye-lid {
+    width: 150%;
+    height: 100%;
+    background-color: var(--penguin-face);
+    top: 25%;
+    left: -23%;
+    border-radius: 50%;
+  }
+  
+  .blush {
+    width: 15%;
+    height: 10%;
+    background-color: pink;
+    top: 65%;
+    border-radius: 50%;
+  }
+  
+  .blush.left {
+    left: 15%;
+  }
+  
+  .blush.right {
+    right: 15%;
+  }
+  
+  .beak {
+    height: 10%;
+    background-color: var(--penguin-picorna);
+    border-radius: 50%;
+  }
+  
+  .beak.top {
+    width: 20%;
+    top: 60%;
+    left: 40%;
+  }
+  
+  .beak.bottom {
+    width: 16%;
+    top: 65%;
+    left: 42%;
+  }
+  
+  .shirt {
+    font: bold 35px Helvetica, sans-serif;
+    top: 165px;
+    left: 130.5px;
+    z-index: 1;
+    color: #6a6969;
+  }
+  
+  .shirt div {
+    font-weight:  initial;
+    top: 22.5px;
+    left: 12px;
+  }
+  
+  .penguin-body {
+    width: 53%;
+    height: 45%;
+    background: linear-gradient(
+      45deg,
+      rgb(134, 133, 133) 0%,
+      rgb(234, 231, 231) 25%,
+      white 67%
+    );
+    border-radius: 80% 80% 100% 100%;
+    top: 40%;
+    left: 23.5%;
+  }
+  
+  .penguin-body::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 45%;
+    background-color: var(--penguin-skin);
+    top: 10%;
+    left: 25%;
+    border-radius: 0% 0% 100% 100%;
+    opacity: 70%;
+  }
+  
+  .arm {
+    width: 30%;
+    height: 60%;
+    background: linear-gradient(
+      90deg,
+      var(--penguin-skin),
+      rgb(209, 210, 199)
+    );
+    border-radius: 30% 30% 30% 120%;
+    z-index: -1;
+  }
+  
+  .arm.left {
+    top: 35%;
+    left: 5%;
+    transform-origin: top left; 
+    transform: rotate(130deg) scaleX(-1);
+    animation: 2s linear infinite wave;
+  }
+  
+  .arm.right {
+    top: 0%;
+    right: -5%;
+    transform: rotate(-45deg);
+  }
+  
+  @keyframes wave {
+    10% {
+      transform: rotate(110deg) scaleX(-1);
+    }
+    20% {
+      transform: rotate(130deg) scaleX(-1);
+    }
+    30% {
+      transform: rotate(110deg) scaleX(-1);
+    }
+    40% {
+      transform: rotate(130deg) scaleX(-1);
+    }
+  }
+  
+  .foot {
+    width:  15%;
+    height: 30%;
+    background-color: var(--penguin-picorna);
+    top: 85%;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  .foot.left {
+    left: 25%;
+    transform: rotate(80deg);
+  }
+  
+  .foot.right {
+    right: 25%;
+    transform: rotate(-80deg);
+  }
+  
+  .ground {
+    width: 100vw;
+    height: calc(100vh - 300px);
+    background: linear-gradient(90deg, rgb(88, 175, 236), rgb(182, 255, 255));
+    z-index: 3;
+    position: absolute;
+    margin-top: -58px;
+  }
+  .biggg {
+    font-size: x-large;
+    font-weight: 600;
+    z-index: 5;
+    position: absolute;
+    bottom: -20%;
+  }
+  button {
+    font-size: xx-large;
+    position: absolute;
+    left: 96.5vw;
+    top: 3vh;
+    z-index: 8;
+    color: #6a6969;
+    border: transparent;
+    background: transparent;
+  }
+  .ml9 {
+    position: absolute;
+    font-weight: 100;
+    font-size: 2em;
+    margin: 9rem;
+    display: block;
+    text-align: center;
+  }
+  
+  .ml9 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+  }
+  
+  .ml9 .letter {
+    transform-origin: 50% 100%;
+    display: inline-block;
+    line-height: 1em;
+  }
+  .ml14 {
+    font-weight: 200;
+    font-size: 3.2em;
+    position: absolute;
+    display: block;
+    left: 20vw;
+    top: 80vh;
+  }
+  
+  .ml14 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.1em;
+    padding-right: 0.05em;
+    padding-bottom: 0.15em;
+  }
+  
+  .ml14 .line {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+    transform-origin: 100% 100%;
+    bottom: 0;
+  }
+  
+  .ml14 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+  .ml16 {
+    position: absolute;
+    display: block;
+    color: #402d2d;
+    left: 33vw;
+    top: 60vh;
+    font-weight: 800;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    overflow: hidden;
+  }
+  
+  .ml16 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+
+  /* CLOUDS */
+  .cloud, .cloud:before, .cloud:after {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background: #fff;
+    -webkit-border-radius: 100px / 50px;
+    border-radius: 100px / 50px;
+  }
+  .dog , .dog:before, .dog:after {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background: #fff;
+    -webkit-border-radius: 100px / 50px;
+    border-radius: 100px / 50px;
+  }
+  .dog2 , .dog2:before, .dog2:after {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background: #fff;
+    -webkit-border-radius: 100px / 50px;
+    border-radius: 100px / 50px;
+  }
+  .dog3 , .dog3:before, .dog3:after {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background: #fff;
+    -webkit-border-radius: 100px / 50px;
+    border-radius: 100px / 50px;
+  }
+  .dog4 , .dog4:before, .dog4:after {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background: #fff;
+    -webkit-border-radius: 100px / 50px;
+    border-radius: 100px / 50px;
+  }
+  .dog5 , .dog5:before, .dog5:after {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background: #fff;
+    -webkit-border-radius: 100px / 50px;
+    border-radius: 100px / 50px;
+  }
+  .cloud { 
+    top: 100px;
+    z-index: -1;
+    -webkit-animation: cloud 58s infinite linear;
+            animation: cloud 58s infinite linear;
+  }
+  .dog { 
+    top: 50px;
+    z-index: -1;
+    -webkit-animation: cloud 10s infinite linear;
+            animation: cloud 10s infinite linear;
+  }
+  .dog2 { 
+    top: 130px;
+    z-index: -2;
+    -webkit-animation: cloud 15s infinite linear;
+            animation: cloud 15s infinite linear;
+  }
+  .dog3 { 
+    top: 80px;
+    z-index: -1;
+    -webkit-animation: cloud 25s infinite linear;
+            animation: cloud 25s infinite linear;
+  }
+  .dog4 { 
+    top: 25px;
+    z-index: -5;
+    -webkit-animation: cloud 35s infinite linear;
+            animation: cloud 35s infinite linear;
+  }
+  .dog5 { 
+    top: 60px;
+    z-index: -1;
+    -webkit-animation: cloud 50s infinite linear;
+            animation: cloud 50s infinite linear;
+  }
+  @-webkit-keyframes cloud {
+      0%   { left: -100px; }
+      100% { left: 2000px; } 
+  }
+  @keyframes cloud {
+     
+      0%   { left: -100px; }
+      100% { left: 2000px; } 
+  }
+  .cloud:before {
+    content: '';
+    left: 50px;
+  }
+  .dog:before {
+    content: '';
+    left: 50px;
+  }
+  .dog2:before {
+    content: '';
+    left: 50px;
+  }
+  .dog3:before {
+    content: '';
+    left: 50px;
+  }
+  .dog4:before {
+    content: '';
+    left: 50px;
+  }
+  .dog5:before {
+    content: '';
+    left: 50px;
+  }
+  .cloud:after {
+    content: '';
+    left: 25px;
+    top: -10px;
+  }
+  .dog:after {
+    content: '';
+    left: 25px;
+    top: -10px;
+  }
+  .dog2:after {
+    content: '';
+    left: 25px;
+    top: -10px;
+  }
+  .dog3:after {
+    content: '';
+    left: 25px;
+    top: -10px;
+  }
+  .dog4:after {
+    content: '';
+    left: 25px;
+    top: -10px;
+  }
+  .dog5:after {
+    content: '';
+    left: 25px;
+    top: -10px;
+  }
+  /*FISHES */ 
+  svg#fish {
+    bottom: 15em;
+    z-index: 5;
+  }
+  /* Fish Animation */
+  svg.fish{
+    overflow:visible;
+  }
+  
+  @-webkit-keyframes swim
+  {
+    0% {margin-left: -235px}
+    90% {margin-left: 100%;}
+    100% {margin-left: 100%;}
+  }
+  
+  @keyframes swim
+  {
+    0% {margin-left: -235px}
+    70% {margin-left: 100%;}
+    100% {margin-left: 100%;}
+  }
+  
+  .fish{
+    width: 235px;
+    height: 104px;
+    margin-left: -235px;
+    position: absolute;	
+    -webkit-animation: swim 20s;
+    animation: swim 20s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+  }
+  
+  svg #fish1,
+  svg #fish2,
+  svg #fish3,
+  svg #fish4,
+  svg #fish5,
+  svg #fish6 {
+  fill:#528484;
+    
+      -moz-animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    animation: bounce 2s infinite;
+  }
+  
+  svg #fish2{
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  
+  svg #fish3{
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+  }
+  
+  svg #fish4{
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+  
+  svg #fish5{
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+  }
+  
+  svg #fish6{
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+  }
+  
+  /**/
+  @-moz-keyframes bounce {
+    0%, 50%, 100% {
+      -moz-transform: translateY(0);
+      transform: translateY(0);
+    }
+    25% {
+      -moz-transform: translateY(-5px);
+      transform: translateY(-5px);
+    }
+    75% {
+      -moz-transform: translateY(-3px);
+      transform: translateY(-3px);
+    }
+  }
+  @-webkit-keyframes bounce {
+    0%, 50%, 100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+    25% {
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px);
+    }
+    75% {
+      -webkit-transform: translateY(-3px);
+      transform: translateY(-3px);
+    }
+  }
+  @keyframes bounce {
+    0%, 50%, 100% {
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+    25% {
+      -moz-transform: translateY(-5px);
+      -ms-transform: translateY(-5px);
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px);
+    }
+    75% {
+      -moz-transform: translateY(-3px);
+      -ms-transform: translateY(-3px);
+      -webkit-transform: translateY(-3px);
+      transform: translateY(-3px);
+    }
+  }
+  
+  /*END Fish Animation*/
