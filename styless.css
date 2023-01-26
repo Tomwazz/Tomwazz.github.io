@@ -40,11 +40,18 @@ html {
 }
 .ml12 {
     font-weight: 200;
-    font-size: 1.8em;
+    font-size: 7rem;
     text-transform: uppercase;
     letter-spacing: 0.5em;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 1s ease-in-out;
 }
 
+.ml12.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 .ml12 .letter {
     display: inline-block;
     line-height: 1em;
@@ -186,22 +193,22 @@ html {
     }
     25% {
         left: 0;
-        width: 10px;
-        height: 10px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         background-color: #ff0000;
     }
     50% {
         left: 100%;
-        width: 10px;
-        height: 10px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         background-color: #ff7f00;
     }
     75% {
         left: 100%;
-        width: 10px;
-        height: 10px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         background-color: #ffff00;
     }
@@ -262,7 +269,7 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    height: 9.5vh;
+    height: auto;
     background: var(--main-red);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
     z-index: 10;
@@ -301,11 +308,23 @@ img {
     text-align: center;
     padding: 10rem 2rem;
     width: 100vw;
-    height: 140vh;
+    height: auto;
     background: linear-gradient(to right, #1e5799 0%,#2ce0bf 19%,#76dd2c 40%,#dba62b 60%,#e02cbf 83%,#1e5799 100%); 
   background-size: 100%;
   animation: bg 15s linear infinite ;
 
+}
+@media (max-width: 28.75em) { 
+    .projects-section {
+        text-align: center;
+        padding: 10rem 2rem;
+        width: 100vw;
+        height: 140vh;
+        background: linear-gradient(to right, #1e5799 0%,#2ce0bf 19%,#76dd2c 40%,#dba62b 60%,#e02cbf 83%,#1e5799 100%); 
+      background-size: 100%;
+      animation: bg 15s linear infinite ;
+    
+    }
 }
 
 @keyframes bg{
@@ -457,18 +476,32 @@ img {
     text-align: center;
     padding-top: 20vh;
     width: 100%;
-    height: 70vh;
+    height: 82vh;
     background: url(https://image.freepik.com/vector-gratis/estrellas-brillantes-sobre-fondo-negro_1378-92.jpg);
     overflow: hidden;
     width: 100vw;
 }
-
 .contact-section-header > h2 {
     font-size: 6rem;
     width: 100%;
-    text-shadow: 5px 5px 5px gray;
+    animation: sine 5s reverse infinite;
 }
+@keyframes sine {
 
+      25% {
+        text-shadow: 0 0 5px gray, 0 0 10px gray, 0 0 15px gray, 0 0 20px gray, 0 0 25px gray, 0 0 30px gray, 0 0 35px gray;
+      }
+      50% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff, 0 0 30px #fff, 0 0 35px #fff;
+      }
+      75% {
+        text-shadow: 0 0 5px gray, 0 0 10px gray, 0 0 15px gray, 0 0 20px gray, 0 0 25px gray, 0 0 30px gray, 0 0 35px gray;
+      }
+      100% {
+        text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #000, 0 0 25px #000, 0 0 30px #000, 0 0 35px #000;
+  }
+}
+  
 @media (max-width: 28.75em) {
     .contact-section-header > h2 {
         font-size: 4rem;
@@ -490,19 +523,9 @@ img {
 
 .contact-details:hover {
     text-shadow: 5px 5px 5px var(--main-red);
+    animation: slide2 6s linear;
 }
-.lol1:hover {
-animation: slide 3s linear;
-}
-.lol2:hover {
-animation: slide 3s reverse;
-}
-.lol3:hover {
-animation: slide 3s linear;
-}
-.lol4:hover {
-animation: slide 3s reverse;
-}
+
 @keyframes slide {
     10% {
         transform: translate3d(15px, 20px, 0) rotate(36deg);
@@ -535,6 +558,77 @@ animation: slide 3s reverse;
         transform: translate3d(15px, 20px, 0) rotate(324deg);
     }
     100% {transform: translate3d(0,0,0) rotate(360deg);
+    }
+}
+@keyframes slide2 {
+
+    5% {transform: translate3d(0,0,0) rotate(360deg);
+    }
+    
+    10% {
+        transform: translate3d(15px, 20px, 0) rotate(324deg);
+    }
+    15% {
+        transform: translate3d(-30px, 20px, 0) rotate(288deg);
+
+    }
+    20% {
+        transform: translate3d(15px, 20px, 0) rotate(252deg);
+
+    }
+    25% {
+        transform: translate3d(15px, 20px, 0) rotate(216deg);
+    }
+    30% {transform: translate3d(0,0,0) rotate(180deg);
+    }
+    35% {
+        transform: translate3d(15px, 20px, 0) rotate(144deg);
+    }
+    40% {
+        transform: translate3d(-30px, 20px, 0) rotate(108deg);
+
+    }
+    45% {
+        transform: translate3d(15px, 20px, 0) rotate(72deg);
+
+    }
+    50% {
+        transform: translate3d(0,0, 0) rotate(0deg);
+    }
+    53% {
+        transform: translate3d(0,0, 0) rotate(0deg);
+    }
+    55% {
+        transform: translate3d(-15px, -20px, 0) rotate(-36deg);
+    }
+    60% {
+        transform: translate3d(-5px, -20px, 0) rotate(-72deg);
+
+    }
+    65% {
+        transform: translate3d(30px, -20px, 0) rotate(-108deg);
+
+    }
+    70% {
+        transform: translate3d(-15px, -20px, 0) rotate(-144deg);
+    }
+    75% {transform: translate3d(0,0,0) rotate(-180deg);
+    }
+    80% {
+        transform: translate3d(-15px, -20px, 0) rotate(-216deg);
+    }
+    85% {
+        transform: translate3d(-15px, -20px, 0) rotate(-252deg);
+
+    }
+    90% {
+        transform: translate3d(30px, -20px, 0) rotate(-288deg);
+
+    }
+    95% {
+        transform: translate3d(-15px, -20px, 0) rotate(-324deg);
+    }
+    100% {transform: translate3d(0,0,0) rotate(-360deg);
     }
 }
 @keyframes opacity {
@@ -585,9 +679,128 @@ footer > p {
     margin: 2rem;
     animation: opacity 1.5s ease-in-out infinite;
 }
-@media (max-width: 28.75em) {
-    footer {
+@media screen and (max-width: 769px) {
+    #navbar {
+        height: auto;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    #projects h2 {
+        font-size: 3rem;
+    }
+    .ml12 {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+    #welcome-section > p {
+        font-size: 4rem;
+        opacity: 150%;
+        margin-top: 5em;
+        transform: rotate(20deg);
+        position:absolute;
+        animation: shake 3s infinite alternate;
+    }
+    .projects-section {
         flex-direction: column;
-        text-align: center;
+        height: auto;
+    }
+    #profile-link {
+        margin-top: 50px;
+    }
+
+    .projects-grid {
+        width: 80%;
+        margin: auto;
+    }
+
+    #contact {
+        height: 300px;
+    }
+
+    #contact h2 {
+        font-size: 2.5rem;
+        margin-top: -80px;
+        animation: none;
+    }
+
+    #contact p {
+        font-size: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .contact-details {
+        text-shadow: 5px 5px 5px darkblue;
+        display: inline-grid;
+        justify-content: space-between;
+        margin: 40px 20px 20px 20px;
+    font-size: 3rem;
+    }
+    .contact-details:hover {
+        animation: slide 3s reverse;
+    }
+}
+@media only screen and (max-width: 1600px) and (min-width: 770px)  {
+    #navbar {
+        height: auto;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+    }
+    #projects h2 {
+        font-size: 3rem;
+    }
+    .ml12 {
+        font-size: 3.6rem;
+    }
+    #welcome-section > p {
+        font-size: 3rem;
+        opacity: 150%;
+        margin-top: 5em;
+        position:absolute;
+        animation: slide 3s alternate infinite;
+    }
+    .projects-section {
+        flex-direction: column;
+        height: auto;
+        
+    }
+
+    .projects-grid {
+        width: 80%;
+        margin: auto;
+        margin-bottom: 3rem;
+    }
+
+    #contact {
+        height: 560px;
+    }
+
+    #contact h2 {
+        font-size: 4rem;
+        margin-top: 40px;
+        animation: none;
+    }
+
+    #contact p {
+        font-size: 2rem;
+        position: absolute;
+        padding-top: 1rem;
+        text-decoration: underline wavy 1px gray;
+    }
+
+    .contact-details {
+        font-size: 10rem;
+    text-shadow: 5px 5px 5px darkblue;
+    display: inline-grid;
+    justify-content: space-between;
+    margin: 100px 20px 20px 20px;
+
+    }
+    .contact-details:hover {
+        animation: slide2 8s linear;
     }
 }
