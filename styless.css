@@ -303,7 +303,6 @@ img {
     background-image: linear-gradient(62deg, #3a3d40 0%, #181719 100%);
 }
 
-
 .projects-section {
     text-align: center;
     padding: 10rem 2rem;
@@ -679,11 +678,13 @@ footer > p {
     margin: 2rem;
     animation: opacity 1.5s ease-in-out infinite;
 }
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 769px) and (min-width: 500px)  {
     #navbar {
         height: auto;
     }
-
+    #navbar #hambac {
+        display:none;   
+    }
     .nav-link {
         font-size: 1rem;
     }
@@ -695,6 +696,8 @@ footer > p {
         font-size: 2rem;
         padding: 0 1rem;
     }
+    .koko {
+        display: none;}
     #welcome-section > p {
         font-size: 4rem;
         opacity: 150%;
@@ -742,11 +745,110 @@ footer > p {
         animation: slide 3s reverse;
     }
 }
+@media screen and (max-width: 499px) {
+    #navbar {
+        flex-direction: column;
+        align-items: stretch;
+        background-color: var(--main-red);
+    }
+    #navbar ul li {
+        padding: 0.6rem;
+        border-bottom: dotted 1px #f4f4f4;
+        background-color: var(--main-red);
+    }
+    #navbar ul li:first-child {
+        margin-top: 0.8rem;
+        border-top: #f4f4f4 1px dotted;
+        background-color: var(--main-red);
+    }
+    #navbar #logo {
+        margin-bottom: 1.3rem;
+        text-align: center;
+        background-color: var(--main-red);
+    }
+
+    #navbar ul {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        display: none;
+        background-color: var(--main-red);
+    }
+    #navbar #hambac {
+        display:block;
+        text-align: center;
+        background-color: var(--main-red);
+    }
+
+    #projects h2 {
+        font-size: 3rem;
+    }
+    .ml12 {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+    .koko {
+        display: none;}
+    #welcome-section > p {
+        font-size: 3rem;
+        opacity: 150%;
+        margin-top: 7em;
+        transform: rotate(20deg);
+        position:absolute;
+        animation: shake 10s infinite alternate;
+    }
+    .projects-section {
+        flex-direction: column;
+        height: auto;
+    }
+    #profile-link {
+        margin-top: 50px;
+    }
+
+    .projects-grid {
+        width: 100%;
+        margin-right: 300px;
+        height: auto;
+    }
+
+    #contact {
+        height: auto;
+    }
+
+    #contact h2 {
+        font-size: 2.5rem;
+        margin-top: -80px;
+        animation: none;
+    }
+
+    #contact p {
+        font-size: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .contact-details {
+        text-shadow: 5px 5px 5px darkblue;
+        display: inline-grid;
+        grid-template-columns: 2;
+        grid-template-rows: 2;
+        height: auto;
+        margin: 40px;
+    font-size: 2rem;
+    }
+    .contact-details:hover {
+        animation: slide 3s reverse;
+    }
+}
+
 @media only screen and (max-width: 1600px) and (min-width: 770px)  {
     #navbar {
         height: auto;
     }
-
+    #navbar #hambac {
+        display:none;   
+    }
+    .koko {
+        display: none;}
     .nav-link {
         font-size: 1rem;
     }
@@ -803,4 +905,46 @@ footer > p {
     .contact-details:hover {
         animation: slide2 8s linear;
     }
+}
+@media screen and (min-width: 1601px) {
+    #navbar #hambac {
+        display:none;   
+    }
+    .koko {
+        width: 100vw;
+        text-align: center;
+        z-index: 0;}
+        .koko span {
+          -webkit-text-stroke-width: 1.25px;
+          -webkit-text-stroke-color: #000;
+          font-size: 100px;
+          text-shadow: 0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px cyan;
+          transform: translate(0, 100%) rotate(4deg);
+          animation: jump 2.6s ease-in-out infinite;
+          display: inline-block;
+          font-family: "Titan One";
+          color: #fff;
+          margin-top: 80px;
+        }
+      @keyframes jump {
+        33% {
+          text-shadow: 0 30px red, 0 75px orange, 0 105px yellow, 0 140px green, 0 175px darkblue, 0 210px purple,;
+          transform: rotate(120deg);
+        }
+        50% {
+          transform: translate(0, 0) rotate(180deg);
+          text-shadow: 0 0px #8fc0a9, 0 0px #84a9ac, 0 0px #84a9cc, 0 0px #84a9dc, 0 0px #84a9fc, 0 0px #84a9ec;
+        }
+        66.67% {
+          text-shadow: 0 -30px #d54062, 0 -75px #8fc0a9, 0 -105px #1e5799, 0 -140px goldenrod, 0 -175px hotpink, 0 -210px cyan;
+          transform: rotate(240deg);
+        }
+        80% {
+            transform: translate(0, 0) rotate(360deg);
+            text-shadow: 0 0px #8fc0a9, 0 0px #84a9ac, 0 0px #84a9cc, 0 0px #84a9dc, 0 0px #84a9fc, 0 0px #84a9ec;
+          }
+      }
+      #welcome-section > p {
+        display: none;
+      }
 }

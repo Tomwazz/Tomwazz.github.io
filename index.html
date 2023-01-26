@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styless.css">
+  <link rel="stylesheet" href="./styles.css">
   <link
           rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
@@ -27,6 +27,9 @@
 <body>
 
 <nav id="navbar" class="nav">
+  <a href="#" id="hambac">
+        <i class="fa fa-bars fa-2x"></i>
+    </a>
   <ul class="nav-list">
     <li>
       <a href="#welcome-section">About</a>
@@ -43,6 +46,18 @@
 <section id="welcome-section" class="welcome-section">
   <h1 class="ml12">Heyo! jsem TomVas</h1>
   <p class="bounce">IT student</p>
+  <div class="koko">
+<span>I</span>
+<span>T</span>
+<span></span>
+<span>s</span>
+<span>t</span>
+<span>u</span>
+<span>d</span>
+<span>e</span>
+    <span>n</span>
+    <span>t</span>
+  </div>
 </section>
 <div class="area" >
   <ul class="circles">
@@ -188,8 +203,19 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-
+    $('#navbar #hambac').click(function (){
+        $('#navbar ul').slideToggle("slow")
+    });
+    if($(window).width() < 501 ) {
+    $('#navbar ul').click(function (){
+        $("#navbar ul li").hide();
+    });
+    };
+    
   var textWrapper = document.querySelector('.ml12');
   textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
@@ -213,6 +239,7 @@
   setTimeout(function() {
     document.querySelector(".ml12").classList.add("show");
 }, 2500);
+
 </script>
 </body>
 </html>
