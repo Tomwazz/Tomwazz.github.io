@@ -20,8 +20,8 @@
           rel="stylesheet"
   />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <title>My website</title>
 </head>
 <body>
@@ -41,23 +41,23 @@
 </nav>
 
 <section id="welcome-section" class="welcome-section">
-    <h1 class="ml12">Heyo! jsem TomVas</h1>
-    <p class="bounce">IT student</p>
+  <h1 class="ml12">Heyo! jsem TomVas</h1>
+  <p class="bounce">IT student</p>
 </section>
 <div class="area" >
-            <ul class="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-            </ul>
-    </div >
+  <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div >
 
 <section id="projects" class="projects-section">
   <h2 class="projects-section-header">Toto jsou mé projekty</h2>
@@ -162,19 +162,19 @@
   >More<i class="fas fa-chevron-right"></i
   ></a>
 </section>
-<section id="contact" class="contact-section">
+<section id="contact snow" class="contact-section">
   <div class="contact-section-header">
     <h2>Chceš na něčem začít pracovat?</h2>
     <p>kontaktuj mě zde</p>
   </div>
   <div class="contact-links">
-    <a href="https://github.com/TomasVasicek" target="_blank" class="btn contact-details"><i class="fa-brands fa-github icon"></i></a>
-        <a href="https://www.instagram.com/tomvasss_/" target="_blank" class="btn contact-details"><i class="fa-brands fa-instagram icon"></i></a>
-        <a href="https://www.facebook.com/tomas.vasicek.777/" target="_blank" class="btn contact-details"><i class="fa-brands fa-facebook-messenger icon"></i></a>
+    <a href="https://github.com/TomasVasicek" target="_blank" class="btn contact-details lol1"><i class="fa-brands fa-github icon"></i></a>
+    <a href="https://www.instagram.com/tomvasss_/" target="_blank" class="btn contact-details lol2"><i class="fa-brands fa-instagram icon"></i></a>
+    <a href="https://www.facebook.com/tomas.vasicek.777/" target="_blank" class="btn contact-details lol3"><i class="fa-brands fa-facebook-messenger icon"></i></a>
     <a
             href="https://twitter.com/Tomvas_"
             target="_blank"
-            class="btn contact-details"
+            class="btn contact-details lol4"
     ><i class="fab fa-twitter"></i></a
     >
   </div>
@@ -190,19 +190,19 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 
-var textWrapper = document.querySelector('.ml12');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  var textWrapper = document.querySelector('.ml12');
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml12 .letter',
-    translateX: [40,0],
-    translateZ: 0,
-    opacity: [0,1],
-    easing: "easeOutExpo",
-    duration: 1200,
-    delay: (el, i) => 500 + 30 * i
-  }).add({
+  anime.timeline({loop: true})
+          .add({
+            targets: '.ml12 .letter',
+            translateX: [40,0],
+            translateZ: 0,
+            opacity: [0,1],
+            easing: "easeOutExpo",
+            duration: 1200,
+            delay: (el, i) => 500 + 30 * i
+          }).add({
     targets: '.ml12 .letter',
     translateX: [0,-30],
     opacity: [1,0],
@@ -210,6 +210,7 @@ anime.timeline({loop: true})
     duration: 1100,
     delay: (el, i) => 100 + 30 * i
   });
+  
 </script>
 </body>
 </html>
