@@ -1,0 +1,122 @@
+#koko {
+    width: 100vw;
+    text-align: center;
+    z-index: 1;
+}
+
+#koko {
+    width: 100vw;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50vh;
+    margin-left: 3vh;
+    color: white;
+}
+    #koko span {
+        margin: 0 3vh 0 0;
+      -webkit-text-stroke-width: 1.25px;
+      -webkit-text-stroke-color: #000;
+      font-size: 100px;
+      text-shadow: 0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px 0 0px cyan, 0 0px #d54062, 0 0px #8fc0a9, 0 0px #1e5799, 0 0px goldenrod, 0 0px hotpink, 0 0px cyan,  0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px 0 0px cyan, 0 0px #d54062, 0 0px #8fc0a9, 0 0px #1e5799, 0 0px goldenrod, 0 0px hotpink, 0 0px cyan,  0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px 0 0px cyan, 0 0px #d54062, 0 0px #8fc0a9, 0 0px #1e5799, 0 0px goldenrod, 0 0px hotpink, 0 0px cyan,  0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px 0 0px cyan, 0 0px #d54062, 0 0px #8fc0a9, 0 0px #1e5799, 0 0px goldenrod, 0 0px hotpink, 0 0px cyan,  0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px 0 0px cyan, 0 0px #d54062, 0 0px #8fc0a9, 0 0px #1e5799, 0 0px goldenrod, 0 0px hotpink, 0 0px cyan,  0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px 0 0px cyan, 0 0px #d54062, 0 0px #8fc0a9, 0 0px #1e5799, 0 0px goldenrod, 0 0px hotpink, 0 0px cyan,  0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px 0 0px cyan, 0 0px #d54062, 0 0px #8fc0a9, 0 0px #1e5799, 0 0px goldenrod, 0 0px hotpink, 0 0px cyan,  0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px 0 0px cyan, 0 0px #d54062, 0 0px #8fc0a9, 0 0px #1e5799, 0 0px goldenrod, 0 0px hotpink, 0 0px cyan;
+      transform: translate(0, 100%) rotate(4deg);
+      animation: jump 5s ease-in-out infinite;
+      font-family: "Titan One";
+    }
+  @keyframes jump {
+    33% {
+      text-shadow: 0 1px#ff0000, 0 1px #ff0029, 0 1px #ff006a, 0 1px #ff00ab, 0 10px  #ff00e1, 0 12px #f200ff, 0 14px #dc00ff, 0 16px #bb00ff, 0 18px #9000ff, 0 10px #7a00ff, 0 12px #4400ff, 0 14px #2300ff, 0 16px #003eff, 0 18px #005fff, 0 10px #007fff, 0 12px  #0095ff, 0 14px #00abff,0 16px #00d6ff,0 18px #00f7ff, 0 10px #00ffbb, 0 12px #00ff90,  0 14px #00ff6f, 0 16px #00ff23, 0 18px #08ff00, 0 10px #29ff00, 0 12px #74ff00, 0 16px #a0ff00, 0 18px #b6ff00, 0 10px #d6ff00, 0 12px #ecff00, 0 14px #fff200, 0 16px #ffdc00, 0 18px #ffbb00, 0 10px #ffa600, 0 12px #ff8500, 0 14px #ff6f00, 0 16px #ff5a00, 0 18px #ff4400, 0 10px #ff2e00, 0 12px #ff1900, 0 14px #ff0300, 0 16px #ff0000, 0 18px#ff0000, 0 10px #ff0029, 0 12px #ff006a, 0 14px #ff00ab, 0 16px  #ff00e1, 0 18px #f200ff, 0 100px #dc00ff, 0 102px #bb00ff, 0 104px #9000ff, 0 106px #7a00ff, 0 108px #4400ff, 0 110px #2300ff, 0 112px #003eff, 0 114px #005fff, 0 116px #007fff, 0 118px  #0095ff, 0 120px #00abff,0 122px #00d6ff,0 124px #00f7ff, 0 126px #00ffbb, 0 128px #00ff90,  0 130px #00ff6f, 0 132px #00ff23, 0 134px #08ff00, 0 136px #29ff00, 0 138px #74ff00, 0 140px #a0ff00, 0 142px #b6ff00, 0 144px #d6ff00, 0 146px #ecff00, 0 148px #fff200, 0 150px #ffdc00, 0 152px #ffbb00, 0 154px #ffa600, 0 156px #ff8500, 0 158px #ff6f00, 0 160px #ff5a00, 0 162px #ff4400, 0 164px #ff2e00, 0 166px #ff1900, 0 168px #ff0300, 0 170px #ff0000;;
+      transform: rotate(120deg);
+    }
+    50% {
+      transform: translate(0, 0) rotate(180deg);
+      text-shadow: 0 1px #f3c623, 0 2px #f2aaaa, 0 3px #1e5799, 0 4px lightgreen, 0 5px pink, 0 6px cyan, 0 7px #d54062, 0 8px #8fc0a9, 0 9px #1e5799, 0 10px goldenrod, 0 20px hotpink, 0 30px cyan,  0 40px #f3c623, 0 50px #f2aaaa, 0 55px #1e5799, 0 60px lightgreen, 0 65px pink, 0 70px cyan, 0 75px #d54062, 0 80px #8fc0a9, 0 85px #1e5799, 0 90px goldenrod, 0 95px hotpink, 0 100px cyan;}
+    66.67% {
+      text-shadow: 0 -2px#ff0000, 0 -4px #ff0029, 0 -6px #ff006a, 0 -8px #ff00ab, 0 -10px  #ff00e1, 0 -12px #f200ff, 0 -14px #dc00ff, 0 -16px #bb00ff, 0 -18px #9000ff, 0 -20px #7a00ff, 0 -22px #4400ff, 0 -24px #2300ff, 0 -26px #003eff, 0 -28px #005fff, 0 -30px #007fff, 0 -32px  #0095ff, 0 -34px #00abff,0 -36px #00d6ff,0 -38px #00f7ff, 0 -40px #00ffbb, 0 -42px #00ff90,  0 -44px #00ff6f, 0 -46px #00ff23, 0 -48px #08ff00, 0 -50px #29ff00, 0 -52px #74ff00, 0 -56px #a0ff00, 0 -58px #b6ff00, 0 -60px #d6ff00, 0 -62px #ecff00, 0 -64px #fff200, 0 -66px #ffdc00, 0 -68px #ffbb00, 0 -70px #ffa600, 0 -72px #ff8500, 0 -74px #ff6f00, 0 -76px #ff5a00, 0 -78px #ff4400, 0 -80px #ff2e00, 0 -82px #ff1900, 0 -84px #ff0300, 0 -86px #ff0000, 0 -88px#ff0000, 0 -90px #ff0029, 0 -92px #ff006a, 0 -94px #ff00ab, 0 -96px  #ff00e1, 0 -98px #f200ff, 0 -100px #dc00ff, 0 -102px #bb00ff, 0 -104px #9000ff, 0 -106px #7a00ff, 0 -108px #4400ff, 0 -110px #2300ff, 0 -112px #003eff, 0 -114px #005fff, 0 -116px #007fff, 0 -118px  #0095ff, 0 -120px #00abff,0 -122px #00d6ff,0 -124px #00f7ff, 0 -126px #00ffbb, 0 -128px #00ff90,  0 -130px #00ff6f, 0 -132px #00ff23, 0 -134px #08ff00, 0 -136px #29ff00, 0 -138px #74ff00, 0 -140px #a0ff00, 0 -142px #b6ff00, 0 -144px #d6ff00, 0 -146px #ecff00, 0 -148px #fff200, 0 -150px #ffdc00, 0 -152px #ffbb00, 0 -154px #ffa600, 0 -156px #ff8500, 0 -158px #ff6f00, 0 -160px #ff5a00, 0 -162px #ff4400, 0 -164px #ff2e00, 0 -166px #ff1900, 0 -168px #ff0300, 0 -170px #ff0000;
+      transform: rotate(240deg);
+    }
+    80% {
+        transform: translate(0, 0) rotate(360deg);
+        text-shadow: 0 1px #f3c623, 0 2px #f2aaaa, 0 3px #1e5799, 0 4px lightgreen, 0 5px pink, 0 6px cyan, 0 7px #d54062, 0 8px #8fc0a9, 0 9px #1e5799, 0 10px goldenrod, 0 20px hotpink, 0 30px cyan,  0 40px #f3c623, 0 50px #f2aaaa, 0 55px #1e5799, 0 60px lightgreen, 0 65px pink, 0 70px cyan, 0 75px #d54062, 0 80px #8fc0a9, 0 85px #1e5799, 0 90px goldenrod, 0 95px hotpink, 0 100px cyan;}
+    }
+    .background {
+        overflow: hidden;
+        background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
+        background-size: 400% 400%;
+        animation: Gradient 15s ease infinite;
+        position: relative;
+        height: 150vh;
+        width: 150vw;
+        overflow: hidden;
+        z-index: -1;
+        margin-top: -10vh;
+      }
+      .cube {
+        position: absolute;
+        top: 80vh;
+        left: 45vw;
+        width: 10px;
+        height: 10px;
+        border: solid 1px #D7D4E4;
+        transform-origin: top left;
+        transform: scale(0) rotate(0deg) translate(-50%, -50%);
+        animation: cube 12s ease-in forwards infinite;
+      }
+      .cube:nth-child(2n) {
+        border-color: #FFF ;
+        
+      }
+      .cube:nth-child(2) {
+        animation-delay: 2s;
+        left: 25vw;
+        top: 40vh;
+        
+      }
+      .cube:nth-child(3) {
+        animation-delay: 4s;
+        left: 75vw;
+        top: 50vh;
+        
+      }
+      .cube:nth-child(4) {
+        animation-delay: 6s;
+        left: 90vw;
+        top: 10vh;
+        
+      }
+      .cube:nth-child(5) {
+        animation-delay: 8s;
+        left: 10vw;
+        top: 85vh;
+        
+      }
+      .cube:nth-child(6) {
+        animation-delay: 10s;
+        left: 50vw;
+        top: 10vh;
+        
+      }
+      @keyframes Gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes cube {
+        from {
+          transform: scale(0) rotate(0deg) translate(-50%, -50%);
+          opacity: 1;
+        }
+        to {
+          transform: scale(20) rotate(960deg) translate(-50%, -50%);
+          opacity: 0;
+        }
+      }

@@ -911,6 +911,7 @@ footer > p {
         display:none;   
     }
     .koko {
+        margin-top: 80px;
         width: 100vw;
         text-align: center;
         z-index: 0;}
