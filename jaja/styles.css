@@ -606,7 +606,7 @@ svg.fish{
   height: 104px;
   margin-left: -235px;
   position: absolute;	
-  bottom: 5vh;
+  bottom: 2vh;
   -webkit-animation: swim 20s;
   animation: swim 20s;
   -webkit-animation-iteration-count: infinite;

@@ -929,7 +929,7 @@ footer > p {
         }
       @keyframes jump {
         33% {
-          text-shadow: 0 30px red, 0 75px orange, 0 105px yellow, 0 140px green, 0 175px darkblue, 0 210px purple,;
+          text-shadow: 0 30px red, 0 75px orange, 0 105px yellow, 0 140px green, 0 175px darkblue, 0 210px purple;
           transform: rotate(120deg);
         }
         50% {
