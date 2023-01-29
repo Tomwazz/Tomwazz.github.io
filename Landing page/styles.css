@@ -1,6 +1,4 @@
-/** elementy**/
-
-@import 'https://fonts.googleapis.com/css?family=Lato:400,700';
+/** element **/
 
 * {
   margin: 0;
@@ -9,8 +7,16 @@
 }
 
 body {
-  background-color: rgba(59, 55, 55, 0.514);
   font-family: 'Lato', sans-serif;
+animation: AnimateBG 10s ease-in-out infinite;
+}
+
+@keyframes AnimateBG { 
+0%{background-color: rgba(59,173,227,1)}
+25%{background-color: rgb(87, 225, 230)}
+50%{background-color: rgb(85, 255, 142)}
+75%{background-color: rgb(228, 255, 106)}
+100%{background-color: rgba(59,173,227,1)}
 }
 
 #page-wrapper {
@@ -123,23 +129,11 @@ font-weight: 500;
     border: transparent;
 }
 
-@media (max-width: 600px) {
-  header {
-    flex-wrap: wrap;
-  }
-}
 
 .logo {
   width: 60vw;
 }
 
-@media (max-width: 650px) {
-  .logo {
-    margin-top: 15px;
-    width: 100%;
-    position: relative;
-  }
-}
 
 .logo > img {
   width: 100%;
@@ -152,41 +146,15 @@ font-weight: 500;
   margin-left: 20px;
 }
 
-@media (max-width: 650px) {
-  .logo > img {
-    margin: 0 auto;
-  }
-}
-
 nav {
   font-weight: 400;
 }
 
-@media (max-width: 650px) {
-  nav {
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 50px;
-  }
-  nav li {
-    padding-bottom: 5px;
-  }
-}
 nav > ul {
   width: 35vw;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-@media (max-width: 650px) {
-  nav > ul {
-    flex-direction: column;
-  }
 }
 
 #hero {
@@ -224,11 +192,6 @@ nav > ul {
   transition: background-color 1s;
 }
 
-@media (max-width: 650px) {
-  #hero {
-    margin-top: 120px;
-  }
-}
 
 #Info {
   margin-top: 50px;
@@ -243,13 +206,6 @@ nav > ul {
   width: 20vw;
   color: darkorange;
 }
-
-@media (max-width: 550px) {
-  #Info .icon {
-    display: none;
-  }
-}
-
 #Info .desc {
   display: grid;
   flex-direction: column;
@@ -258,22 +214,6 @@ nav > ul {
   width: auto;
   padding: 5px;
 }
-
-@media (max-width: 550px) {
-  #Info .desc {
-    width: 100%;
-    text-align: center;
-    padding: 0;
-    height: 150px;
-  }
-}
-
-@media (max-width: 650px) {
-  #Info {
-    margin-top: 0;
-  }
-}
-
 #Rules {
   margin-top: 100px;
   display: flex;
@@ -340,11 +280,12 @@ iframe {
 }
 
 .product > .level {
-  background-color: #ddd;
+  background-color: gray;
   color: black;
   padding: 15px 0;
   width: 100%;
   text-transform: uppercase;
+  font-size: x-large;
   font-weight: 700;
 }
 
@@ -363,24 +304,25 @@ iframe {
 .product > button {
   border: 0;
   margin: 15px 0;
-  background-color: #f1c40f;
+  background-color: orange;
   font-weight: 400;
 }
 
 .product > button:hover {
-  background-color: orange;
+  background-color: blue;
+  color: white;
   transition: background-color 1s;
+  animation: lol 5s reverse infinite;
 }
-
-@media (max-width: 800px) {
-  #Price {
-    flex-direction: column;
+@keyframes lol {
+  25%{
+      font-size: large;
   }
-  .product {
-    max-width: 300px;
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 10px;
+  50%{
+    font-size: larger;
+  }
+  75% {
+    font-size: x-large;
   }
 }
 
@@ -400,22 +342,70 @@ footer > ul > li {
 }
 
 footer > span {
-  margin-top: 5px;
+  margin-top: 20px;
+  margin-left: 5vw;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 3vw;
   display: flex;
   justify-content: flex-end;
-  font-size: 0.9em;
-  color: #444;
+  font-size: 2em;
+  color: black;
 }
 footer .pana {
-
+  margin-top: 20px;
+  margin-left: 5vw;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 3vw;
   display: flex;
-  justify-content: flex-end;
-  font-size: 0.9em;
-  color: #444;
+  font-size: 2em;
+  color: black;
 }
 footer i {
     cursor: pointer;
 }
 #buttons {
     cursor:context-menu;
+}
+@media screen and (max-width: 769px) {
+
+  #nav-bar {
+      margin: 0;
+  }
+
+  #header {
+      font-size: 0.8rem;
+      padding: 3rem;
+  }
+
+  #Info {
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+  }
+
+  .grid {
+      width: 70%;
+      margin: 3rem 0;
+  }
+
+  #video {
+      width: 70%;
+      height: auto;
+  }
+
+  #Price {
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+      align-items: center;
+  }
+
+  .product {
+      width: 70%;
+      margin-top: 5rem;
+  }
 }
