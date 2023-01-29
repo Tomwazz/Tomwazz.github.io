@@ -236,7 +236,7 @@ nav > ul {
 }
 
 #Info .icon {
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
   height: 125px;
@@ -251,11 +251,11 @@ nav > ul {
 }
 
 #Info .desc {
-  display: flex;
+  display: grid;
   flex-direction: column;
   justify-content: center;
   height: 125px;
-  width: 80vw;
+  width: auto;
   padding: 5px;
 }
 
@@ -281,12 +281,11 @@ nav > ul {
 }
 
 iframe {
-    margin-left: 15rem;
-  display: flex;
+  display: grid;
   max-width: 560px;
-  width: 100%;
-  position: relative;
-  margin-top: 5rem;
+  justify-content: center;
+  margin: 20px auto;
+
 }
 #Rules #prav a {
     animation: shine infinite 20s;
@@ -331,8 +330,7 @@ iframe {
 }
 
 .product {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
   text-align: center;
   width: calc(100% / 3);
@@ -409,8 +407,7 @@ footer > span {
   color: #444;
 }
 footer .pana {
-    margin-top: 20px;
-    margin-left: 20px;
+
   display: flex;
   justify-content: flex-end;
   font-size: 0.9em;
