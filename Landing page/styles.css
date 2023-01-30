@@ -477,6 +477,7 @@ footer i {
       margin-left: 30px;
       grid-row: inherit;
     grid-column: inherit;
+    grid-area: auto;
   }
   .grid {
       width: 70%;
