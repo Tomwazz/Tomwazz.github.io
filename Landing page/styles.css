@@ -229,7 +229,6 @@ iframe {
 }
 #Rules #prav a {
     animation: shine infinite 20s;
-    margin-left: 10rem;
 }
 @keyframes shine {
     0% {
@@ -254,12 +253,13 @@ iframe {
       text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #ff0, 0 0 20px #ff0, 0 0 25px #ff0, 0 0 30px #ff0, 0 0 35px #ff0;
     }
 }
-#Rules h2 {
-    margin-left: 5rem;
+#Rules h2, #Rules #prav p, #Rules #prav a {
+    display: flex;
+    justify-content: center;
 }
 
 #Rules p {
-    margin: 10px;
+    margin: 10px auto;
 }
 
 #Price {
@@ -280,7 +280,8 @@ iframe {
 }
 
 .product > .level {
-  background-color: gray;
+  background-color: transparent;
+  text-decoration: underline wavy 2px gray;
   color: black;
   padding: 15px 0;
   width: 100%;
@@ -353,6 +354,14 @@ footer > span {
   font-size: 2em;
   color: black;
 }
+footer i {
+  display: flex;
+  margin: auto;
+  color: red;
+}
+footer i:hover {
+  animation: shine 2s ease-in-out infinite;
+}
 footer .pana {
   margin-top: 20px;
   margin-left: 5vw;
@@ -369,6 +378,86 @@ footer i {
 }
 #buttons {
     cursor:context-menu;
+}
+#nav-bar a:hover {
+  animation: hover 2s ease-in-out infinite;
+}
+#Rules #prav a:hover{
+  animation: hover 2s ease-in-out infinite;
+}
+@keyframes hover {
+  25%{
+    cursor: context-menu;
+    font-size: large;
+    color: white;
+  }
+  50%{
+    cursor: none;
+    font-size: larger;
+    color: gray;
+  }
+  75% {
+    cursor: crosshair;
+    font-size: x-large;
+    color: transparent;
+  }
+  100% {
+    cursor:default;
+    font-size: medium;
+    color: black;
+  }
+}
+#cubie {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0px;
+  height: auto;
+  cursor: none;
+  animation: size 5.5s alternate;
+}
+@keyframes size {
+  10% {
+    width: 0px;
+  height: auto;
+  }
+  20% {
+    width: 100px;
+  height: auto;
+  }
+  30% {
+    width: 200px;
+  height: auto;
+  }
+  40% {
+    width: 300px;
+  height: auto;
+  }
+  50%{
+    width: 400px;
+  height: auto;
+  }
+  60%{
+    width: 500px;
+  height: auto;
+  }
+  70% {
+    width: 600px;
+  height: auto;
+  }
+  80% {
+    width: 650px;
+  height: auto;
+  }
+  90% {
+    width: 700px;
+  height: auto;
+  }
+  100%{
+    width: 800px;
+  height: auto;
+  }
 }
 @media screen and (max-width: 769px) {
 

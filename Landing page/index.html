@@ -23,7 +23,6 @@
             alt="Rubik's cube"
            style="height: 75px; width: 125px;"/>
         </div>
-
         <nav id="nav-bar">
           <ul>
             <li><a class="nav-link" href="#Info">Info</a></li>
@@ -32,9 +31,7 @@
           </ul>
         </nav>
       </header>
-
       <div class="container"></div>
-
       <section id="hero">
         <h2>Best rubik's cube competition</h2>
         <form id="form" action="https://www.freecodecamp.com/email-submit">
@@ -126,15 +123,16 @@
             <h2>$200</h2>
             <ol>
               <li>Všechny základní kostky</li>
-              <li>Great for Jazz Bands</li>
-              <li>Lorem ipsum dolor.</li>
-              <li>Lorem ipsum.</li>
+              <li>Nedostatek podpory</li>
+              <li>Skvělá komunita</li>
+              <li>Mnoho zábavy</li>
             </ol>
             <button class="btn">Select</button>
           </div>
         </section>
+        <img id="cubie" src="./img/giphy-unscreen.gif" alt="xd">
         <footer>
-            <div class="icon"><i class="fa fa-3x fa-copyright" onclick="redirect()"></i></div><div class="pana">WCA s. r. o.</div>
+            <div class="icon2"><i class="fa fa-3x fa-copyright" onclick="redirect()"></i></div><div class="pana">WCA s. r. o.</div>
         </footer>
       </div>
     </div>
@@ -153,8 +151,9 @@ const normal = document.getElementById("Normal");
 const fancy = document.getElementById("Fancy");
 const wrapper = document.getElementById("page-wrapper");
 const Back = document.getElementById("Back");
-const video = document.querySelector("iframe");
-const mediaQuery = window.matchMedia("(max-width: 769px)");
+const video = document.getElementById('video');
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+const gif = document.getElementById('cubie');
 
 if (mediaQuery.matches) {
   Back.style.display = "none"; 
@@ -163,7 +162,12 @@ fancy.style.display = "none";
 pravidla.style.display = "none";
 informace.style.display = "none";
 cena.style.display = "none";
+gif.style.display = 'none';
 } else {
+  setTimeout(function() {
+    gif.style.display = "none";
+  }, 5500);
+  video.style.display = "none";
   Back.style.display = "none"; 
 info.style.display = "none";
 price.style.display = "none";
@@ -176,7 +180,6 @@ informace.style.display = "none";
 cena.style.display = "none";
 normal.style.display = "none";
 fancy.style.display = "none";
-video.style.display = "none";
 
 button.addEventListener('click', () => {
       hero.style.display = 'none';
