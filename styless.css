@@ -921,7 +921,7 @@ footer > p {
           font-size: 100px;
           text-shadow: 0 0px #f3c623, 0 0px #f2aaaa, 0 0px #1e5799, 0 0px lightgreen, 0 0px pink, 0 0px cyan;
           transform: translate(0, 100%) rotate(4deg);
-          animation: jump 2.6s ease-in-out infinite;
+          animation: jump 2.6s ease-in-out infi;
           display: inline-block;
           font-family: "Titan One";
           color: #fff;
