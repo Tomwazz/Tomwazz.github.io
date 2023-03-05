@@ -50,7 +50,7 @@ document.getElementById("myInput").onkeypress = function(event) {
           document.querySelector("#myUL").appendChild(li);
       })
   }
-
+  const successMessage = document.getElementById('success-message');
   function newElement() {
       let inputValue = document.querySelector("#myInput").value;
       if (inputValue.length > 0) {
@@ -61,6 +61,11 @@ document.getElementById("myInput").onkeypress = function(event) {
           updateListItem(li, new Date());
 
           addNewTodo(inputValue);
+          successMessage.style.display = "flex";
+
+      setTimeout(() => {
+        successMessage.style.display = "none";
+      }, 1500);
           saveTodos();
 
       } else {
@@ -95,6 +100,11 @@ document.getElementById("myInput").onkeypress = function(event) {
         // Remove the item from the todos array and save it to local storage
         let index = todos.findIndex(i => i.name === (item.childNodes[0].textContent));
         todos.splice(index, 1);
+        successMessage.style.display = "flex";
+
+      setTimeout(() => {
+        successMessage.style.display = "none";
+      }, 1500);
         saveTodos();
     }
     span.appendChild(txt);

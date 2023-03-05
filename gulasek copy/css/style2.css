@@ -1,0 +1,123 @@
+h1 {
+    text-align: center;
+    font-size: 50px;
+    background-color: transparent;
+    animation: shine 10s linear forwards;
+  }
+  
+  /* Add the keyframes for the "color-animation" animation */
+  @keyframes color-animation {
+    100% {
+      background-color: gray; /* Set the background color to gray at the end of the animation */
+    }
+  }
+  
+  li,
+  div {
+    color: black; /* Set the default color of the list items and divs to black */
+  }
+  
+  /* Add the keyframes for the "fade-in" animation */
+@keyframes fade-in {
+    0% {
+      opacity: 0; /* Set the list items fully transparent at the start of the animation */
+    }
+    100% {
+      opacity: 1; /* Set the list items fully opaque at the end of the animation */
+    }
+  }
+
+  li {
+    cursor: pointer; /* Add a cursor to indicate that the list items are clickable */
+    list-style: none; /* Remove the default bullet points from the list items */
+    margin: 0; /* Add some space between the list items */
+    padding: 5px; /* Add some padding to the list items */
+    animation: fade-in 0.5s ease-in-out; /* Animate the list items over a period of 0.5 seconds */
+    animation-delay: 0.1s; /* Add a delay of 0.1 seconds between each list item's animation */
+  }
+  @keyframes colorchange {
+  0% {
+    background-color: black;
+  }
+  100% {
+    background-color: gray;
+  }
+}
+
+body {
+  animation: colorchange 5s ease-in-out;
+}
+#reveal-definitions-button {
+    background: none;
+    border: none;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    font-size: 8rem;
+    animation: shine 5s infinite linear;
+}
+#back-button {
+  position: absolute;
+    bottom: 5%;
+    background-color: #171717;
+    justify-content: center;
+    margin-bottom: 4.5rem;
+    left: 50%;
+    background: none;
+    border: none;
+    font-size: xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@keyframes shine {
+  0% {
+    text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #ff0, 0 0 20px #ff0, 0 0 25px #ff0, 0 0 30px #ff0, 0 0 35px #ff0;
+  }
+  16.7% {
+    text-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 15px #f00, 0 0 20px #f00, 0 0 25px #f00, 0 0 30px #f00, 0 0 35px #f00;
+  }
+  33.3% {
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0, 0 0 20px #0f0, 0 0 25px #0f0, 0 0 30px #0f0, 0 0 35px #0f0;
+  }
+  50% {
+    text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #00f, 0 0 20px #00f, 0 0 25px #00f, 0 0 30px #00f, 0 0 35px #00f;
+  }
+  66.7% {
+    text-shadow: 0 0 5px #f0f, 0 0 10px #f0f, 0 0 15px #f0f, 0 0 20px #f0f, 0 0 25px #f0f, 0 0 30px #f0f, 0 0 35px #f0f;
+  }
+  83.3% {
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 25px #0ff, 0 0 30px #0ff, 0 0 35px #0ff;
+  }
+  100% {
+    text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #ff0, 0 0 20px #ff0, 0 0 25px #ff0, 0 0 30px #ff0, 0 0 35px #ff0;
+  }
+}
+#definition-list {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    font-size: x-large;
+  }
+#definition-list #definitionU {
+    display: block;
+    margin: 0 auto;
+    width: 75%;
+    cursor: none;
+}
+
+.lmao {
+  text-decoration: underline;
+  color: #0f0;
+  cursor: crosshair;
+background: #00f;
+}
+iframe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

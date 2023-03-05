@@ -11,8 +11,83 @@
     <script src="./js/script.js"></script>
 
     <title>Úkolník</title>
+    <style>
+    #success-message{
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vh;
+    z-index: 5;
+    background: black;
+    width: 200vh;
+    height: 100vh;
+}
+.ring{
+    width: 700px;
+    height: 700px;
+    border: 0px solid #000;
+    border-radius: 50%;
+    position: absolute;
+}
+.ring:nth-child(1){
+    border-bottom-width: 8px;
+    border-color: #cd0280;
+    animation: rotate1 2s linear infinite;
+    -webkit-animation: rotate1 2s linear infinite;
+}
+.ring:nth-child(2){
+    border-right-width: 8px;
+    border-color: #0813ff;
+    animation: rotate2 2s linear infinite;
+    -webkit-animation: rotate2 2s linear infinite;
+}
+.ring:nth-child(3){
+    border-top-width: 8px;
+    border-color: #ff9090;
+    animation: rotate3 2s linear infinite;
+    -webkit-animation: rotate3 2s linear infinite;
+}
+.loading{
+    color: gold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 100px;
+    font-weight: bolder;
+
+}
+@keyframes rotate1{
+    0%{
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+}
+    100%{
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+}
+}
+@keyframes rotate2{
+    0%{
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+}
+    100%{
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+}
+}
+@keyframes rotate3{
+    0%{
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+}
+    100%{
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+}
+}
+    </style>
 </head>
 <body>
+  <div id="success-message">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <span class="loading">Loading...</span>
+  </div>
 <div id="myDIV" class="header">
     <h2>Můj ToDoList</h2> 
     <button class=" lulw" onclick="redirect()"><i class="fas fa-info-circle"></i>⠀ </button>
@@ -51,6 +126,7 @@ window.addEventListener("beforeunload", function (e) {
   e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
   return confirmationMessage;              // Gecko, WebKit, Chrome <34
 });
+
 </script>
 </body>
 
