@@ -1,0 +1,595 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@800&family=Rampart+One&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Serif Georgian", serif;
+  font-size: 10vmin;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-image: linear-gradient(45deg, rgb(255, 85, 0), rgb(89, 0, 255));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+section {
+  width: 60vw;
+  height: 30vh;
+  background-color: transparent;
+  box-shadow: inset 1px 1px 5px rgb(50, 50, 50), 2px 2px 15px rgb(50, 50, 50);
+  backdrop-filter: blur(100px);
+  border-radius: 50px;
+  display: grid;
+  overflow: hidden;
+  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+  grid-template: 100% / auto auto auto auto auto;
+}
+
+.hour,
+.minute,
+.second {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 15vh;
+  width: 15vw;
+  background-image: linear-gradient(50deg, rgb(149, 0, 255), rgb(0, 195, 255));
+  border-radius: 3vmin;
+}
+
+.hour .digit {
+  position: absolute;
+  animation: move-1 calc(12 * 60 * 60s) cubic-bezier(1, 0.06, 1, -0.48) 0s
+    infinite;
+  transform-origin: 0px 0px 0px;
+  backface-visibility: hidden;
+}
+
+@keyframes move-1 {
+  0% {
+    transform: rotateX(calc(var(--j) * calc(360deg / 12))) translateZ(30vmax);
+  }
+
+  8.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 1 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  16.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 2 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  25% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 3 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  33.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 4 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  41.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 5 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  50% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 6 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  58.3334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 7 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  66.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 8 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  75% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 9 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  83.3334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 10 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  91.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 12) + 11 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+
+  100% {
+    transform: rotateX(
+        calc((var(--j) * calc(360deg / 12)) + 12 * calc(360deg / 12))
+      )
+      translateZ(30vmax);
+  }
+}
+
+.minute .digit,
+.second .digit {
+  position: absolute;
+  transform-origin: 0px 0px 0px;
+  animation: move-2 calc(60 * 60s) cubic-bezier(1, 0.06, 1, -0.48) infinite;
+  backface-visibility: hidden;
+}
+
+.second .digit {
+  animation-duration: 60s;
+}
+
+@keyframes move-2 {
+  0% {
+    transform: rotateX(calc(var(--j) * calc(360deg / 60))) translateZ(110vmax);
+  }
+
+  1.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 1 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  3.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 2 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  5% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 3 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  6.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 4 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  8.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 5 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  10% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 6 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  11.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 7 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  13.3334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 8 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  15% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 9 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  16.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 10 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  18.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 11 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  20% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 12 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  21.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 13 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  23.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 14 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  25% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 15 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  26.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 16 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  28.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 17 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  30% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 18 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  31.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 19 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  33.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 20 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  35% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 21 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  36.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 22 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  38.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 23 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  40% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 24 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  41.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 25 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  43.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 26 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  45% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 27 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  46.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 28 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  48.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 29 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  50% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 30 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  51.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 31 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  53.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 32 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  55% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 33 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  56.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 34 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  58.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 35 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  60% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 36 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  61.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 37 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  63.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 38 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  65% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 39 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  66.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 40 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  68.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 41 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  70% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 42 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  71.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 43 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  73.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 44 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  75% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 45 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  76.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 46 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  78.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 47 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  80% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 48 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  81.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 49 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  83.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 50 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  85% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 51 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  86.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 52 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  88.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 53 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  90% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 54 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  91.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 55 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  93.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 56 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  95% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 57 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  96.66667% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 58 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  98.33334% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 59 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+
+  100% {
+    transform: rotateX(
+        calc(var(--j) * calc(360deg / 60) + 60 * calc(360deg / 60))
+      )
+      translateZ(110vmax);
+  }
+}
+
+.colon {
+  font-family: initial;
+  text-align: center;
+}

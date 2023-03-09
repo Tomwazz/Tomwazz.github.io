@@ -62,8 +62,10 @@ document.getElementById("myInput").onkeypress = function(event) {
 
           addNewTodo(inputValue);
           successMessage.style.display = "flex";
+          saveTodos();
 
       setTimeout(() => {
+        saveTodos();
         successMessage.style.display = "none";
       }, 1500);
           saveTodos();
@@ -100,11 +102,6 @@ document.getElementById("myInput").onkeypress = function(event) {
         // Remove the item from the todos array and save it to local storage
         let index = todos.findIndex(i => i.name === (item.childNodes[0].textContent));
         todos.splice(index, 1);
-        successMessage.style.display = "flex";
-
-      setTimeout(() => {
-        successMessage.style.display = "none";
-      }, 1500);
         saveTodos();
     }
     span.appendChild(txt);
@@ -135,7 +132,7 @@ document.getElementById("myInput").onkeypress = function(event) {
     let year = date.getFullYear();
     let hours = date.getHours();
     let minutes = date.getMinutes();
-
+ 
 if (minutes < 10) {
   minutes = `0${minutes}`;
 }

@@ -40,7 +40,8 @@
         "ignore": [
           "-webkit-filter",
           "backface-visibility",
-          "scroll-behavior"
+          "scroll-behavior",
+          "backdrop-filter"
         ]
       }
     ],
