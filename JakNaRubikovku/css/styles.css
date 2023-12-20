@@ -31,7 +31,7 @@ body {
 
 .a-heading {
     color: white;
-    font-size: 5rem;
+    font-size: 4rem;
     line-height: 1.1;
     letter-spacing: 1rem;
     text-shadow: 5px 5px black;
@@ -323,41 +323,3 @@ nav div a:hover {
 }
 
 /* VĚTŠÍ MONITORY */ 
-@media screen and (min-width: 1601px) {
-    .a-heading {
-        color: white;
-        font-size: 5rem;
-        line-height: 1.1;
-        letter-spacing: 1rem;
-        text-shadow: 5px 5px black;
-        padding-top: 30px;
-    }
-    #about {
-        height: 80vh;
-        background: url("../img/IMG_20231218_121831.jpg") center center/cover;
-        font-family: 'Courier New', Courier, monospace;
-    }
-    
-    #video-container {
-        width: 100vh; 
-        max-width:max-content; 
-        max-height:max-content; 
-        position: relative;
-        overflow: hidden; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-    }
-    
-    #about video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        padding-top: 40px;
-    }
-    
-    #about span {
-        text-shadow: none;
-    }
-}
