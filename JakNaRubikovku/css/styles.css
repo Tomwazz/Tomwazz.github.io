@@ -1,0 +1,321 @@
+/* ALL USABLES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    background: #E7DFDD;
+    overflow-x: hidden;
+}
+
+.text-primary {
+    color: white;
+}
+
+.l-heading {
+    font-size: 6rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+    letter-spacing: 1rem;
+}
+
+.m-heading {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.a-heading {
+    color: white;
+    font-size: 5rem;
+    line-height: 1.1;
+    letter-spacing: 1rem;
+    text-shadow: 5px 5px black;
+}
+
+.lead {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    color: #ffffff;
+    background-color: lightblue;
+    padding: 1.5rem 2rem;
+    border: none;
+    border-radius: 7px;
+}
+
+.btn:hover {
+    background-color: lightslategray;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py-1 {
+    padding-bottom: 1.5rem;
+}
+
+.py-2 {
+    padding: 2.5rem 0;
+}
+
+.py-3 {
+    padding: 3.5rem 0;
+}
+
+.p-1 {
+    padding: 1.5rem;
+}
+
+.p-2 {
+    padding: 2.5rem;
+}
+
+.p-3 {
+    padding: 3.5rem;
+}
+.m-1 {
+    margin: 1.5rem;
+}
+
+.m-2 {
+    margin: 2.5rem;
+}
+
+.m-3 {
+    margin: 3.5rem;
+}
+.bg-light {
+    background-color: #f4f4f4;
+    color: #333333;
+}
+.bg-dark {
+    background-color: #333333;
+    color: #ffffff;
+}
+.bg-primary {
+    background-color: lightblue;
+}
+.list {
+    margin: 0.5rem 0;
+    list-style: none;
+}
+
+.list li {
+    padding: 0.5rem 0;
+    border-bottom: #444444 dotted 1px;
+}
+p {
+    margin: 0.75rem 0;
+}
+
+a {
+    text-decoration: none;
+}
+.active{
+    background-color: lightblue;
+    border-radius: 3px;
+}
+
+/* NAVBAR */
+
+#navbar .img {
+    z-index: 5;
+    padding-left: 0.5rem;
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #555;
+    padding: 25px;
+    width: 100%; 
+    z-index: 50;
+}
+
+nav img {
+    height: 70px; 
+    position: absolute; 
+    top: 0%;
+    left: 38px;
+}
+
+nav div a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 10px; 
+}
+
+nav div a:hover {
+    background-color: lightslategray;
+}
+
+#navbar #hambac {
+    display: none;
+}
+
+/* SHOWCASE */
+
+#showcase {
+    background: #333 url("../img/giphy.gif") center center/cover;
+    height: 100vh;
+}
+
+#showcase .btn {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+#showcase .showcase-content {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 2rem;
+}
+
+/* ABOUT */
+
+#about {
+    height: 80vh;
+    background: url("../img/IMG_20231218_121831.jpg") center center/cover;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#video-container {
+    width: 80vw; 
+    max-width: 960px; 
+    max-height: 540px; 
+    position: relative;
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#about video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding-top: 40px;
+}
+
+#about span {
+    text-shadow: none;
+}
+
+/* CONTACT */
+
+#contact {
+    display: flex;
+    padding: auto;
+}
+#contact div {
+    flex: 1;
+}
+#contact .m-heading {
+    padding-top: 50px;
+}
+#contact .contact-form .form-group {
+    margin: 0.75rem;
+}
+#contact .contact-form label {
+    display: block;
+    margin-bottom: 3px;
+}
+#contact .contact-form input,
+#contact .contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+}
+#contact .contact-adress h3 {
+    margin-top: 2rem;
+}
+
+/* DRUHÁ STRÁNKA */
+
+#druha {
+    padding-top: 100px;
+    font-size: larger;
+}
+
+/* Style for h1 */
+#druha h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: auto;
+}
+
+/* Style for ol and li */
+#druha ol {
+    margin-top: 25px;
+    padding-left: 25%;
+    counter-reset: custom-counter;
+}
+
+#druha li {
+    display: block;
+    margin-bottom: 10px; 
+    counter-increment: custom-counter;
+}
+
+#druha li::before {
+    content: counter(custom-counter) ". ";
+}
+
+#druha .konec {
+    padding: 10px 25%;
+}
+
+#druha .img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 15px;
+}
+
+/* ROZDĚLENÍ STRÁNEK */
+
+.rozdeleni {
+    width: 60%;
+    height: 2px; 
+    background-color: #000; 
+    margin: 40px auto; 
+}
+/* FOOTER */
+
+#main-footer {
+    background-color: #555;
+    height: 100px;
+    display: flex;
+    bottom: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}
+
+#main-footer div {
+    color: white;
+    font-size: larger;
+    margin-top: auto;
+    display: flex;
+}
