@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #E7DFDD;
+    background: white;
     overflow-x: hidden;
 }
 
@@ -49,7 +49,7 @@ body {
     background-color: lightblue;
     padding: 1.5rem 2rem;
     border: none;
-    border-radius: 7px;
+    border-radius: 10px;
 }
 
 .btn:hover {
@@ -68,32 +68,6 @@ body {
     padding: 2.5rem 0;
 }
 
-.py-3 {
-    padding: 3.5rem 0;
-}
-
-.p-1 {
-    padding: 1.5rem;
-}
-
-.p-2 {
-    padding: 2.5rem;
-}
-
-.p-3 {
-    padding: 3.5rem;
-}
-.m-1 {
-    margin: 1.5rem;
-}
-
-.m-2 {
-    margin: 2.5rem;
-}
-
-.m-3 {
-    margin: 3.5rem;
-}
 .bg-light {
     background-color: #f4f4f4;
     color: #333333;
@@ -122,8 +96,9 @@ a {
     text-decoration: none;
 }
 .active{
-    background-color: lightblue;
-    border-radius: 3px;
+    background-color: rgb(237, 240, 241);
+    border-radius: 10px;
+    text-shadow: 1px 1px lightgray;
 }
 
 /* NAVBAR */
@@ -138,8 +113,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #555;
-    padding: 25px;
+    background-color: #f1f1f1;
+    color: #000;
+    padding: 35px;
     width: 100%; 
     z-index: 50;
 }
@@ -147,19 +123,20 @@ nav {
 nav img {
     height: 70px; 
     position: absolute; 
-    top: 0%;
+    top: 8px;
     left: 38px;
 }
 
 nav div a {
-    color: white;
     text-decoration: none;
     padding: 10px;
+    color: #000;
     margin-right: 10px; 
 }
 
 nav div a:hover {
-    background-color: lightslategray;
+    background-color: #f7f3f3;
+    border-radius: 10px;
 }
 
 #navbar #hambac {
@@ -263,6 +240,7 @@ nav div a:hover {
     align-items: center;
     justify-content: center;
     font-size: auto;
+    padding: 10px 0;
 }
 
 /* Style for ol and li */
@@ -290,7 +268,7 @@ nav div a:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 15px;
+    padding: 25px 0;
 }
 
 /* ROZDĚLENÍ STRÁNEK */
@@ -304,10 +282,10 @@ nav div a:hover {
 /* FOOTER */
 
 #main-footer {
-    background-color: #555;
+    background-color: #f1f1f1;
+    color: #000;
     height: 100px;
     display: flex;
-    bottom: 0;
     overflow: hidden;
     max-width: 100%;
     margin: auto;
@@ -316,7 +294,7 @@ nav div a:hover {
 }
 
 #main-footer div {
-    color: white;
+    color: black;
     font-size: larger;
     margin-top: auto;
     display: flex;
