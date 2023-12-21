@@ -183,7 +183,7 @@ nav div a:hover {
 #druha li::before {
     content: counter(custom-counter) ". ";
 }
-#druha .konec {
+#druha .textt {
     padding: 10px 25%;
 }
 #druha .img {
