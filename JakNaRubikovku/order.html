@@ -38,29 +38,41 @@
 
 <section id="contact">
     <div class="contact-form bg-light p-2">
-        <h2>Objednávka kurzu</h2>
-        <form action="connect.php" method="post">
-            <label for="name">Jméno:</label>
-            <input type="text" id="name" name="name" required><br><br>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="phone">Telefon:</label>
-            <input type="text" id="phone" name="phone" required><br><br>
-
-            <label for="course">Kurz:</label>
-            <select id="course" name="course" required>
-                <option value="beginner">Začátečníci</option>
-                <option value="advanced">Pokročilí</option>
-                <option value="professional">Profíci</option>
-            </select><br><br>
-
-            <label for="query">Dotaz ke kurzu:</label><br>
-            <textarea id="query" name="query" rows="4" cols="50"></textarea><br><br>
-
-            <input type="submit" value="Odeslat objednávku">
-        </form>
+        <div id="container">
+            <h2>Objednávka kurzu</h2>
+            <div class="padding2"></div>
+            <form action="zpracovani_objednavky.php" method="post">
+                <div class="padding3 form-group">
+                    <div class="input-group">
+                        <label for="name">Jméno:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="padding3 form-group">
+                    <div class="input-group">
+                        <label for="phone">Telefon:</label>
+                        <input type="text" id="phone" name="phone" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="course">Kurz:</label>
+                        <select id="course" name="course" required>
+                            <option value="beginner">Začátečníci</option>
+                            <option value="advanced">Pokročilí</option>
+                            <option value="professional">Profíci</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="query">Dotaz ke kurzu:</label>
+                    <textarea id="query" name="query" rows="4" cols="50" maxlength="200"></textarea>
+                </div>
+                <input type="submit" value="Odeslat objednávku">
+            </form>
+        </div>
     </div>
 </section>
 <footer id="main-footer" class="text-center">
