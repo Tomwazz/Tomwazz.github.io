@@ -103,6 +103,7 @@ a {
 }
 .padding3 {
     padding-top: 5px;
+    padding-bottom: 5px;
 }
 /* NAVBAR */
 nav {
@@ -362,6 +363,9 @@ nav div a:hover {
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #contact h2 {
@@ -372,11 +376,11 @@ nav div a:hover {
 .form-group {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .input-group {
-    width: 100%;
+    width: 49%;
 }
 
 .input-group label {
@@ -390,7 +394,7 @@ input[type="email"],
 textarea,
 select {
     width: 100%;
-    padding: 12px;
+    padding: 6px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
@@ -403,15 +407,19 @@ textarea {
 }
 
 input[type="submit"] {
-    background-color: #007bff;
+    background-color: lightblue;
     color: #fff;
     border: none;
     border-radius: 8px;
     padding: 12px 24px;
     cursor: pointer;
     font-size: 18px;
+    margin-top: 20px;
 }
-
+#contact .potvrzeni {
+    font-size: small;
+    color: darkgray;
+}
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
