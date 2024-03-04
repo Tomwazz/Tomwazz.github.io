@@ -20,6 +20,7 @@
     <title>Jak Na Rubikovku?</title>
 </head>
 <body id="home">
+
 <!--NAVBAR-->
 <nav id="navbar">
     <div padding="1px"></div>
@@ -29,44 +30,42 @@
     <div class="stranky">
         <a href="index.html"><img src="./img/Logo.svg" alt="Your Logo"></a>
         <a href="index.html">Úvod</a>
-        <a class="active" href="cross.html">Kříž</a>
-        <a href="f2l.html">První 2 Vrstvy</a>
-        <a href="ll.html">Poslední vrstva</a>
-        <a href="contact.html">Kontakt</a>
+        <a href="tutorial.html">Návod</a>
+        <a href="info.html">Info kurzy</a>
+        <a class="active" href="kurzy.html">Cena kurzů</a>
+        <a href="order.html">Objednávka</a>
     </div>
 </nav>
 <!--STRÁNKA-->
-<main id="druha">
-    <section>
-    <h1 class="nadpis">PRVNÍ KROK? - Dokončení bílého kříže</h1>
-  <!--POSTUP SLOŽENÍ-->
-    <ol>
-      <li>Držení kostky s bílým středem nahoře</li>
-      <li>Pootočení kostky se zeleným středem mířícím k nám</li>
-      <li>Nalezení zeleno-bílé hrany a potažení s ní na některou z pozic uvedených níže</li>
-      <li>Vyhledat obrázek, který ladí s Vaší situací a tahat dle šipek vedle</li>
-    </ol>
-  <!--OBRÁZKY-->
-    <div class="img">
-        <img src="./img/priklad.webp" alt="Návod">
-        <img src="./img/hotovo.png" alt="hotovo">
-    </div>
-  <!--TEXT-->
-    <div class="textt">
-        Ponecháním bílé nahoře a otočení krychle tak, aby k Vám směřoval jiný střed, docílíte následného složení zbývajících hran.
-        Vždy stačí jen přesunout bílé hrany na jejich místa, aniž byste poškodili ty již upevněné.
-    </div>
-    <div class="textt">
-        Může se občas stát, že se to nepovede. Vždy jde jen o klid a procvičování. S lehkou praxí docílíte výsledku na obrázku druhém.
-    </div>
-    <div class="py-2"></div>
-</section>
+<main id="ctvrta">
+    <h1>TRVÁNÍ VŠECH KURZŮ JE DLE INDIVIDUÁLNÍCH POTŘEB</h1>
+    <section id="kurzy">
+        <div class="kurz beginner">
+            <h2><span class="green">Začátečník</span></h2>
+            <div class="image-container"></div>
+            <p class="cena">Cena: 150,-</p>
+        </div>
+        <div class="kurz advanced">
+            <h2><span class="blue">Pokročilý</span></h2>
+            <div class="image-container"></div>
+            <p class="cena">Cena: 300,-</p>
+        </div>
+        <div class="kurz pro">
+            <h2><span class="red">Profík</span></h2>
+            <div class="image-container"></div>
+            <p class="cena">Cena: 500,-</p>
+        </div>
+    </section>
 </main>
 
 <!--FOOTER-->
 <footer id="main-footer" class="text-center">
-    <div class="container"><div>Maturitní projekt 2023/2024 | Copyright &copy; Tomáš Vašíček</div></div>
+  <div class="container"><div>Maturitní projekt 2023/2024 | Tomáš Vašíček</div></div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 </html>

@@ -29,65 +29,42 @@
     <div class="stranky">
         <a href="index.html"><img src="./img/Logo.svg" alt="Your Logo"></a>
         <a href="index.html">Úvod</a>
-        <a href="cross.html">Kříž</a>
-        <a href="f2l.html">První 2 Vrstvy</a>
-        <a href="ll.html">Poslední vrstva</a>
-        <a class="active" href="contact.html">Kontakt</a>
+        <a href="cross.html">Návod</a>
+        <a href="info.html">Info kurzy</a>
+        <a href="kurzy.html">Cena kurzů</a>
+        <a class="active" href="order.html">Objednávka</a>
     </div>
 </nav>
 
 <section id="contact">
     <div class="contact-form bg-light p-2">
-        <h2 class="m-heading">Napište nám</h2>
-        <div class="info">Prosím využijte níže uvedený formulář.</div>
-        <form>
-            <div class="form-group">
-                <label for="name">Jméno: </label>
-                <input type="text"
-                       name="name"
-                       id="name"
-                       placeholder="Jméno a příjmení">
-            </div>
-            <div class="form-group">
-                <label for="email">Email: </label>
-                <input type="text"
-                       name="email"
-                       id="email"
-                       placeholder="E-mail">
-            </div>
-            <div class="form-group">
-                <label for="phone">Telefon: </label>
-                <input type="text"
-                       name="phone"
-                       id="phone"
-                       placeholder="Telefon">
-            </div>
-            <div class="form-group">
-                <label for="question">Dotaz: </label>
-                <textarea name="question" id="question" cols="30" rows="10" placeholder="Message..."></textarea>
-            </div>
+        <h2>Objednávka kurzu</h2>
+        <form action="connect.php" method="post">
+            <label for="name">Jméno:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="phone">Telefon:</label>
+            <input type="text" id="phone" name="phone" required><br><br>
+
+            <label for="course">Kurz:</label>
+            <select id="course" name="course" required>
+                <option value="beginner">Začátečníci</option>
+                <option value="advanced">Pokročilí</option>
+                <option value="professional">Profíci</option>
+            </select><br><br>
+
+            <label for="query">Dotaz ke kurzu:</label><br>
+            <textarea id="query" name="query" rows="4" cols="50"></textarea><br><br>
+
+            <input type="submit" value="Odeslat objednávku">
         </form>
-    </div>
-    <div class="contact-adress p-2" style="background-color: rgb(223, 223, 223);">
-        <h2 class="m-heading">Kontakt</h2>
-        <h3>Adresa instituce</h3>
-        <ul class="list">
-            <li>World Cube Association, s. r. o.</li>
-            <li>Praha 1 </li>
-            <li>11 800</li>
-        </ul>
-        <h3>Email</h3>
-        <ul class="list">
-            <li>rubikovky@wca.cz</li>
-        </ul>
-        <h3>Telefon</h3>
-        <ul class="list">
-            <li>+420 272 727 272</li>
-        </ul>
     </div>
 </section>
 <footer id="main-footer" class="text-center">
-    <div class="container"><div>Maturitní projekt 2023/2024 | Copyright &copy; Tomáš Vašíček</div></div>
+    <div class="container"><div>Maturitní projekt 2023/2024 | Tomáš Vašíček</div></div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="

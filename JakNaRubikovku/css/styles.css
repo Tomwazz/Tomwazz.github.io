@@ -6,6 +6,7 @@
     
 }
 body {
+    font-family: Arial, sans-serif;
     background: white;
     overflow-x: hidden;
 }
@@ -19,6 +20,7 @@ body {
     letter-spacing: 1rem;
 }
 .a-heading {
+    font-family: Arial;
     color: white;
     font-size: 4rem;
     line-height: 1.1;
@@ -45,6 +47,23 @@ body {
 .text-center {
     text-align: center;
 }
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
+}
+.green {
+    color: green;
+}
+
+.gray {
+    border: 1px solid darkgray;
+    padding: 0 10px;
+    margin: 5px 10px;
+}
+
+
 .py-1 {
     padding-bottom: 1.5rem;
 }
@@ -74,6 +93,13 @@ a {
     background-color: rgb(227, 230, 231);
     border-radius: 10px;
     text-shadow: 1px 1px lightgray;
+}
+
+.padding {
+    padding: 10px;
+}
+.padding2 {
+    padding: 25px;
 }
 
 /* NAVBAR */
@@ -157,7 +183,7 @@ nav div a:hover {
     text-shadow: none;
 }
 
-/* STRÁNKA 2-5 */
+/* STRÁNKA 2 */
 
 #druha {
     padding-top: 100px;
@@ -167,7 +193,6 @@ nav div a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: auto;
     padding: 10px 0;
 }
 #druha ol {
@@ -201,47 +226,204 @@ nav div a:hover {
     background-color: #000; 
     margin: 40px auto; 
 }
+.rozdeleni2 {
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    margin: 40px auto;
+}
+
+/* STRÁNKA 3 */
+
+#treti {
+    padding-top: 125px;
+    height: calc(100vh - 75px);
+    overflow-y: hidden;
+}
+
+.courses {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+.course {
+    flex: 1;
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    height: auto;
+    min-height: 100%;
+}
+
+.course:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.info h2{
+    text-align: center;
+}
+.courses ul li {
+    margin-left: 15px;
+}
+/* STRÁNKA 4 */
+
+#ctvrta {
+    padding-top: 125px;
+    height: calc(100vh - 75px);
+}
+#ctvrta h1 {
+    text-align: center;
+}
+
+#kurzy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.kurz {
+    text-align: center;
+    flex: 1;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+}
+
+.kurz:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.beginner .image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto;
+    background-color: green;
+    position: relative;
+}
+
+.advanced .image-container {
+    width: 180px;
+    height: 180px;
+    border-radius: 10%;
+    margin: 20px auto;
+    background-color: blue;
+    position: relative;
+}
+
+.pro .image-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 20%;
+    margin: 20px auto;
+    background-color: red;
+    position: relative;
+}
+
+.image-container:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.cena {
+    font-weight: bold;
+}
 
 /* CONTACT */
 
 #contact {
-    display: flex;
-    padding: auto;
-    height: calc(100vh - 50px);
-}
-#contact div {
-    flex: 1;
-}
-#contact .m-heading {
     padding-top: 100px;
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.1;
+    background-color: #f4f4f4;;
+    display: flex;
+    height: calc(100vh - 75px);
+}
+
+#contact h2 {
     text-align: center;
+    color: #333;
 }
-#contact .contact-form .info {
-    padding-top: 10px;
-}
-#contact .contact-form{
-    padding-left: 5px;
-}
-#contact .contact-form .form-group {
-    margin: 0.75rem;
-}
-#contact .contact-form label {
+
+label {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
+    color: #555;
 }
-#contact .contact-form input,
-#contact .contact-form textarea {
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: calc(50% - 5px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="email"] {
+    float: left;
+    margin-right: 10px;
+}
+
+input[type="text"]:last-child,
+input[type="email"]:last-child {
+    margin-right: 0;
+}
+
+textarea {
     width: 100%;
-    padding: 0.5rem;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
-#contact .contact-adress h3 {
-    margin-top: 2rem;
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
-#contact .contact-adress:not(.m-heading) {
-    padding-left: 20px;
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
 /* FOOTER */
@@ -249,18 +431,20 @@ nav div a:hover {
 #main-footer {
     background-color: #f1f1f1;
     color: #000;
-    height: 50px;
+    height: 70px;
+    margin-top: auto;
     position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
+
 }
 
 #main-footer div {
     color: black;
     font-size: large;
-    padding: auto;
-    padding-top: 5px;
+    padding-top: 10px;
+    margin-top: 5px;
 }
 
 /* VĚTŠÍ MONITORY - BUDE DODĚLÁNO PO KONZULTACI/ÚPRAVĚ STRÁNKY*/ 
