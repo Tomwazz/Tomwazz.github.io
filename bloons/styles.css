@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+  
+  nav ul {
+    margin: 5;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: x-large;
+  }
+  
+  nav li {
+    display: inline-flex;
+  }
+  
+  nav button {
+    border: none;
+    background: none;
+    font-size: inherit;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  nav button:hover {
+    color: #666;
+  }
+
+.category-link {
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+div .tucne {
+    font-size: larger;
+}
+main {
+    padding: 20px;
+}
+.monkey {
+    padding: 20px;
+}
+h2 {
+    text-align: center;
+}
+.tutorial-section {
+    display: none;
+}
+
+.tutorial-section.active {
+    display: block;
+}
+
+.tutorial-section ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.tutorial-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.tutorial-section p {
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;
+}
+.additional-info {
+    display: none;
+    margin-top: 10px;
+}
+
+.additional-info.active {
+    display: block;
+}
