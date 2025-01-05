@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tutorial Website</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>CHATTERINO TUTORIAL | 2021 REMAKE</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><button class="tutorial-link" data-target="tutorial1">ČÁRKY</button></li>
+      <li><button class="tutorial-link" data-target="tutorial2">MODERACE</button></li>
+      <li><button class="tutorial-link" data-target="tutorial3">OBRÁZKY</button></li>
+      <li><button class="tutorial-link" data-target="tutorial4">EMOTY</button></li>
+      <li><button class="tutorial-link" data-target="tutorial5">PREVIEW</button></li>
+      <li><button class="tutorial-link" data-target="tutorial6">ZÁLOHA</button></li>
+      <li><button class="tutorial-link" data-target="tutorial7">KONTAKT</button></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="tutorial1" class="tutorial-section">
+      <h2 class="tutorial-title">Čárky za nickem</h2>
+      <p class="tutorial-description">Pro vypnutí čárek stačí odkliknout toto tlačítko.</p>
+    <img src="fotky/comma.png" alt="čárky">
+    </section>
+
+    <section id="tutorial2" class="tutorial-section">
+        <h2 class="tutorial-title">Moderátorský režim</h2>
+        <p class="tutorial-description">Základní mod bindy</p>
+    <img src="fotky/moderace.png" alt="mod">
+    </section>
+
+    <section id="tutorial3" class="tutorial-section">
+        <h2 class="tutorial-title">Upload obrázků</h2>
+      <p class="tutorial-description">S tímto po screenu/výstřižku obrazovky můžeš v chatterinu dát jen "ctrl v" a automaticky se vytvoří link se screenem peepoHappy </p>
+      <img src="fotky/upload.png" alt="upload">
+    </section>
+
+    <section id="tutorial4" class="tutorial-section">
+        <h2 class="tutorial-title">Unlisted emoty</h2>
+      <p class="tutorial-description"> Nevidíš Unlisted 7tv emoty? Here you go </p>
+      <img src="fotky/unlisted.png" alt="unlisted">
+    </section>
+    <section id="tutorial5" class="tutorial-section">
+        <h2 class="tutorial-title">Link preview</h2>
+      <p class="tutorial-description"> Netušíš co obsahuje odkaz v chatu? Zapni si:</p>
+      <img src="fotky/preview.png" alt="preview">
+    </section>
+    <section id="tutorial6" class="tutorial-section">
+        <h2 class="tutorial-title">Záloha dat</h2>
+      <p class="tutorial-description"> Potřebuješ si uložit chatterino data? Stačí si zálohovat tyto složky (vše krom Cache)</p>
+      <img src="fotky/data1.png" alt="data1">
+      <img src="fotky/data2.png" alt="data2">
+    </section>
+    <section id="tutorial7" class="tutorial-section">
+        <h2 class="tutorial-title">Kontakt</h2>
+        <p class="tutorial-description">Potřebuješ ještě s něčím pomoct?</p>
+        <p class="tutorial-description">Pokud ti nevyjde návštěva mého chatu, stačí pingnout u BOP a domluvíme se tam :)</p>
+        <iframe src="https://giphy.com/embed/EUgI9BSalN3mo" width="360" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/art-clip-valentines-EUgI9BSalN3mo"></a></p>
+      </section>
+  </main>
+  <div class="area">
+    <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <footer>
+    <p>&copy; 2023 Tutorial Website. TOMWAZ</p>
+  </footer>
+  <script>
+    // Get all tutorial buttons
+const tutorialButtons = document.querySelectorAll('.tutorial-link');
+
+// Add click event listener to each tutorial button
+tutorialButtons.forEach(button => {
+  button.addEventListener('click', function(event) {
+    const targetSectionId = button.getAttribute('data-target');
+    const targetSection = document.getElementById(targetSectionId);
+    const tutorialSections = document.querySelectorAll('.tutorial-section');
+
+    tutorialSections.forEach(section => {
+      if (section === targetSection) {
+        section.classList.toggle('active');
+      } else {
+        section.classList.remove('active');
+      }
+    });
+  });
+});
+
+// Get all definition buttons
+const definitionButtons = document.querySelectorAll('.definition-button');
+
+// Add click event listener to each definition button
+definitionButtons.forEach(button => {
+  button.addEventListener('click', function(event) {
+    const targetDefinitionId = button.getAttribute('data-target');
+    const targetDefinition = document.getElementById(targetDefinitionId);
+    targetDefinition.classList.toggle('active');
+  });
+});
+  </script>
+  <script>
+    document.body.style.backgroundColor = '#969393';
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tutorial Website</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>CHATTERINO TUTORIAL | 2021 REMAKE</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><button class="tutorial-link" data-target="tutorial1">NICKNAMES</button></li>
+      <li><button class="tutorial-link" data-target="tutorial2">COMMANDS</button></li>
+      <li><button class="tutorial-link" data-target="tutorial3">HIGHLIGHTS</button></li>
+      <li><button class="tutorial-link" data-target="tutorial4">IGNORES</button></li>
+      <li><button class="tutorial-link" data-target="tutorial5">LIVE_NOT</button></li>
+      <li><button class="tutorial-link" data-target="tutorial6">OTHER</button></li>
+      <li><button class="tutorial-link" data-target="tutorial7">KONTAKT</button></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="tutorial1" class="tutorial-section">
+      <h2 class="tutorial-title">Nicknames</h2>
+      <p class="tutorial-description">Funkčnost pro nicknames u uživatelů, které si přidáš</p>
+    <img src="fotky/nicknames.png" alt="nicky">
+    </section>
+
+    <section id="tutorial2" class="tutorial-section">
+        <h2 class="tutorial-title">Commandy v chatu</h2>
+        <p class="tutorial-description">Pro ulehčení práce a možnost psaní jen "/pink" etc...</p>
+    <img src="fotky/commands.png" alt="commandy">
+    </section>
+
+    <section id="tutorial3" class="tutorial-section">
+        <h2 class="tutorial-title">Highlights | pingy</h2>
+      <p class="tutorial-description">Možnost zvolit si varianty jmen/nicků, které tě budou pingovat</p>
+      <img src="fotky/Highlights.png" alt="Highlights">
+    </section>
+
+    <section id="tutorial4" class="tutorial-section">
+        <h2 class="tutorial-title">Ignores</h2>
+      <p class="tutorial-description"> Umožní ti nevidět konkrétní zprávy v chatu (block) či pouze jejich přepsání na něco jiné (Replacement)</p>
+      <img src="fotky/Ignores.png" alt="Ignores">
+    </section>
+
+    <section id="tutorial5" class="tutorial-section">
+        <h2 class="tutorial-title">Live Notification</h2>
+      <p class="tutorial-description"> Chceš dostávat upozornění do channelu "Live"? Stačí si přidat vybrané channels.</p>
+      <img src="fotky/Live_notif1.png" alt="live">
+      <img src="fotky/Live_notif2.png" alt="live">
+    </section>
+
+    <section id="tutorial6" class="tutorial-section">
+        <h2 class="tutorial-title">Bonus</h2>
+      <p class="tutorial-description"> Je zde mnoho dalších užitečných tools, které bez prohledání či vyhledání nevyužiješ...</p><br>
+      <p class="tutorial-description"> Př:</p>
+      <img src="fotky/bonus1.png" alt="data1">
+      <img src="fotky/bonus2.png" alt="data2">
+      <img src="fotky/bonus3.png" alt="data3">
+    </section>
+
+    <section id="tutorial7" class="tutorial-section">
+        <h2 class="tutorial-title">Kontakt</h2>
+        <p class="tutorial-description">Potřebuješ ještě s něčím pomoct?</p>
+        <p class="tutorial-description">Pokud ti nevyjde návštěva mého chatu, stačí pingnout u BOP a domluvíme se tam :)</p>
+        <p class="tutorial-description">Případně i "$remind TOMWAZ info" přes Supibota 😎</p>
+        <iframe src="https://giphy.com/embed/EUgI9BSalN3mo" width="360" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/art-clip-valentines-EUgI9BSalN3mo"></a></p>
+      </section>
+
+  </main>
+  <div class="area">
+    <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <footer>
+    <p>&copy; TOMWAZ</p>
+  </footer>
+  <script>
+    // Get all tutorial buttons
+const tutorialButtons = document.querySelectorAll('.tutorial-link');
+
+// Add click event listener to each tutorial button
+tutorialButtons.forEach(button => {
+  button.addEventListener('click', function(event) {
+    const targetSectionId = button.getAttribute('data-target');
+    const targetSection = document.getElementById(targetSectionId);
+    const tutorialSections = document.querySelectorAll('.tutorial-section');
+
+    tutorialSections.forEach(section => {
+      if (section === targetSection) {
+        section.classList.toggle('active');
+      } else {
+        section.classList.remove('active');
+      }
+    });
+  });
+});
+
+// Get all definition buttons
+const definitionButtons = document.querySelectorAll('.definition-button');
+
+// Add click event listener to each definition button
+definitionButtons.forEach(button => {
+  button.addEventListener('click', function(event) {
+    const targetDefinitionId = button.getAttribute('data-target');
+    const targetDefinition = document.getElementById(targetDefinitionId);
+    targetDefinition.classList.toggle('active');
+  });
+});
+  </script>
+  <script>
+    document.body.style.backgroundColor = '#969393';
+  </script>
+</body>
+</html>
