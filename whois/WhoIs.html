@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Návod na WHOIS - Šílený Vizuální Zážitek</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(45deg, #1a0033, #00b7ff, #ff00cc, #33ff00);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        .glow-btn {
+            background: #00ffcc;
+            color: #1a0033;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+            transition: all 0.3s ease;
+        }
+        .glow-btn:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 0 60px #00ffcc;
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            padding: 40px;
+            border: 2px solid #00ffcc;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            margin: 20px;
+        }
+        .floating {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ff00cc, transparent);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-100px); }
+        }
+        .spin {
+            display: inline-block;
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating" style="top: 10%; left: 5%;"></div>
+    <div class="floating" style="top: 20%; right: 10%; animation-delay: 2s;"></div>
+    <div class="floating" style="bottom: 15%; left: 15%; animation-delay: 4s;"></div>
+
+    <header class="py-16 text-center relative">
+        <h1 class="text-6xl font-bold spin">Návod na WHOIS.com</h1>
+        <p class="mt-6 text-2xl animate-pulse">Šíleně jednoduché a vizuálně explozivní!</p>
+        <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+            <svg viewBox="0 0 100 100" class="w-full h-full">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#00ffcc" stroke-width="2" />
+            </svg>
+        </div>
+    </header>
+
+    <section class="container mx-auto section" id="step1">
+        <h2 class="text-4xl font-bold mb-6">Krok 1: Otevřete WHOIS</h2>
+        <p class="text-lg">Přejděte na <a href="https://www.whois.com/whois/" class="text-[#00ffcc] underline hover:animate-pulse">www.whois.com/whois/</a>. Tento nástroj vám odhalí tajemství domén!</p>
+        <button class="glow-btn mt-6">Jít na web</button>
+    </section>
+
+    <section class="container mx-auto section" id="step2">
+        <h2 class="text-4xl font-bold mb-6">Krok 2: Zadejte doménu</h2>
+        <p class="text-lg">Do pole napište doménu (např. "google.com") a klikněte na <span class="spin">„Search“</span>. Počkejte na výsledek!</p>
+        <div class="mt-6 flex justify-center">
+            <div class="w-32 h-32 bg-[#ff00cc] rounded-full animate-bounce"></div>
+        </div>
+    </section>
+
+    <section class="container mx-auto section" id="step3">
+        <h2 class="text-4xl font-bold mb-6">Krok 3: Přečtěte si informace</h2>
+        <p class="text-lg">WHOIS vám ukáže registrátora, datum registrace a kontaktní údaje (pokud nejsou skryté). To vše v pár sekundách!</p>
+        <button class="glow-btn mt-6">Zjistit víc</button>
+    </section>
+
+    <section class="container mx-auto section" id="step4">
+        <h2 class="text-4xl font-bold mb-6">Krok 4: Experimentujte</h2>
+        <p class="text-lg">Zkuste různé domény – třeba svoje vlastní! WHOIS je zábava, když víte, co hledáte.</p>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+            <div class="bg-[#33ff00] p-4 rounded-lg animate-pulse">Doména 1</div>
+            <div class="bg-[#ff00cc] p-4 rounded-lg animate-pulse" style="animation-delay: 0.2s;">Doména 2</div>
+            <div class="bg-[#00ffcc] p-4 rounded-lg animate-pulse" style="animation-delay: 0.4s;">Doména 3</div>
+        </div>
+    </section>
+
+    <footer class="py-16 text-center relative">
+        <p class="text-xl">© 2025 - Šílený návod od šíleného AI</p>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#ff00cc] to-[#00ffcc]"></div>
+    </footer>
+
+    <script>
+        // GSAP animations
+        gsap.from("h1", { duration: 1.5, y: -200, ease: "bounce" });
+        gsap.to(".section", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.3,
+            scrollTrigger: { trigger: ".section", start: "top 80%" }
+        });
+        gsap.to(".glow-btn", {
+            scale: 1.1,
+            rotation: 10,
+            repeat: -1,
+            yoyo: true,
+            duration: 0.6,
+            stagger: 0.2
+        });
+        gsap.from(".floating", {
+            scale: 0,
+            duration: 2,
+            ease: "elastic",
+            stagger: 0.5
+        });
+    </script>
+</body>
+</html>
