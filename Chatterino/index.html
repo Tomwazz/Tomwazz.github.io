@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatterino Tutorial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2c2f33, #1e2124);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #e0e0e0;
+            overflow: auto;
+        }
+        .background-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .glow-orb {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(114, 137, 218, 0.9), rgba(114, 137, 218, 0));
+            border-radius: 50%;
+            box-shadow: 0 0 20px 5px rgba(114, 137, 218, 0.5);
+            animation: float-orb 12s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        #live_not img {
+            max-height: 50vh;
+            object-fit: contain;
+        }
+        .glow-orb.large {
+            width: 40px;
+            height: 40px;
+            animation-duration: 18s;
+            box-shadow: 0 0 30px 10px rgba(114, 137, 218, 0.6);
+        }
+        .glow-orb:nth-child(odd) {
+            animation-delay: -3s;
+        }
+        .glow-orb:nth-child(even) {
+            animation-delay: -6s;
+        }
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-100px, 150px) scale(1.3); }
+            50% { transform: translate(120px, -100px) scale(0.8); }
+            75% { transform: translate(-50px, -120px) scale(1.1); }
+        }
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: sparkle 5s infinite ease-in-out;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+        .stickman {
+            position: fixed;
+            bottom: 20px;
+            left: 50px;
+            width: 100px;
+            height: 150px;
+            z-index: 5;
+        }
+        .stickman svg {
+            width: 100%;
+            height: 100%;
+        }
+        .header {
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(78, 84, 200, 0.4);
+        }
+        .nav {
+            background-color: #23272a;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 10px;
+            flex: 1 1 120px;
+            text-align: center;
+            background: linear-gradient(45deg, #7289da, #8f94fb);
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: relative;
+            z-index: 11;
+        }
+        .nav a:hover {
+            background: linear-gradient(45deg, #677bc4, #7e88e8);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(103, 123, 196, 0.5);
+        }
+        .main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            z-index: 10;
+        }
+        .content {
+            display: none;
+            background: rgba(54, 57, 63, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+        }
+        .content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #7289da;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .content.active img {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .content h2 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        @keyframes pulseGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(114, 137, 218, 0.5), 0 0 10px rgba(114, 137, 218, 0.3);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(114, 137, 218, 0.8), 0 0 25px rgba(114, 137, 218, 0.5);
+                transform: scale(1.05);
+            }
+            100% {
+                text-shadow: 0 0 5px rgba(114, 137, 218, 0.5), 0 0 10px rgba(114, 137, 218, 0.3);
+                transform: scale(1);
+            }
+        }
+        .content p {
+            color: #b9bbbe;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .download-links a {
+            display: inline-block;
+            color: #ffffff;
+            font-size: 36px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #7289da, #8f94fb);
+            border-radius: 8px;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .download-links a:hover {
+            background: linear-gradient(45deg, #677bc4, #7e88e8);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(103, 123, 196, 0.5);
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #36393f, #2f3136);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        .modal-content h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 20px;
+            animation: none;
+            text-align: center;
+        }
+        .modal-content p {
+            color: #b9bbbe;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        .modal-content button {
+            background: linear-gradient(45deg, #7289da, #8f94fb);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .modal-content button:hover {
+            background: linear-gradient(45deg, #677bc4, #7e88e8);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(103, 123, 196, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb large" style="top: 10%; left: 10%;"></div>
+        <div class="glow-orb" style="top: 20%; left: 85%;"></div>
+        <div class="glow-orb large" style="top: 35%; left: 25%;"></div>
+        <div class="glow-orb" style="top: 50%; left: 70%;"></div>
+        <div class="glow-orb" style="top: 65%; left: 15%;"></div>
+        <div class="glow-orb large" style="top: 80%; left: 90%;"></div>
+        <div class="glow-orb" style="top: 90%; left: 30%;"></div>
+        <div class="sparkle" style="top: 15%; left: 20%;"></div>
+        <div class="sparkle" style="top: 25%; left: 75%;"></div>
+        <div class="sparkle" style="top: 40%; left: 35%;"></div>
+        <div class="sparkle" style="top: 55%; left: 80%;"></div>
+        <div class="sparkle" style="top: 70%; left: 25%;"></div>
+        <div class="sparkle" style="top: 85%; left: 60%;"></div>
+    </div>
+    <div class="stickman">
+        <svg width="100" height="150" viewBox="0 0 100 150">
+            <circle cx="50" cy="30" r="20" fill="#7289da" stroke="#ffffff" stroke-width="2"/>
+            <text id="stickman-face" x="50" y="51" text-anchor="middle" font-size="50">😮</text>
+            <line x1="50" y1="50" x2="50" y2="90" stroke="#ffffff" stroke-width="4"/>
+            <line x1="30" y1="60" x2="70" y2="60" stroke="#ffffff" stroke-width="4"/>
+            <line x1="50" y1="90" x2="30" y2="130" stroke="#ffffff" stroke-width="4"/>
+            <line x1="50" y1="90" x2="70" y2="130" stroke="#ffffff" stroke-width="4"/>
+        </svg>
+    </div>
+    <div class="modal-overlay" id="welcome-modal">
+        <div class="modal-content">
+            <h2>PROČ CHATTERINO?</h2>
+            <p>Chatterino obsahuje vše co ke své twitch experience potřebuješ. Ať už VŠECHNY druhy emotů FFZ/BTTV/7TV/HOMIES nebo možnost mít mnoho chatů otevřených najendou.</p>
+            <p>Tento tutoriál je jen pro určité verze. Zde máš prvně obené nastavení. Pokud tě zajímá něco specifického k těm verzím, tak ↓</p>
+            <p>Po kliknutí na DOWNLOADS můžeš vybrat verzi a zbytek uvidíš sám.</p>
+            <button id="reveal-content-button">POKRAČOVAT</button>
+        </div>
+    </div>
+    <div class="header">
+        CHATTERINO TUTORIAL | 2021 REMAKE
+    </div>
+    <div class="nav">
+        <a href="#" data-section="general">GENERAL</a>
+        <a href="#" data-section="links">IMAGES</a>
+        <a href="#" data-section="nicknames">NICKNAMES</a>
+        <a href="#" data-section="commands">COMMANDS</a>
+        <a href="#" data-section="highlights">HIGHLIGHTS</a>
+        <a href="#" data-section="ignores">IGNORES</a>
+        <a href="#" data-section="live_not">LIVE_NOTIF</a>
+        <a href="#" data-section="other">OTHER</a>
+        <a href="#" data-section="roomky">ROOMKY</a>
+        <a href="#" data-section="kontakt">KONTAKT</a>
+        <a href="#" data-section="DOWNLOADS">DOWNLOADS</a>
+    </div>
+    <div class="main">
+        <div id="general" class="content">
+            <h2 id="general-title"></h2>
+            <p id="general-text"></p>
+            <p id="general-text-specific"></p>
+            <img src="./img/general.png" alt="General Image">
+        </div>
+        <div id="links" class="content">
+            <h2 id="links-title"></h2>
+            <p id="links-text"></p>
+            <p id="links-text-specific"></p>
+            <img src="./img/links1.png" alt="Channels Image">
+            <img src="./img/links2.png" alt="Channels Image">
+            <img src="./img/links3.png" alt="Channels Image">
+        </div>
+        <div id="nicknames" class="content">
+            <h2 id="nicknames-title"></h2>
+            <p id="nicknames-text"></p>
+            <p id="nicknames-text-specific"></p>
+            <img src="./img/nicknames.png" alt="Nicknames Image">
+            <img src="./img/nicknames2.png" alt="Nicknames Image">
+        </div>
+        <div id="commands" class="content">
+            <h2 id="commands-title"></h2>
+            <p id="commands-text"></p>
+            <p id="commands-text-specific"></p>
+            <img src="./img/commands.png" alt="Commands Image">
+            <img src="./img/commands2.png" alt="Commands Image">
+        </div>
+        <div id="highlights" class="content">
+            <h2 id="highlights-title"></h2>
+            <p id="highlights-text"></p>
+            <p id="highlights-text-specific"></p>
+            <img src="./img/highlights.png" alt="Commands Image">
+        </div>
+        <div id="ignores" class="content">
+            <h2 id="ignores-title"></h2>
+            <p id="ignores-text"></p>
+            <p id="ignores-text-specific"></p>
+            <img src="./img/ignores.png" alt="Commands Image">
+            <img src="./img/ignores2.png" alt="Commands Image">
+        </div>
+        <div id="live_not" class="content">
+            <h2 id="live_not-title"></h2>
+            <p id="live_not-text"></p>
+            <p id="live_not-text-specific"></p>
+            <img src="./img/live.png" alt="Commands Image">
+            <img src="./img/live2.png" alt="Commands Image">
+        </div>
+        <div id="other" class="content">
+            <h2 id="other-title"></h2>
+            <p id="other-text"></p>
+            <p id="other-text-specific"></p>
+            <img src="./img/bonus1.png" alt="Commands Image">
+            <img src="./img/bonus2.png" alt="Commands Image">
+            <img src="./img/bonus3.png" alt="Commands Image">
+        </div>
+        <div id="roomky" class="content">
+            <h2 id="roomky-title"></h2>
+            <p id="roomky-text"></p>
+            <img src="./img/ukazka.png" alt="Commands Image">
+            <p id="roomky-text-specific"></p>
+            <img src="./img/roomky1.png" alt="Commands Image">
+            <img src="./img/roomky2.png" alt="Commands Image">
+            <img src="./img/roomky3.png" alt="Commands Image">
+        </div>
+        <div id="kontakt" class="content">
+            <h2 id="kontakt-title"></h2>
+            <p id="kontakt-text"></p>
+            <p id="kontakt-text-specific"></p>
+            <img src="./img/kontakt.png" alt="Commands Image">
+        </div>
+        <div id="DOWNLOADS" class="content">
+            <h2 id="DOWNLOADS-title"></h2>
+            <div class="download-links">
+                <a href="homies.html">HOMIES</a>
+                <a href="nightly.html">NIGHTLY</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const contentData = {
+            general: {
+                title: "Hlavní nastavení",
+                text: "Zde si můžeš nastavit hlavní nastavení textu, velikosti písma a podobně.",
+                textSpecific: "Na obrázku můžeš vidět příklad jako třeba font, velikosti, zapnutí chatterina s windows nebo třeba always on top."
+            },
+            links: {
+                title: "Obrázky",
+                text: "Chceš jednoduše někomu poslat screen a nechce se ti otevírat žádná stránka k tomu?",
+                textSpecific: "Stačí si vybrat a přepsat jednu z těchto variant a pak už jen hodit to ctrl v do chatterina!"
+            },
+            nicknames: {
+                title: "Nicknames",
+                text: "Tady můžeš každému specifickému uživateli dát nějaký nickname.",
+                textSpecific: "Pak na druhou stranu neuvidíš normální jména a v některých případech budeš mít jednoho chattera na 5 řádků 😐"
+            },
+            commands: {
+                title: "Commands",
+                text: "Příkazy slouží k ulehčení tvé práce, ukládání funny zpráv, linků, copy past a podobně",
+                textSpecific: "Stačí jen do chatu napsat to co je pod hodnotou Trigger"
+            },
+            highlights: {
+                title: "Highlights",
+                text: "Highlights slouží k pingům na určité slova/varianty jmen apod.",
+                textSpecific: "Můžeš si u nich změnit zvuk, barvu pingu, regex (tom s regexem by fungoval i v zatomnil) atd."
+            },
+            ignores: {
+                title: "Ignores",
+                text: "Nastavení ignorů k určitým slovům/frázím či uživatelům",
+                textSpecific: "Pokud zaškrtneš block tak žádnou zprávu s tímto neuvidíš vůbec. Jinak uvidíš to co je zapsané v replacementu. a jinak si můžeš pořešit regex nebo case senzivitu jak je potřeba"
+            },
+            live_not: {
+                title: "Live Notifications",
+                text: "Vyber si kanály, u kterých chceš dostávat ping oznámení, že jsou live",
+                textSpecific: "Je nutné mít otevřenou roomku /live viz. 2. obrázek"
+            },
+            other: {
+                title: "Other",
+                text: "Tady jsou ukázané nějaké ostatní věci co můžou být užitečné k zapnutí",
+                textSpecific: "No.. musíš si je v tom search baru najít 😜"
+            },
+            roomky: {
+                title: "Roomky",
+                text: "Zde je preview roomek užitečných k využití",
+                textSpecific: "Ukázka funkčnosti roomek:"
+            },
+            kontakt: {
+                title: "Kontakt",
+                text: "Tvůrce stránky jsem já TOM.",
+                textSpecific: "Pokud tě něco bude zajímat ohledně dalších funkcí nebo něčeho, co jsem nevysvětlil dost podrobně, udělej v chatterinu toto ↓ a ptej se"
+            },
+            DOWNLOADS: {
+                title: "Downloads",
+                text: "",
+                textSpecific: ""
+            }
+        };
+
+        const navLinks = document.querySelectorAll('.nav a');
+        const contents = document.querySelectorAll('.content');
+        const modal = document.getElementById('welcome-modal');
+        const revealButton = document.getElementById('reveal-content-button');
+        let isModalOpen = true;
+
+        function typeText(element, text, speed = 50) {
+            let i = 0;
+            element.textContent = '';
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, speed);
+        }
+
+        const stickmanFace = document.getElementById('stickman-face');
+        function toggleExpression() {
+            stickmanFace.textContent = stickmanFace.textContent === '😮' ? '😱' : '😮';
+        }
+        setInterval(toggleExpression, 3000);
+
+        window.addEventListener('load', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        revealButton.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            isModalOpen = false;
+            const defaultSection = document.getElementById('general');
+            defaultSection.classList.add('active');
+            typeText(document.getElementById('general-title'), contentData.general.title, 50);
+            setTimeout(() => {
+                typeText(document.getElementById('general-text'), contentData.general.text, 30);
+                if (contentData.general.textSpecific) {
+                    setTimeout(() => {
+                        typeText(document.getElementById('general-text-specific'), contentData.general.textSpecific, 30);
+                    }, contentData.general.text.length * 30);
+                }
+            }, contentData.general.title.length * 50);
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!isModalOpen) {
+                    const section = link.getAttribute('data-section');
+
+                    contents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+
+                    setTimeout(() => {
+                        const activeContent = document.getElementById(section);
+                        if (activeContent) {
+                            activeContent.classList.add('active');
+                            const titleElement = document.getElementById(`${section}-title`);
+                            const textElement = document.getElementById(`${section}-text`);
+                            const textSpecificElement = document.getElementById(`${section}-text-specific`);
+                            const data = contentData[section];
+
+                            typeText(titleElement, data.title, 50);
+                            setTimeout(() => {
+                                typeText(textElement, data.text, 30);
+                                if (data.textSpecific) {
+                                    setTimeout(() => {
+                                        typeText(textSpecificElement, data.textSpecific, 30);
+                                    }, data.text.length * 30);
+                                }
+                            }, data.title.length * 50);
+                        }
+                    }, 300);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
