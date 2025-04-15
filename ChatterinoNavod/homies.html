@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatterino Homies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2c2f33, #1e2124);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #e0e0e0;
+            overflow: auto;
+        }
+        .background-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .glow-orb {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(114, 137, 218, 0.9), rgba(114, 137, 218, 0));
+            border-radius: 50%;
+            box-shadow: 0 0 20px 5px rgba(114, 137, 218, 0.5);
+            animation: float-orb 12s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        .glow-orb.large {
+            width: 40px;
+            height: 40px;
+            animation-duration: 18s;
+            box-shadow: 0 0 30px 10px rgba(114, 137, 218, 0.6);
+        }
+        .glow-orb:nth-child(odd) {
+            animation-delay: -3s;
+        }
+        .glow-orb:nth-child(even) {
+            animation-delay: -6s;
+        }
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-100px, 150px) scale(1.3); }
+            50% { transform: translate(120px, -100px) scale(0.8); }
+            75% { transform: translate(-50px, -120px) scale(1.1); }
+        }
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: sparkle 5s infinite ease-in-out;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+        .stickman {
+            position: fixed;
+            bottom: 20px;
+            left: 50px;
+            width: 100px;
+            height: 150px;
+            z-index: 5;
+        }
+        .stickman svg {
+            width: 100%;
+            height: 100%;
+        }
+        .header {
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(78, 84, 200, 0.4);
+        }
+        .download-icon {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .download-icon i {
+            font-size: 64px;
+            color: #7289da;
+            transition: transform 0.3s ease;
+        }
+        .download-icon i:hover {
+            transform: scale(1.2);
+            color: #8f94fb;
+        }
+        .main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            z-index: 10;
+        }
+        .content {
+            background: rgba(54, 57, 63, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            opacity: 1;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(0);
+        }
+        .content h2 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            overflow: hidden; 
+            white-space: nowrap; 
+        }
+        .content p {
+            color: #b9bbbe;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            overflow: hidden; 
+            white-space: nowrap; 
+        }
+        .content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #7289da;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(1);
+            opacity: 1;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img.xd {
+            width: 40px;
+            height: auto;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+        .oddil {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(54, 57, 63, 1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .oddil:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(114, 137, 218, 0.3);
+        }
+        .oddil h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-align: left;
+        }
+        .oddil p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        .oddil img {
+            margin: 15px auto;
+        }
+        .oddil:not(:last-child)::after {
+            content: '';
+            display: block;
+            margin: 20px auto;
+            width: 60%;
+            height: 1px;
+            background: #7289da;
+        }
+        .typewriter {
+            position: relative;
+            display: inline-block;
+            width: 0;
+            animation: typing 2s steps(30, end) forwards;
+        }
+        .typewriter::after {
+            content: '|';
+            position: absolute;
+            right: -5px;
+            color: #7289da;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        #zpet {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin: 20px 0;
+}
+
+#zpet a {
+    margin: 0; 
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #7289da, #8f94fb);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+    </style>
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb large" style="top: 10%; left: 10%;"></div>
+        <div class="glow-orb" style="top: 20%; left: 85%;"></div>
+        <div class="glow-orb large" style="top: 35%; left: 25%;"></div>
+        <div class="glow-orb" style="top: 50%; left: 70%;"></div>
+        <div class="glow-orb" style="top: 65%; left: 15%;"></div>
+        <div class="glow-orb large" style="top: 80%; left: 90%;"></div>
+        <div class="glow-orb" style="top: 90%; left: 30%;"></div>
+        <div class="sparkle" style="top: 15%; left: 20%;"></div>
+        <div class="sparkle" style="top: 25%; left: 75%;"></div>
+        <div class="sparkle" style="top: 40%; left: 35%;"></div>
+        <div class="sparkle" style="top: 55%; left: 80%;"></div>
+        <div class="sparkle" style="top: 70%; left: 25%;"></div>
+        <div class="sparkle" style="top: 85%; left: 60%;"></div>
+    </div>
+    <div class="stickman">
+        <svg width="100" height="150" viewBox="0 0 100 150">
+            <circle cx="50" cy="30" r="20" fill="#7289da" stroke="#ffffff" stroke-width="2"/>
+            <text id="stickman-face" x="50" y="51" text-anchor="middle" font-size="50">😮</text>
+            <line x1="50" y1="50" x2="50" y2="90" stroke="#ffffff" stroke-width="4"/>
+            <line x1="30" y1="60" x2="70" y2="60" stroke="#ffffff" stroke-width="4"/>
+            <line x1="50" y1="90" x2="30" y2="130" stroke="#ffffff" stroke-width="4"/>
+            <line x1="50" y1="90" x2="70" y2="130" stroke="#ffffff" stroke-width="4"/>
+        </svg>
+    </div>
+    <div class="header">
+        CHATTERINO HOMIES
+    </div>
+    <div class="main">
+        <div class="content">
+            <h2 class="typewriter">Chceš stáhnout chatterino homies?</h2>
+            <p class="typewriter">V HOMIES KATEGORII VYBERU PIKANTNOSTI PROČ ZROVNA HOMIES CHATTERINO</p>
+            <p class="typewriter">Kde stáhnout chatterino homies?</p>
+            <div class="download-icon">
+                <a href="https://chatterinohomies.com/"><i class="fa-solid fa-download"></i></a>
+            </div>
+            <p class="typewriter">Následně po spuštění se pustí set up, což doufám zvládneš sám 🫢</p> 
+            <p>pak už si jen připnout chatterino na Windows panel nebo v nastavení zapnout:</p>
+            <img src="./img/startup.png" alt="xd">
+            <div class="oddil">
+                <p class="typewriter">Neboj, jsou tu všechny 7tv emoty i nastavení 😉</p>
+            </div>
+            <div class="oddil">
+                <h2 class="typewriter">Co teda HOMIES nabízí?</h2>
+                <p class="typewriter">Prvně začněmě u badges. Po přihlášení se na tu stránku kde je i download v levé horní části jsou vidět 2 tlačítka</p>
+                <img src="./img/badges.png" alt="Homies Example">
+                <p class="typewriter">Donate tlačítko funguje na princip Chatterino Supporter a dá ti tuto badge<img class="xd" src="./img/supporter-badge-v2.png" alt="lol"></p>
+                <p class="typewriter">MY BADGES tlačítko nabízí něco úžasného. A to že si každý člověk může přidat vlastní badge ať už ve formátu .png nebo .gif A TO ÚPLNĚ ZADARMO (verifikace trvá max 24h)</p>
+                <img src="./img/mybadge.png" alt="xd">
+            </div>
+            
+            <div class="oddil">
+                <p class="typewriter">Dále tu je pár HOMIES emotů</p>
+                <img src="./img/homie-emoty.png" alt="xd">
+                <p class="typewriter">A jak tyto emoty zapnu?</p>
+                <p class="typewriter">Už tam nainstalované jsou a vidí je jen homies users!</p>
+            </div>
+            
+            <div class="oddil">
+                <p class="typewriter">Pokud jsi třeba streamer nebo chceš mít nějaký specifický chat otevřený s průhledným pozadím, po zmáčknutí "pravý alt N" vyskočí chatterino v takovémto okénku</p>
+                <img src="./img/pravejaltn.png" alt="xd">
+            </div>
+
+            <div class="oddil">
+                <p class="typewriter">Další věci jsou třeba hromadné banování/unban, obnovení cache, moderátorské tools apod.</p>
+                <p class="typewriter">A MNOHO DALŠÍCH NÁROČNĚJŠÍCH TOOLS pro pokročilejší uživatele.</p>
+            </div>
+            <div id="zpet" class="oddil">
+                <a href="index.html">NÁVOD</a>
+                <a href="nightly.html">NIGHTLY</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const stickmanFace = document.getElementById('stickman-face');
+        function toggleExpression() {
+            stickmanFace.textContent = stickmanFace.textContent === '😮' ? '😱' : '😮';
+        }
+        setInterval(toggleExpression, 3000);
+        document.addEventListener('DOMContentLoaded', () => {
+            const typewriters = document.querySelectorAll('.typewriter');
+            typewriters.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.5}s`; 
+            });
+        });
+    </script>
+</body>
+</html>
