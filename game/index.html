@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomocník Sběrače Hvězdných střepů</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fscitechdaily.com%2Fimages%2FHubble-Veil-Nebula-scaled.jpg&f=1&nofb=1&ipt=66146c8b4d395c13294ace9da2a682b9c79842bf5b021651a0f427327061541f') no-repeat center center fixed;
+            background-size: cover;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: auto;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .search-bar:focus {
+            outline: none;
+            border-color: #ffeb3b;
+            box-shadow: 0 0 10px #ffeb3b;
+        }
+        .commands-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .command {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .command:hover {
+            background: rgba(255, 215, 0, 0.3);
+        }
+        .command.active {
+            background: rgba(255, 215, 0, 0.5);
+        }
+        .details {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .details h3 {
+            color: #ffd700;
+            margin-top: 0;
+        }
+        .details p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        .cooldown {
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pomocník Sběrače Hvězdných střepů 🌌</h1>
+        <input type="text" class="search-bar" placeholder="Vyhledej příkaz (např. ?collect)" oninput="filterCommands()">
+        <div class="commands-list" id="commands-list"></div>
+        <div class="details" id="command-details"></div>
+    </div>
+
+    <script>
+        const commands = [
+            {
+                name: "?collect",
+                cooldown: "3 minuty",
+                description: "Příkaz ?collect ti umožní sbírat Hvězdné střepy z různých kosmických událostí. Při každém použití máš šanci získat od -25 do +50 Hvězdných střepů, doprovázených vtipnou zprávou a emojí (např. 🌠, ☄️). Tvoje odměny ovlivňují tvůj násobitel prestiže, aktivní boosty a probíhající události, jako je Hvězdná bouře. Je malá šance na negativní výsledek (např. ztráta střepů do černé díry), ale tvůj zůstatek nikdy neklesne pod 0. Během události Hledání pokladů tři použití ?collect přidá 50 bonusových střepů!"
+            },
+            {
+                name: "?check",
+                cooldown: "Žádné",
+                description: "Příkaz ?check zobrazí tvůj aktuální počet Hvězdných střepů, hodnost (od Nováčka po Astrální), úroveň prestiže, pokrok k další hodnosti, a případné achievementy nebo tituly, které jsi získal. Pokrok je uveden jako procento podle potřebných střepů pro další hodnost. Pokud nemáš achievementy (např. 'Kovář hvězd') nebo tituly, zobrazí se 'Žádné'. Použij to k přehledu svého postupu vesmírem!"
+            },
+            {
+                name: "?rankup",
+                cooldown: "Žádné",
+                description: "Použij ?rankup k postupu na další hodnost od Nováčka po Astrální. Každá hodnost vyžaduje rostoucí počet Hvězdných střepů (např. 100 pro Učně, 250 pro Adepta), který roste exponenciálně. Pokud nemáš dost střepů, bot ti řekne, kolik ještě chybí. Po dosažení Astrální už nemůžeš pokračovat, ale můžeš použít ?prestige k resetu a získání násobitele. Zkontroluj svůj pokrok s ?check!"
+            },
+            {
+                name: "?prestige",
+                cooldown: "Žádné",
+                description: "Příkaz ?prestige je dostupný, jakmile dosáhneš hodnosti Astrální. Resetuje tvou hodnost na Nováčka a střepy na 0, ale zvýší tvou prestiž o 1 a přidá trvalý násobitel Hvězdných střepů (např. Prestiž 1 dává 1.5x, Prestiž 2 dává 2.0x, až 5.0x na Prestiži 9). Je to strategická volba pro rychlejší sběr střepů, ideální pro dlouhodobé hráče, kteří chtějí vést žebříček."
+            },
+            {
+                name: "?trade",
+                cooldown: "Žádné",
+                description: "S příkazem ?trade můžeš poslat Hvězdné střepy jinému divákovi ve formátu ?trade @uživatel částka (např. ?trade @tm_o7 100). Musíš mít dost střepů a částka musí být kladná. Cílový uživatel musí existovat v datech bota (tzn. alespoň jednou napsal do chatu). Je to skvělý způsob, jak pomoci přátelům nebo obchodovat, ale věnuj tomu pozornost, protože se to nedá vrátit!"
+            },
+            {
+                name: "?boost",
+                cooldown: "1 hodina",
+                description: "Příkaz ?boost zdvojnásobí tvé zisky Hvězdných střepů na 10 minut a ovlivňuje jak ?collect, tak pasivní přírůstek. Má 1hodinový cooldown, takže jeho použití plánuj opatrně – zejména během událostí jako Hvězdná bouře pro maximální výsledek. Boost se násobí s jinými násobiteli (prestiž, dárkový boost, události), takže je to silný nástroj pro rychlé hromadění střepů."
+            },
+            {
+                name: "?daily",
+                cooldown: "24 hodin",
+                description: "Použij ?daily k vyzvednutí denní odměny Hvězdných střepů, jejíž výše závisí na tvé hodnosti a prestiži (např. 50 střepů u Nováčka, více u vyšších hodností). Vzorec je 50 * (1 + hodnost * 0.2) * násobitel prestiže, takže vyšší hodnosti a prestiže přinášejí větší odměny. Je to spolehlivý způsob, jak si budovat zásoby, ale můžeš si to vyzvednout jen jednou za 24 hodin."
+            },
+            {
+                name: "?cooldowns",
+                cooldown: "Žádné",
+                description: "Příkaz ?cooldowns ukáže zbývající čas na cooldowny tvých příkazů: ?collect (3 minuty), ?boost (1 hodina), ?daily (24 hodin) a ?gift (2 hodiny). Pokud je příkaz připraven, zobrazí se ✅, jinak zbytek času v hodinách, minutách a sekundách (např. 2h 15m 30s). Pomáhá ti plánovat akce a maximalizovat efektivitu sběru střepů."
+            },
+            {
+                name: "?gift",
+                cooldown: "2 hodiny",
+                description: "Příkaz ?gift ti umožní utratit 200 Hvězdných střepů a darovat jinému uživateli 5minutový 1.5x boost Hvězdných střepů ve formátu ?gift @uživatel (např. ?gift @tm_o7). Nemůžeš si darovat sám sobě a cílový uživatel musí existovat v datech bota. Boost platí pro jejich ?collect a pasivní zisky a kombinuje se s jinými násobiteli. S 2hodinovým cooldownem je to skvělý způsob, jak podpořit přátele v chatu!"
+            },
+            {
+                name: "?stats",
+                cooldown: "Žádné",
+                description: "Příkaz ?stats poskytne podrobný přehled tvé aktivity: aktuální počet střepů, celkový počet vydělaných střepů, počet účastí na událostech, odeslaných zpráv, aktuální hodnost a úroveň prestiže. Je to skvělý způsob, jak zhodnotit svůj pokrok a zjistit, jak aktivní jsi v univerzu Sběrače Hvězdných střepů. Porovnej své statistiky s ostatními pomocí ?leaderboard!"
+            },
+            {
+                name: "?shop",
+                cooldown: "Žádné",
+                description: "Použij ?shop k zobrazení dostupných položek nebo ?shop <položka> k jejich nákupu. Mezi položky patří tituly jako 'Hvězdář' (1000 střepů) a 'Mlhovina' (2500 střepů) a boosty jako 5minutový 1.5x boost (500 střepů). Tituly jsou kosmetické a zobrazí se v ?check, zatímco boosty dočasně zvyšují tvé zisky. K nákupu potřebuješ dost střepů a nákupy jsou trvalé (kromě boostů, které vyprší)."
+            },
+            {
+                name: "?leaderboard",
+                cooldown: "Žádné",
+                description: "Příkaz ?leaderboard zobrazí 5 nejlepších hráčů s největším počtem Hvězdných střepů spolu s jejich úrovní prestiže. Je to skvělý způsob, jak zjistit, kdo vede v sběru střepů a motivovat se k vyšším hodnostem. Tvoje pozice se nezobrazí, pokud nejsi mezi prvními pěti, ale můžeš sledovat své statistiky s ?stats a cílit na špičku!"
+            },
+            {
+                name: "?achievements",
+                cooldown: "Žádné",
+                description: "Použij ?achievements k zobrazení seznamu dostupných achievementů, jako je 'Kovář hvězd' (1000 střepů) a 'Kosmický sběratel' (5000 střepů). Tyto milníky odměňují tvůj pokrok uznáním, které se zobrazí v ?check. V budoucnu mohou přibýt další achievementy, takže pokračuj ve sběru střepů, abys je všechny odemkl!"
+            },
+            {
+                name: "?event",
+                cooldown: "Žádné",
+                description: "Příkaz ?event zobrazí informace o aktuální události (pokud probíhá), jako je Hvězdná bouře (dvojité střepy), Kvíz (odpověz na otázku) nebo Hledání pokladů (tři použití ?collect přidá 50 střepů). Také ukáže zbývající čas. Události se konají přibližně každých 45 minut a trvají 10 minut, nabízejí unikátní příležitosti k zvyšování tvých střepů. Pokud žádná událost není aktivní, bot ti oznámí, že další brzy přijde."
+            }
+        ];
+
+        function filterCommands() {
+            const search = document.querySelector('.search-bar').value.toLowerCase();
+            const filteredCommands = commands.filter(cmd => cmd.name.toLowerCase().includes(search));
+            const commandsList = document.getElementById('commands-list');
+            commandsList.innerHTML = '';
+
+            filteredCommands.forEach(cmd => {
+                const div = document.createElement('div');
+                div.classList.add('command');
+                div.textContent = cmd.name;
+                div.onclick = () => showDetails(cmd);
+                commandsList.appendChild(div);
+            });
+        }
+
+        function showDetails(command) {
+            const detailsDiv = document.getElementById('command-details');
+            detailsDiv.style.display = 'block';
+            detailsDiv.innerHTML = `
+                <h3>${command.name}</h3>
+                <p class="cooldown">Cooldown: ${command.cooldown}</p>
+                <p>${command.description}</p>
+            `;
+
+            const allCommands = document.querySelectorAll('.command');
+            allCommands.forEach(cmd => cmd.classList.remove('active'));
+            const selectedCommand = Array.from(allCommands).find(cmd => cmd.textContent === command.name);
+            if (selectedCommand) selectedCommand.classList.add('active');
+        }
+
+        // Initial load of commands
+        filterCommands();
+    </script>
+</body>
+</html>
