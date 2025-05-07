@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fscitechdaily.com%2Fimages%2FHubble-Veil-Nebula-scaled.jpg&f=1&nofb=1&ipt=66146c8b4d395c13294ace9da2a682b9c79842bf5b021651a0f427327061541f') no-repeat center center fixed;
+            background: url('nebula.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #e0e0e0;
             display: flex;
@@ -21,7 +21,7 @@
             background: rgba(0, 0, 0, 0.85);
             padding: 30px;
             border-radius: 15px;
-            max-width: 800px;
+            max-width: 1000px;
             width: 90%;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
@@ -47,10 +47,15 @@
             border-color: #ffeb3b;
             box-shadow: 0 0 10px #ffeb3b;
         }
+        .content {
+            display: flex;
+            gap: 20px;
+        }
         .commands-list {
-            max-height: 300px;
+            flex: 1;
+            max-width: 250px;
+            max-height: 500px;
             overflow-y: auto;
-            margin-bottom: 20px;
         }
         .command {
             padding: 10px;
@@ -67,21 +72,35 @@
             background: rgba(255, 215, 0, 0.5);
         }
         .details {
+            flex: 2;
             background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
+            padding: 20px;
             border-radius: 5px;
             display: none;
+            line-height: 1.6;
         }
         .details h3 {
             color: #ffd700;
             margin-top: 0;
+            font-size: 24px;
+        }
+        .details h4 {
+            color: #ffeb3b;
+            margin: 15px 0 5px;
+            font-size: 18px;
         }
         .details p {
             margin: 5px 0;
-            line-height: 1.5;
+            padding-left: 10px;
+            border-left: 2px solid #ffd700;
         }
         .cooldown {
             color: #ffeb3b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #ffd700;
             font-weight: bold;
         }
     </style>
@@ -90,8 +109,10 @@
     <div class="container">
         <h1>Pomocník Sběrače Hvězdných střepů 🌌</h1>
         <input type="text" class="search-bar" placeholder="Vyhledej příkaz (např. ?collect)" oninput="filterCommands()">
-        <div class="commands-list" id="commands-list"></div>
-        <div class="details" id="command-details"></div>
+        <div class="content">
+            <div class="commands-list" id="commands-list"></div>
+            <div class="details" id="command-details"></div>
+        </div>
     </div>
 
     <script>
@@ -99,72 +120,172 @@
             {
                 name: "?collect",
                 cooldown: "3 minuty",
-                description: "Příkaz ?collect ti umožní sbírat Hvězdné střepy z různých kosmických událostí. Při každém použití máš šanci získat od -25 do +50 Hvězdných střepů, doprovázených vtipnou zprávou a emojí (např. 🌠, ☄️). Tvoje odměny ovlivňují tvůj násobitel prestiže, aktivní boosty a probíhající události, jako je Hvězdná bouře. Je malá šance na negativní výsledek (např. ztráta střepů do černé díry), ale tvůj zůstatek nikdy neklesne pod 0. Během události Hledání pokladů tři použití ?collect přidá 50 bonusových střepů!"
+                description: `
+                    <h4>Jak to funguje? 🌠</h4>
+                    <p>Příkaz <span class="highlight">?collect</span> ti umožní sbírat <span class="highlight">Hvězdné střepy</span> z různých kosmických událostí. Při každém použití máš šanci získat od <span class="highlight">-25</span> do <span class="highlight">+50 střepů</span>, doprovázených zprávou a emojí (např. 🌠, ☄️).</p>
+                    <h4>Co ovlivňuje zisk? 🚀</h4>
+                    <p>Zisky jsou ovlivněny tvým <span class="highlight">násobitelem prestiže</span>, aktivními boosty a probíhajícími událostmi (např. Hvězdná bouře). Během události <span class="highlight">Hledání pokladů</span> tři použití příkazu přidají bonus <span class="highlight">50 střepů</span>! 🎉</p>
+                    <h4>Možné výsledky ⚡</h4>
+                    <p>Můžeš narazit na negativní událost (např. ztráta střepů do černé díry), ale nikdy neklesneš pod 0. Možné zisky zahrnují např. <span class="highlight">+30 střepů</span> za supernovu nebo <span class="highlight">+50 střepů</span> za legendární krystal. 🌟</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Používej během <span class="highlight">Hvězdné bouře</span> nebo s aktivním boostem, abys maximalizoval zisk. Sleduj události přes <span class="highlight">?event</span>!</p>
+                `
             },
             {
                 name: "?check",
                 cooldown: "Žádné",
-                description: "Příkaz ?check zobrazí tvůj aktuální počet Hvězdných střepů, hodnost (od Nováčka po Astrální), úroveň prestiže, pokrok k další hodnosti, a případné achievementy nebo tituly, které jsi získal. Pokrok je uveden jako procento podle potřebných střepů pro další hodnost. Pokud nemáš achievementy (např. 'Kovář hvězd') nebo tituly, zobrazí se 'Žádné'. Použij to k přehledu svého postupu vesmírem!"
+                description: `
+                    <h4>Co zobrazuje? 📊</h4>
+                    <p>Příkaz <span class="highlight">?check</span> ukáže tvůj aktuální stav: počet <span class="highlight">Hvězdných střepů</span>, hodnost (od Nováčka po Astrální), úroveň <span class="highlight">prestiže</span> a pokrok k další hodnosti v procentech.</p>
+                    <h4>Další informace 🌟</h4>
+                    <p>Zobrazí také tvé <span class="highlight">achievementy</span> (např. 'Kovář hvězd') a <span class="highlight">tituly</span> (např. 'Hvězdář'). Pokud žádné nemáš, uvidíš 'Žádné'.</p>
+                    <h4>Proč používat? 💡</h4>
+                    <p>Je to ideální způsob, jak sledovat svůj pokrok ve sběru střepů a zjistit, jak daleko jsi od další hodnosti. Používej pravidelně, abys měl přehled! 🚀</p>
+                `
             },
             {
                 name: "?rankup",
                 cooldown: "Žádné",
-                description: "Použij ?rankup k postupu na další hodnost od Nováčka po Astrální. Každá hodnost vyžaduje rostoucí počet Hvězdných střepů (např. 100 pro Učně, 250 pro Adepta), který roste exponenciálně. Pokud nemáš dost střepů, bot ti řekne, kolik ještě chybí. Po dosažení Astrální už nemůžeš pokračovat, ale můžeš použít ?prestige k resetu a získání násobitele. Zkontroluj svůj pokrok s ?check!"
+                description: `
+                    <h4>Jak to funguje? 🌟</h4>
+                    <p>Příkaz <span class="highlight">?rankup</span> tě posune na další hodnost, od <span class="highlight">Nováčka</span> až po <span class="highlight">Astrální</span>. Každá hodnost vyžaduje více <span class="highlight">Hvězdných střepů</span> (např. 100 pro Učně, 250 pro Adepta).</p>
+                    <h4>Co se stane? 📈</h4>
+                    <p>Pokud nemáš dost střepů, bot ti řekne, kolik ještě potřebuješ. Po dosažení Astrální hodnosti už nemůžeš rankovat dál, ale můžeš použít <span class="highlight">?prestige</span>.</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Zkontroluj svůj pokrok pomocí <span class="highlight">?check</span>. Sbírej střepy během událostí nebo s boostem, abys rychleji postoupil! 🚀</p>
+                `
             },
             {
                 name: "?prestige",
                 cooldown: "Žádné",
-                description: "Příkaz ?prestige je dostupný, jakmile dosáhneš hodnosti Astrální. Resetuje tvou hodnost na Nováčka a střepy na 0, ale zvýší tvou prestiž o 1 a přidá trvalý násobitel Hvězdných střepů (např. Prestiž 1 dává 1.5x, Prestiž 2 dává 2.0x, až 5.0x na Prestiži 9). Je to strategická volba pro rychlejší sběr střepů, ideální pro dlouhodobé hráče, kteří chtějí vést žebříček."
+                description: `
+                    <h4>Co to dělá? ✨</h4>
+                    <p>Příkaz <span class="highlight">?prestige</span> je dostupný na hodnosti <span class="highlight">Astrální</span>. Resetuje tvou hodnost na Nováčka a střepy na 0, ale přidá ti <span class="highlight">+1 prestiž</span>.</p>
+                    <h4>Výhody 📈</h4>
+                    <p>S každou úrovní prestiže získáš trvalý <span class="highlight">násobitel</span> (např. Prestiž 1: 1.5x, Prestiž 2: 2.0x, až 5.0x na Prestiži 9). To ti pomůže sbírat střepy rychleji.</p>
+                    <h4>Strategie 💡</h4>
+                    <p>Jde o dlouhodobou strategii – ideální, pokud chceš vést žebříček. Před prestižem si kup tituly v obchodě, abys střepy využil! 🌌</p>
+                `
             },
             {
                 name: "?trade",
                 cooldown: "Žádné",
-                description: "S příkazem ?trade můžeš poslat Hvězdné střepy jinému divákovi ve formátu ?trade @uživatel částka (např. ?trade @tm_o7 100). Musíš mít dost střepů a částka musí být kladná. Cílový uživatel musí existovat v datech bota (tzn. alespoň jednou napsal do chatu). Je to skvělý způsob, jak pomoci přátelům nebo obchodovat, ale věnuj tomu pozornost, protože se to nedá vrátit!"
+                description: `
+                    <h4>Jak to funguje? 🚀</h4>
+                    <p>Příkaz <span class="highlight">?trade</span> ti umožní poslat <span class="highlight">Hvězdné střepy</span> jinému uživateli ve formátu <span class="highlight">?trade @uživatel částka</span> (např. ?trade @tm_o7 100).</p>
+                    <h4>Podmínky 📜</h4>
+                    <p>Musíš mít dost střepů, částka musí být kladná a uživatel musí existovat (alespoň jednou psal do chatu). Trade nelze vrátit zpět!</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Používej k podpoře přátel nebo k obchodu. Dávej pozor, komu střepy posíláš, a sleduj svůj zůstatek přes <span class="highlight">?check</span>! 🤝</p>
+                `
             },
             {
                 name: "?boost",
                 cooldown: "1 hodina",
-                description: "Příkaz ?boost zdvojnásobí tvé zisky Hvězdných střepů na 10 minut a ovlivňuje jak ?collect, tak pasivní přírůstek. Má 1hodinový cooldown, takže jeho použití plánuj opatrně – zejména během událostí jako Hvězdná bouře pro maximální výsledek. Boost se násobí s jinými násobiteli (prestiž, dárkový boost, události), takže je to silný nástroj pro rychlé hromadění střepů."
+                description: `
+                    <h4>Jak to funguje? 🚀</h4>
+                    <p>Příkaz <span class="highlight">?boost</span> zdvojnásobí tvé zisky <span class="highlight">Hvězdných střepů</span> na <span class="highlight">10 minut</span>. Platí pro <span class="highlight">?collect</span> i pasivní zisky.</p>
+                    <h4>Výhody 📈</h4>
+                    <p>Boost se násobí s jinými násobiteli (prestiž, dárkový boost, události), takže můžeš vydělat hodně střepů – třeba během <span class="highlight">Hvězdné bouře</span>.</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Používej strategicky během událostí nebo když máš čas aktivně sbírat. Zkontroluj cooldown přes <span class="highlight">?cooldowns</span>! 🌟</p>
+                `
             },
             {
                 name: "?daily",
                 cooldown: "24 hodin",
-                description: "Použij ?daily k vyzvednutí denní odměny Hvězdných střepů, jejíž výše závisí na tvé hodnosti a prestiži (např. 50 střepů u Nováčka, více u vyšších hodností). Vzorec je 50 * (1 + hodnost * 0.2) * násobitel prestiže, takže vyšší hodnosti a prestiže přinášejí větší odměny. Je to spolehlivý způsob, jak si budovat zásoby, ale můžeš si to vyzvednout jen jednou za 24 hodin."
+                description: `
+                    <h4>Co získáš? 🌞</h4>
+                    <p>Příkaz <span class="highlight">?daily</span> ti dá denní odměnu <span class="highlight">Hvězdných střepů</span>. Výše závisí na tvé hodnosti a prestiži (např. 50 střepů u Nováčka, více u vyšších hodností).</p>
+                    <h4>Jak se počítá? 📈</h4>
+                    <p>Vzorec je: <span class="highlight">50 * (1 + hodnost * 0.2) * násobitel prestiže</span>. Vyšší hodnost a prestiž = větší odměna!</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Nezapomeň si vyzvednout každý den! Zkontroluj, kdy můžeš znovu, přes <span class="highlight">?cooldowns</span>. 🚀</p>
+                `
             },
             {
                 name: "?cooldowns",
                 cooldown: "Žádné",
-                description: "Příkaz ?cooldowns ukáže zbývající čas na cooldowny tvých příkazů: ?collect (3 minuty), ?boost (1 hodina), ?daily (24 hodin) a ?gift (2 hodiny). Pokud je příkaz připraven, zobrazí se ✅, jinak zbytek času v hodinách, minutách a sekundách (např. 2h 15m 30s). Pomáhá ti plánovat akce a maximalizovat efektivitu sběru střepů."
+                description: `
+                    <h4>Co ukazuje? ⏳</h4>
+                    <p>Příkaz <span class="highlight">?cooldowns</span> ti zobrazí zbývající čas na příkazy: <span class="highlight">?collect</span> (3 minuty), <span class="highlight">?boost</span> (1 hodina), <span class="highlight">?daily</span> (24 hodin), <span class="highlight">?gift</span> (2 hodiny).</p>
+                    <h4>Jak to vypadá? 📊</h4>
+                    <p>Pokud je příkaz připraven, uvidíš ✅. Jinak se zobrazí čas (např. 2h 15m 30s). Pomáhá ti plánovat své akce.</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Používej pravidelně, abys věděl, kdy můžeš příkazy znovu použít a maximalizoval sběr střepů! 🌟</p>
+                `
             },
             {
                 name: "?gift",
                 cooldown: "2 hodiny",
-                description: "Příkaz ?gift ti umožní utratit 200 Hvězdných střepů a darovat jinému uživateli 5minutový 1.5x boost Hvězdných střepů ve formátu ?gift @uživatel (např. ?gift @tm_o7). Nemůžeš si darovat sám sobě a cílový uživatel musí existovat v datech bota. Boost platí pro jejich ?collect a pasivní zisky a kombinuje se s jinými násobiteli. S 2hodinovým cooldownem je to skvělý způsob, jak podpořit přátele v chatu!"
+                description: `
+                    <h4>Co to dělá? 🎁</h4>
+                    <p>Příkaz <span class="highlight">?gift</span> ti umožní utratit <span class="highlight">200 střepů</span> a darovat jinému uživateli 5minutový <span class="highlight">1.5x boost</span>. Použij ve formátu <span class="highlight">?gift @uživatel</span> (např. ?gift @tm_o7).</p>
+                    <h4>Podmínky 📜</h4>
+                    <p>Nemůžeš darovat sám sobě, uživatel musí existovat a ty musíš mít dost střepů. Boost se kombinuje s jinými násobiteli.</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Podpoř přátele během událostí, aby vydělali víc! Zkontroluj svůj zůstatek přes <span class="highlight">?check</span> a cooldown přes <span class="highlight">?cooldowns</span>. 🤝</p>
+                `
             },
             {
                 name: "?stats",
                 cooldown: "Žádné",
-                description: "Příkaz ?stats poskytne podrobný přehled tvé aktivity: aktuální počet střepů, celkový počet vydělaných střepů, počet účastí na událostech, odeslaných zpráv, aktuální hodnost a úroveň prestiže. Je to skvělý způsob, jak zhodnotit svůj pokrok a zjistit, jak aktivní jsi v univerzu Sběrače Hvězdných střepů. Porovnej své statistiky s ostatními pomocí ?leaderboard!"
+                description: `
+                    <h4>Co ukazuje? 📊</h4>
+                    <p>Příkaz <span class="highlight">?stats</span> ti poskytne přehled: aktuální počet <span class="highlight">střepů</span>, celkově vydělané střepy, počet účastí na událostech, odeslané zprávy, hodnost a prestiž.</p>
+                    <h4>Proč to používat? 🌟</h4>
+                    <p>Zjistíš, jak aktivní jsi byl v univerzu Sběrače Hvězdných střepů. Skvělé pro porovnání s ostatními přes <span class="highlight">?leaderboard</span>!</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Sleduj svůj pokrok a motivuj se k větší aktivitě. Zvyšuj účast na událostech, abys zlepšil své statistiky! 🚀</p>
+                `
             },
             {
                 name: "?shop",
                 cooldown: "Žádné",
-                description: "Použij ?shop k zobrazení dostupných položek nebo ?shop <položka> k jejich nákupu. Mezi položky patří tituly jako 'Hvězdář' (1000 střepů) a 'Mlhovina' (2500 střepů) a boosty jako 5minutový 1.5x boost (500 střepů). Tituly jsou kosmetické a zobrazí se v ?check, zatímco boosty dočasně zvyšují tvé zisky. K nákupu potřebuješ dost střepů a nákupy jsou trvalé (kromě boostů, které vyprší)."
+                description: `
+                    <h4>Co nabízí? 🏪</h4>
+                    <p>Příkaz <span class="highlight">?shop</span> ukáže dostupné položky. Koupíš je přes <span class="highlight">?shop <položka></span>. Nabídka: tituly (<span class="highlight">Hvězdář</span> za 1000 střepů, <span class="highlight">Mlhovina</span> za 2500 střepů) a 5minutový <span class="highlight">1.5x boost</span> (500 střepů).</p>
+                    <h4>Co to přináší? 🌟</h4>
+                    <p>Tituly jsou kosmetické a zobrazí se v <span class="highlight">?check</span>. Boosty dočasně zvyšují zisky. Nákupy jsou trvalé (kromě boostů).</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Kupuj tituly před prestižem, abys využil střepy! Boosty použij během událostí pro větší zisk. 🛒</p>
+                `
             },
             {
                 name: "?leaderboard",
                 cooldown: "Žádné",
-                description: "Příkaz ?leaderboard zobrazí 5 nejlepších hráčů s největším počtem Hvězdných střepů spolu s jejich úrovní prestiže. Je to skvělý způsob, jak zjistit, kdo vede v sběru střepů a motivovat se k vyšším hodnostem. Tvoje pozice se nezobrazí, pokud nejsi mezi prvními pěti, ale můžeš sledovat své statistiky s ?stats a cílit na špičku!"
+                description: `
+                    <h4>Co ukazuje? 🏆</h4>
+                    <p>Příkaz <span class="highlight">?leaderboard</span> zobrazí <span class="highlight">5 nejlepších hráčů</span> podle počtu Hvězdných střepů a jejich úroveň prestiže.</p>
+                    <h4>Proč to používat? 🌟</h4>
+                    <p>Zjistíš, kdo vede, a můžeš se motivovat k lepšímu sběru. Tvoje pozice se ukáže, jen pokud jsi v TOP 5.</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Srovnej své statistiky přes <span class="highlight">?stats</span> a zvyšuj aktivitu během událostí, abys se dostal na vrchol! 🚀</p>
+                `
             },
             {
                 name: "?achievements",
                 cooldown: "Žádné",
-                description: "Použij ?achievements k zobrazení seznamu dostupných achievementů, jako je 'Kovář hvězd' (1000 střepů) a 'Kosmický sběratel' (5000 střepů). Tyto milníky odměňují tvůj pokrok uznáním, které se zobrazí v ?check. V budoucnu mohou přibýt další achievementy, takže pokračuj ve sběru střepů, abys je všechny odemkl!"
+                description: `
+                    <h4>Jaké jsou? 🌟</h4>
+                    <p>Příkaz <span class="highlight">?achievements</span> ukáže dostupné achievementy: <span class="highlight">Kovář hvězd</span> (1000 střepů) a <span class="highlight">Kosmický sběratel</span> (5000 střepů).</p>
+                    <h4>Kde je vidět? 📊</h4>
+                    <p>Po odemčení se achievementy zobrazí v <span class="highlight">?check</span>. V budoucnu mohou přibýt další milníky!</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Sbírej střepy aktivně a zapojuj se do událostí, abys odemkl všechny achievementy! Sleduj svůj pokrok. 🏅</p>
+                `
             },
             {
                 name: "?event",
                 cooldown: "Žádné",
-                description: "Příkaz ?event zobrazí informace o aktuální události (pokud probíhá), jako je Hvězdná bouře (dvojité střepy), Kvíz (odpověz na otázku) nebo Hledání pokladů (tři použití ?collect přidá 50 střepů). Také ukáže zbývající čas. Události se konají přibližně každých 45 minut a trvají 10 minut, nabízejí unikátní příležitosti k zvyšování tvých střepů. Pokud žádná událost není aktivní, bot ti oznámí, že další brzy přijde."
+                description: `
+                    <h4>Co ukazuje? 🌌</h4>
+                    <p>Příkaz <span class="highlight">?event</span> ti řekne, jaká událost právě probíhá (např. <span class="highlight">Hvězdná bouře</span>, <span class="highlight">Kvíz</span>, <span class="highlight">Hledání pokladů</span>) a kolik času zbývá.</p>
+                    <h4>Typy událostí 🎉</h4>
+                    <p><span class="highlight">Hvězdná bouře</span>: dvojité střepy. <span class="highlight">Kvíz</span>: odpověz na otázku. <span class="highlight">Hledání pokladů</span>: 3x <span class="highlight">?collect</span> = 50 střepů. Události trvají 10 minut a jsou každých ~45 minut.</p>
+                    <h4>Tipy 💡</h4>
+                    <p>Zapoj se do každé události, abys maximalizoval zisky! Pokud žádná není aktivní, připrav se na další. 🚀</p>
+                `
             }
         ];
 
@@ -181,6 +302,14 @@
                 div.onclick = () => showDetails(cmd);
                 commandsList.appendChild(div);
             });
+
+            // Automaticky vyber první příkaz po filtrování, pokud existuje
+            if (filteredCommands.length > 0) {
+                showDetails(filteredCommands[0]);
+            } else {
+                const detailsDiv = document.getElementById('command-details');
+                detailsDiv.style.display = 'none';
+            }
         }
 
         function showDetails(command) {
@@ -189,7 +318,7 @@
             detailsDiv.innerHTML = `
                 <h3>${command.name}</h3>
                 <p class="cooldown">Cooldown: ${command.cooldown}</p>
-                <p>${command.description}</p>
+                ${command.description}
             `;
 
             const allCommands = document.querySelectorAll('.command');
