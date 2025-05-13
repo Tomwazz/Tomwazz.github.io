@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Casino Bot - Návod</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #1a0033 0%, #0d0d0d 100%);
+            overflow-x: hidden;
+            margin: 0;
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(147, 51, 234, 0.8), 0 0 20px rgba(147, 51, 234, 0.6);
+        }
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(147, 51, 234, 0.5);
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .symbol-img {
+            display: inline-block;
+            vertical-align: middle;
+            object-fit: cover;
+            width: 24px;
+            height: 24px;
+        }
+        /* Intro Overlay Styles */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a0033 0%, #0d0d0d 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .dice {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            animation: roll 3s ease-in-out forwards;
+        }
+        #dice1 {
+            top: 15%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+        #dice2 {
+            top: 15%;
+            left: 60%;
+            animation-delay: 0.2s;
+        }
+        @keyframes roll {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(80px) rotate(360deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(160px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        #age-button {
+            display: none;
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to right, #9333ea, #ec4899);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.6);
+        }
+        #age-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.8);
+        }
+        .hidden {
+            display: none;
+        }
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+        #main-content.visible {
+            opacity: 1;
+        }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            /* General adjustments */
+            body {
+                font-size: 14px;
+            }
+            .container {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+            /* Header */
+            header {
+                padding: 1.5rem 0;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            /* Intro Overlay */
+            .dice {
+                width: 60px;
+                height: 60px;
+            }
+            #dice1 {
+                top: 10%;
+                left: 15%;
+            }
+            #dice2 {
+                top: 10%;
+                left: 70%;
+            }
+            @keyframes roll {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: translateY(60px) rotate(360deg);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: translateY(120px) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+            #age-button {
+                padding: 10px 20px;
+                font-size: 1rem;
+                border-radius: 6px;
+            }
+            /* Sections */
+            section {
+                padding: 2rem 0;
+            }
+            .card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            .card:hover {
+                transform: none; /* Disable hover effects on mobile */
+                box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+            }
+            /* Grid layouts */
+            .grid-cols-2,
+            .grid-cols-3,
+            .grid-cols-4 {
+                grid-template-columns: 1fr !important;
+            }
+            /* Symbol images */
+            .symbol-img {
+                width: 20px;
+                height: 20px;
+            }
+            /* Footer */
+            footer {
+                padding: 1rem 0;
+            }
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            h3 {
+                font-size: 1.25rem;
+            }
+            .container {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .dice {
+                width: 50px;
+                height: 50px;
+            }
+            #age-button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-200 font-sans">
+    <!-- Intro Overlay -->
+    <div id="intro-overlay">
+        <img id="dice1" class="dice" src="assets/dice1.png" alt="Dice 1">
+        <img id="dice2" class="dice" src="assets/dice2.png" alt="Dice 2">
+        <button id="age-button">JSEM STARŠÍ 18 LET</button>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="hidden">
+        <!-- Hlavička -->
+        <header class="bg-gradient-to-r from-purple-900 to-pink-800 text-white py-8">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-5xl font-bold neon-glow font-['Orbitron']">🎰 Twitch Casino Bot</h1>
+                <p class="mt-3 text-xl">Zažij kasino přímo v Twitch chatu! 💰</p>
+            </div>
+        </header>
+
+        <!-- Úvod -->
+        <section class="py-16 fade-in">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-8 text-center neon-glow font-['Orbitron']">Co je Casino Bot?</h2>
+                <p class="text-lg max-w-3xl mx-auto text-center">
+                    Casino Bot přináší vzrušení kasina na váš Twitch kanál! Nejprve se registruj příkazem <code>🍳join</code>, abys mohl začít hrát! Hráči sázejí virtuální <strong>Twitch Bucks</strong>, získávají <strong>XP</strong> a stoupají v žebříčku VIP úrovní (Noob, Bronze, Silver, Gold). Vyzkoušej automaty, ruletu, blackjack a další hry. Během <strong>Casino Fever</strong> se výhry zdvojnásobují!
+                </p>
+            </div>
+        </section>
+
+        <!-- Příkazy -->
+        <section class="py-16 bg-black bg-opacity-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-8 text-center neon-glow font-['Orbitron']">Seznam příkazů</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳join</h3>
+                        <p>Registruje tě do kasina a dá ti 1000 Twitch Bucks na začátek. Např. <code>🍳join</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳slots <sázka></h3>
+                        <p>Roztoč herní automat. Výchozí sázka: 10 bucks. Např. <code>🍳slots 50</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳dice <sázka> <2-12></h3>
+                        <p>Hází dvěma kostkami. Tipni součet (2-12). Např. <code>🍳dice 20 7</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳card <sázka> <red/black></h3>
+                        <p>Tipni barvu karty (červená/černá). Např. <code>🍳card 30 red</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳roulette <sázka> <typ> [číslo]</h3>
+                        <p>Sázka na ruletu (red, black, odd, even, number). Např. <code>🍳roulette 25 number 17</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳blackjack <sázka></h3>
+                        <p>Hraj blackjack proti dealerovi. Např. <code>🍳blackjack 40</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳baccarat <sázka> <player/banker/tie></h3>
+                        <p>Sázka na hráče, bankéře nebo remízu. Např. <code>🍳baccarat 50 player</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳craps <sázka> <pass/dont></h3>
+                        <p>Hází kostkami v craps. Sázka na pass nebo dont. Např. <code>🍳craps 30 pass</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳keno <sázka> <1-6 čísel></h3>
+                        <p>Vyber 1-6 čísel (1-80). Např. <code>🍳keno 20 5 12 23</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳balance</h3>
+                        <p>Zobrazí tvůj zůstatek Twitch Bucks. Např. <code>🍳balance</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳leaderboard</h3>
+                        <p>Zobrazí žebříček 5 nejlepších hráčů. Např. <code>🍳leaderboard</code>.</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">🍳rank</h3>
+                        <p>Zobrazí tvou VIP úroveň a XP. Např. <code>🍳rank</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIP úrovně -->
+        <section class="py-16 bg-black bg-opacity-50 fade-in">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-8 text-center neon-glow font-['Orbitron']">VIP úrovně</h2>
+                <p class="text-lg max-w-3xl mx-auto mb-6 text-center">
+                    Získáváš <strong>XP</strong> za každou sázku (1 XP za každých 10 bucks). Vyšší VIP úroveň znamená větší multiplikátor výher a vyšší maximální sázku:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse text-center">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">Noob</h3>
+                        <p>0+ XP</p>
+                        <p>Multiplikátor: 1.0x</p>
+                        <p>Max sázka: 500 bucks</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse text-center">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">Bronze</h3>
+                        <p>100+ XP</p>
+                        <p>Multiplikátor: 1.1x</p>
+                        <p>Max sázka: 1000 bucks</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse text-center">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">Silver</h3>
+                        <p>500+ XP</p>
+                        <p>Multiplikátor: 1.25x</p>
+                        <p>Max sázka: 5000 bucks</p>
+                    </div>
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse text-center">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-300">Gold</h3>
+                        <p>1000+ XP</p>
+                        <p>Multiplikátor: 1.5x</p>
+                        <p>Max sázka: 10000 bucks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hry -->
+        <section class="py-16 fade-in">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-8 text-center neon-glow font-['Orbitron']">Jak fungují hry?</h2>
+                <div class="space-y-8">
+                    <!-- Slots -->
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-3xl font-semibold mb-4 text-pink-400">🍳slots</h3>
+                        <p>Roztočíš virtuální automat se symboly: 
+                            <img src="assets/hovno.avif" alt="xd" class="symbol-img">
+                            <img src="assets/hrnec.avif" alt="hrnec" class="symbol-img">
+                            <img src="assets/kapr.avif" alt="kapr" class="symbol-img">
+                            <img src="assets/milion.avif" alt="milion" class="symbol-img">
+                            <img src="assets/motorka.avif" alt="motorka" class="symbol-img">
+                            <img src="assets/ohen.avif" alt="ohen" class="symbol-img">
+                            <img src="assets/penize.avif" alt="penize" class="symbol-img">
+                            <img src="assets/prachy.avif" alt="prachy" class="symbol-img">
+                            <img src="assets/slehacka.avif" alt="slehacka" class="symbol-img">
+                            <img src="assets/sunkofleky.avif" alt="sunkofleky" class="symbol-img">.
+                            Výhra závisí na kombinaci tří symbolů:
+                        </p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>
+                                <img src="assets/hovno.avif" alt="xd" class="symbol-img">
+                                <img src="assets/hovno.avif" alt="xd" class="symbol-img">
+                                <img src="assets/hovno.avif" alt="xd" class="symbol-img">,
+                                <img src="assets/hrnec.avif" alt="hrnec" class="symbol-img">
+                                <img src="assets/hrnec.avif" alt="hrnec" class="symbol-img">
+                                <img src="assets/hrnec.avif" alt="hrnec" class="symbol-img">,
+                                <img src="assets/ohen.avif" alt="ohen" class="symbol-img">
+                                <img src="assets/ohen.avif" alt="ohen" class="symbol-img">
+                                <img src="assets/ohen.avif" alt="ohen" class="symbol-img">: 5x sázka
+                            </li>
+                            <li>
+                                <img src="assets/kapr.avif" alt="kapr" class="symbol-img">
+                                <img src="assets/kapr.avif" alt="kapr" class="symbol-img">
+                                <img src="assets/kapr.avif" alt="kapr" class="symbol-img">,
+                                <img src="assets/slehacka.avif" alt="slehacka" class="symbol-img">
+                                <img src="assets/slehacka.avif" alt="slehacka" class="symbol-img">
+                                <img src="assets/slehacka.avif" alt="slehacka" class="symbol-img">,
+                                <img src="assets/penize.avif" alt="penize" class="symbol-img">
+                                <img src="assets/penize.avif" alt="penize" class="symbol-img">
+                                <img src="assets/penize.avif" alt="penize" class="symbol-img">: 10x sázka
+                            </li>
+                            <li>
+                                <img src="assets/motorka.avif" alt="motorka" class="symbol-img">
+                                <img src="assets/motorka.avif" alt="motorka" class="symbol-img">
+                                <img src="assets/motorka.avif" alt="motorka" class="symbol-img">,
+                                <img src="assets/sunkofleky.avif" alt="sunkofleky" class="symbol-img">
+                                <img src="assets/sunkofleky.avif" alt="sunkofleky" class="symbol-img">
+                                <img src="assets/sunkofleky.avif" alt="sunkofleky" class="symbol-img">,
+                                <img src="assets/prachy.avif" alt="prachy" class="symbol-img">
+                                <img src="assets/prachy.avif" alt="prachy" class="symbol-img">
+                                <img src="assets/prachy.avif" alt="prachy" class="symbol-img">: 15x sázka
+                            </li>
+                            <li>
+                                <img src="assets/milion.avif" alt="milion" class="symbol-img">
+                                <img src="assets/milion.avif" alt="milion" class="symbol-img">
+                                <img src="assets/milion.avif" alt="milion" class="symbol-img">: 100x sázka (JACKPOT!)
+                            </li>
+                        </ul>
+                        <p class="mt-2">Příklad: <code>🍳slots 50</code> – vsadíš 50 bucks na automaty.</p>
+                        <p class="mt-2">Maximální sázka závisí na VIP úrovni. Během Casino Fever (2 minuty každých 10-15 minut) se výhry zdvojnásobují.</p>
+                    </div>
+
+                    <!-- Dice -->
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-3xl font-semibold mb-4 text-pink-400">🍳dice</h3>
+                        <p>Házíš dvěma kostkami (1-6). Tipneš součet (2-12). Pokud uhodneš:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Součet ≤ 7: 4x sázka</li>
+                            <li>Součet > 7: 6x sázka</li>
+                        </ul>
+                        <p class="mt-2">Příklad: <code>🍳dice 20 7</code> – vsadíš 20 bucks a tipuješ součet 7.</p>
+                        <p class="mt-2">Neuhodneš-li, prohraješ sázku. Casino Fever zdvojnásobuje výhry.</p>
+                    </div>
+
+                    <!-- Card -->
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-3xl font-semibold mb-4 text-pink-400">🍳card</h3>
+                        <p>Tipneš barvu karty (červená nebo černá). Pokud uhodneš, dostaneš 2x sázku. Neuhodneš, prohraješ.</p>
+                        <p class="mt-2">Příklad: <code>🍳card 30 red</code> – vsadíš 30 bucks na červenou kartu.</p>
+                        <p class="mt-2">Casino Fever zdvojnásobuje výhry.</p>
+                    </div>
+
+                    <!-- Roulette -->
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-3xl font-semibold mb-4 text-pink-400">🍳roulette</h3>
+                        <p>Sázíš na číslo (0-36), barvu (red/black), liché/sudé (odd/even). Výhry:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Red, Black, Odd, Even: 2x sázka</li>
+                            <li>Číslo 1-36: 35x sázka</li>
+                            <li>Číslo 0: 100x sázka (JACKPOT!)</li>
+                        </ OPP>ul>
+                        <p class="mt-2">Příklad: <code>🍳roulette 25 number 17</code> – vsadíš 25 bucks na číslo 17.</p>
+                        <p class="mt-2">Casino Fever zdvojnásobuje výhry.</p>
+                    </div>
+
+                    <!-- Blackjack -->
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-3xl font-semibold mb-4 text-pink-400">🍳blackjack</h3>
+                        <p>Hraješ proti dealerovi. Cíl je mít součet karet blíže 21, ale nepřesáhnout. Karty: A=11/1, 2-10=hodnota, J/Q/K=10. Výhry:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Vyhráš (nepřesáhneš 21 a máš více než dealer): 2x sázka</li>
+                            <li>Blackjack (21 s 2 kartami): 2.5x sázka</li>
+                            <li>Remíza: 1x sázka</li>
+                        </ul>
+                        <p class="mt-2">Příklad: <code>🍳blackjack 40</code> – vsadíš 40 bucks na hru blackjack.</p>
+                        <p class="mt-2">Dealer táhne karty, dokud nemá alespoň 17. Casino Fever zdvojnásobuje výhry.</p>
+                    </div>
+
+                    <!-- Baccarat -->
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-3xl font-semibold mb-4 text-pink-400">🍳baccarat</h3>
+                        <p>Sázíš na hráče, bankéře nebo remízu. Hráč a bankéř dostanou 2-3 karty, cílem je mít součet blíže 9 (desítky se ignorují). Výhry:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Hráč vyhrává: 2x sázka</li>
+                            <li>Bankéř vyhrává: 1.95x sázka (5% provize)</li>
+                            <li>Remíza: 8x sázka</li>
+                        </ul>
+                        <p class="mt-2">Příklad: <code>🍳baccarat 50 player</code> – vsadíš 50 bucks na hráče.</p>
+                        <p class="mt-2">Casino Fever zdvojnásobuje výhry.</p>
+                    </div>
+
+                    <!-- Craps -->
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-3xl font-semibold mb-4 text-pink-400">🍳craps</h3>
+                        <p>Házíš dvěma kostkami. Sázíš na "pass" nebo "dont". Výhry (zjednodušená pravidla):</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Pass: Součet 7/11 = 2x sázka; 2/3/12 = prohra</li>
+                            <li>Dont: Součet 2/3 = 2x sázka; 12 = remíza (1x sázka); 7/11 = prohra</li>
+                        </ul>
+                        <p class="mt-2">Příklad: <code>🍳craps 30 pass</code> – vsadíš 30 bucks na pass.</p>
+                        <p class="mt-2">Ostatní součty jsou "bod" (bez výhry/prohry). Casino Fever zdvojnásobuje výhry.</p>
+                    </div>
+
+                    <!-- Keno -->
+                    <div class="card bg-gray-800 bg-opacity-80 p-6 rounded-lg pulse">
+                        <h3 class="text-3xl font-semibold mb-4 text-pink-400">🍳keno</h3>
+                        <p>Vybereš 1-6 čísel (1-80). Bot vylosuje 20 čísel. Výhry závisí na počtu shod:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>1 číslo: 1 shoda = 3x sázka</li>
+                            <li>2 čísla: 2 shody = 10x, 1 shoda = 1x</li>
+                            <li>3 čísla: 3 shody = 25x, 2 shody = 2x</li>
+                            <li>4 čísla: 4 shody = 50x, 3 shody = 5x, 2 shody = 1x</li>
+                            <li>5 čísel: 5 shod = 75x, 4 shody = 10x, 3 shody = 2x</li>
+                            <li>6 čísel: 6 shod = 100x (JACKPOT!), 5 shod = 20x, 4 shody = 5x, 3 shody = 1x</li>
+                        </ul>
+                        <p class="mt-2">Příklad: <code>🍳keno 20 5 12 23</code> – vsadíš 20 bucks a vybereš čísla 5, 12, 23.</p>
+                        <p class="mt-2">Casino Fever zdvojnásobuje výhry.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patička -->
+        <footer class="bg-gradient-to-r from-purple-900 to-pink-800 text-white py-6">
+            <div class="container mx-auto px-4 text-center">
+                <p>© 2025 Twitch Casino Bot. Vytvořeno pro zábavu na Twitchi! 🎲</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Show button after dice animation (3 seconds)
+        setTimeout(() => {
+            document.getElementById('age-button').style.display = 'block';
+        }, 3000);
+
+        // Handle button click to hide overlay and show main content
+        document.getElementById('age-button').addEventListener('click', () => {
+            document.getElementById('intro-overlay').style.display = 'none';
+            const mainContent = document.getElementById('main-content');
+            mainContent.classList.remove('hidden');
+            setTimeout(() => {
+                mainContent.classList.add('visible');
+            }, 10); // Slight delay to trigger opacity transition
+        });
+    </script>
+</body>
+</html>
