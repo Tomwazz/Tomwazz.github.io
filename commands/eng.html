@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starshard Collector Helper</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('nebula.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: auto;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 1000px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .search-bar:focus {
+            outline: none;
+            border-color: #ffeb3b;
+            box-shadow: 0 0 10px #ffeb3b;
+        }
+        .content {
+            display: flex;
+            gap: 20px;
+        }
+        .commands-list {
+            flex: 1;
+            max-width: 250px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .command {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .command:hover {
+            background: rgba(255, 215, 0, 0.3);
+        }
+        .command.active {
+            background: rgba(255, 215, 0, 0.5);
+        }
+        .details {
+            flex: 2;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+            line-height: 1.6;
+        }
+        .details h3 {
+            color: #ffd700;
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .details h4 {
+            color: #ffeb3b;
+            margin: 15px 0 5px;
+            font-size: 18px;
+        }
+        .details p {
+            margin: 5px 0;
+            padding-left: 10px;
+            border-left: 2px solid #ffd700;
+        }
+        .cooldown {
+            color: #ffeb3b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Starshard Collector Helper 🌌</h1>
+        <input type="text" class="search-bar" placeholder="Search for a command (e.g., ?collect)" oninput="filterCommands()">
+        <div class="content">
+            <div class="commands-list" id="commands-list"></div>
+            <div class="details" id="command-details"></div>
+        </div>
+    </div>
+
+    <script>
+        const commands = [
+            {
+                name: "?collect",
+                cooldown: "3 minutes",
+                description: `
+                    <h4>How it works? 🌠</h4>
+                    <p>The <span class="highlight">?collect</span> command lets you gather <span class="highlight">Starshards</span> from various cosmic events. Each use gives you a chance to gain <span class="highlight">-25 to +50 Starshards</span>, accompanied by a message and emoji (e.g., 🌠, ☄️).</p>
+                    <h4>What affects gains? 🚀</h4>
+                    <p>Gains are influenced by your <span class="highlight">prestige multiplier</span>, active boosts, and ongoing events (e.g., Starstorm). During a <span class="highlight">Treasure Hunt</span>, three uses of the command grant a <span class="highlight">50 Starshard</span> bonus! 🎉</p>
+                    <h4>Possible outcomes ⚡</h4>
+                    <p>You might hit a negative event (e.g., losing shards to a black hole), but you'll never drop below 0. Possible gains include <span class="highlight">+30 Starshards</span> from a supernova or <span class="highlight">+50 Starshards</span> from a legendary crystal. 🌟</p>
+                    <h4>Tips 💡</h4>
+                    <p>Use during a <span class="highlight">Starstorm</span> or with an active boost to maximize gains. Track events with <span class="highlight">?event</span>! 🚀</p>
+                `
+            },
+            {
+                name: "?check",
+                cooldown: "None",
+                description: `
+                    <h4>What does it show? 📊</h4>
+                    <p>The <span class="highlight">?check</span> command displays your current status: number of <span class="highlight">Starshards</span>, rank (from Novice to Astral), <span class="highlight">prestige</span> level, and progress toward the next rank in percentage.</p>
+                    <h4>Additional info 🌟</h4>
+                    <p>It also shows your <span class="highlight">achievements</span> (e.g., 'Star Forger') and <span class="highlight">titles</span> (e.g., 'Stargazer'). If you have none, it shows 'None'.</p>
+                    <h4>Why use it? 💡</h4>
+                    <p>It’s the best way to track your progress in collecting Starshards and see how close you are to the next rank. Use it regularly to stay updated! 🚀</p>
+                `
+            },
+            {
+                name: "?rankup",
+                cooldown: "None",
+                description: `
+                    <h4>How it works? 🌟</h4>
+                    <p>The <span class="highlight">?rankup</span> command advances you to the next rank, from <span class="highlight">Novice</span> to <span class="highlight">Astral</span>. Each rank requires more <span class="highlight">Starshards</span> (e.g., 100 for Apprentice, 250 for Adept).</p>
+                    <h4>What happens? 📈</h4>
+                    <p>If you don’t have enough Starshards, the bot tells you how many more you need. After reaching Astral, you can’t rank up further but can use <span class="highlight">?prestige</span>.</p>
+                    <h4>Tips 💡</h4>
+                    <p>Check your progress with <span class="highlight">?check</span>. Collect Starshards during events or with a boost to rank up faster! 🚀</p>
+                `
+            },
+            {
+                name: "?prestige",
+                cooldown: "None",
+                description: `
+                    <h4>What does it do? ✨</h4>
+                    <p>The <span class="highlight">?prestige</span> command is available at the <span class="highlight">Astral</span> rank. It resets your rank to Novice and Starshards to 0 but adds <span class="highlight">+1 prestige</span>.</p>
+                    <h4>Benefits 📈</h4>
+                    <p>Each prestige level grants a permanent <span class="highlight">multiplier</span> (e.g., Prestige 1: 1.1x, Prestige 2: 1.2x, up to 1.9x at Prestige 9). This helps you collect Starshards faster.</p>
+                    <h4>Strategy 💡</h4>
+                    <p>It’s a long-term strategy for topping the leaderboard. Buy titles in the shop before prestiging to use up your Starshards! 🌌</p>
+                `
+            },
+            {
+                name: "?trade",
+                cooldown: "None",
+                description: `
+                    <h4>How it works? 🚀</h4>
+                    <p>The <span class="highlight">?trade</span> command lets you send <span class="highlight">Starshards</span> to another user in the format <span class="highlight">?trade @user amount</span> (e.g., ?trade @tm_o7 100).</p>
+                    <h4>Conditions 📜</h4>
+                    <p>You must have enough Starshards, the amount must be positive, and the user must exist (having sent at least one chat message). Trades cannot be undone!</p>
+                    <h4>Tips 💡</h4>
+                    <p>Use to support friends or trade. Be careful who you send Starshards to, and check your balance with <span class="highlight">?check</span>! 🤝</p>
+                `
+            },
+            {
+                name: "?boost",
+                cooldown: "1 hour",
+                description: `
+                    <h4>How it works? 🚀</h4>
+                    <p>The <span class="highlight">?boost</span> command doubles your <span class="highlight">Starshard</span> gains for <span class="highlight">10 minutes</span>. Applies to <span class="highlight">?collect</span> and passive gains.</p>
+                    <h4>Benefits 📈</h4>
+                    <p>The boost stacks with other multipliers (prestige, gift boost, events), so you can earn a lot of Starshards—especially during a <span class="highlight">Starstorm</span>.</p>
+                    <h4>Tips 💡</h4>
+                    <p>Use strategically during events or when you’re actively collecting. Check the cooldown with <span class="highlight">?cooldowns</span>! 🌟</p>
+                `
+            },
+            {
+                name: "?daily",
+                cooldown: "24 hours",
+                description: `
+                    <h4>What do you get? 🌞</h4>
+                    <p>The <span class="highlight">?daily</span> command gives you a daily <span class="highlight">Starshard</span> reward. The amount depends on your rank, prestige, and streak (e.g., 50 Starshards for Novice, more for higher ranks).</p>
+                    <h4>How is it calculated? 📈</h4>
+                    <p>The formula is: <span class="highlight">50 * (1 + rank * 0.2) * prestige multiplier * streak multiplier</span>. Higher rank and prestige = bigger reward!</p>
+                    <h4>Tips 💡</h4>
+                    <p>Claim every day to build your streak! Check when you can claim again with <span class="highlight">?cooldowns</span>. 🚀</p>
+                `
+            },
+            {
+                name: "?cooldowns",
+                cooldown: "None",
+                description: `
+                    <h4>What does it show? ⏳</h4>
+                    <p>The <span class="highlight">?cooldowns</span> command displays the remaining time for commands: <span class="highlight">?collect</span> (3 minutes), <span class="highlight">?boost</span> (1 hour), <span class="highlight">?daily</span> (24 hours), and <span class="highlight">?gift</span> (2 hours).</p>
+                    <h4>How does it look? 📊</h4>
+                    <p>If a command is ready, you’ll see ✅. Otherwise, it shows the remaining time (e.g., 2h 15m 30s). Helps you plan your actions.</p>
+                    <h4>Tips 💡</h4>
+                    <p>Use regularly to know when you can use commands again and maximize your Starshard collection! 🌟</p>
+                `
+            },
+            {
+                name: "?gift",
+                cooldown: "2 hours",
+                description: `
+                    <h4>What does it do? 🎁</h4>
+                    <p>The <span class="highlight">?gift</span> command lets you spend <span class="highlight">200 Starshards</span> to gift another user a 5-minute <span class="highlight">1.5x boost</span>. Use in the format <span class="highlight">?gift @user</span> (e.g., ?gift @tm_o7).</p>
+                    <h4>Conditions 📜</h4>
+                    <p>You can’t gift yourself, the user must exist, and you need enough Starshards. The boost stacks with other multipliers.</p>
+                    <h4>Tips 💡</h4>
+                    <p>Support friends during events to help them earn more! Check your balance with <span class="highlight">?check</span> and cooldown with <span class="highlight">?cooldowns</span>. 🤝</p>
+                `
+            },
+            {
+                name: "?stats",
+                cooldown: "None",
+                description: `
+                    <h4>What does it show? 📊</h4>
+                    <p>The <span class="highlight">?stats</span> command provides an overview: current <span class="highlight">Starshards</span>, total earned Starshards, event participation, messages sent, rank, and prestige.</p>
+                    <h4>Why use it? 🌟</h4>
+                    <p>It shows how active you’ve been in the Starshard Collector universe. Great for comparing with others via <span class="highlight">?leaderboard</span>!</p>
+                    <h4>Tips 💡</h4>
+                    <p>Track your progress and stay motivated. Increase event participation to boost your stats! 🚀</p>
+                `
+            },
+            {
+                name: "?shop",
+                cooldown: "None",
+                description: `
+                    <h4>What’s on offer? 🏪</h4>
+                    <p>The <span class="highlight">?shop</span> command lists available items. Buy them with <span class="highlight">?shop <item></span>. Offerings: titles (<span class="highlight">Stargazer</span> for 1000 Starshards, <span class="highlight">Nebula</span> for 2500 Starshards) and a 5-minute <span class="highlight">1.5x boost</span> (500 Starshards).</p>
+                    <h4>What do they do? 🌟</h4>
+                    <p>Titles are cosmetic and appear in <span class="highlight">?check</span>. Boosts temporarily increase gains. Purchases (except boosts) are permanent.</p>
+                    <h4>Tips 💡</h4>
+                    <p>Buy titles before prestiging to use up Starshards! Use boosts during events for bigger gains. 🛒</p>
+                `
+            },
+            {
+                name: "?leaderboard",
+                cooldown: "None",
+                description: `
+                    <h4>What does it show? 🏆</h4>
+                    <p>The <span class="highlight">?leaderboard</span> command displays the <span class="highlight">top 3 players</span> based on Starshards and their prestige levels.</p>
+                    <h4>Why use it? 🌟</h4>
+                    <p>It shows who’s leading and motivates you to collect more. Your position appears only if you’re in the top 3.</p>
+                    <h4>Tips 💡</h4>
+                    <p>Compare your stats with <span class="highlight">?stats</span> and increase activity during events to climb the leaderboard! 🚀</p>
+                `
+            },
+            {
+                name: "?achievements",
+                cooldown: "None",
+                description: `
+                    <h4>What are they? 🌟</h4>
+                    <p>The <span class="highlight">?achievements</span> command lists available achievements: <span class="highlight">Star Forger</span> (1000 Starshards) and <span class="highlight">Cosmic Hoarder</span> (5000 Starshards).</p>
+                    <h4>Where to see them? 📊</h4>
+                    <p>Once unlocked, achievements appear in <span class="highlight">?check</span>. More milestones may be added in the future!</p>
+                    <h4>Tips 💡</h4>
+                    <p>Collect Starshards actively and participate in events to unlock all achievements! Track your progress. 🏅</p>
+                `
+            },
+            {
+                name: "?event",
+                cooldown: "None",
+                description: `
+                    <h4>What does it show? 🌌</h4>
+                    <p>The <span class="highlight">?event</span> command tells you about the current event (e.g., <span class="highlight">Starstorm</span>, <span class="highlight">Trivia</span>, <span class="highlight">Treasure Hunt</span>) and how much time remains.</p>
+                    <h4>Event types 🎉</h4>
+                    <p><span class="highlight">Starstorm</span>: double Starshards. <span class="highlight">Trivia</span>: answer a question with a number in chat. <span class="highlight">Treasure Hunt</span>: 3x <span class="highlight">?collect</span> = 50 Starshards. Events last 10 minutes and occur every ~45 minutes.</p>
+                    <h4>Tips 💡</h4>
+                    <p>Join every event to maximize gains! If no event is active, prepare for the next one. 🚀</p>
+                `
+            }
+        ];
+
+        function filterCommands() {
+            const search = document.querySelector('.search-bar').value.toLowerCase();
+            const filteredCommands = commands.filter(cmd => cmd.name.toLowerCase().includes(search));
+            const commandsList = document.getElementById('commands-list');
+            commandsList.innerHTML = '';
+
+            filteredCommands.forEach(cmd => {
+                const div = document.createElement('div');
+                div.classList.add('command');
+                div.textContent = cmd.name;
+                div.onclick = () => showDetails(cmd);
+                commandsList.appendChild(div);
+            });
+
+            // Automatically select the first command after filtering, if any
+            if (filteredCommands.length > 0) {
+                showDetails(filteredCommands[0]);
+            } else {
+                const detailsDiv = document.getElementById('command-details');
+                detailsDiv.style.display = 'none';
+            }
+        }
+
+        function showDetails(command) {
+            const detailsDiv = document.getElementById('command-details');
+            detailsDiv.style.display = 'block';
+            detailsDiv.innerHTML = `
+                <h3>${command.name}</h3>
+                <p class="cooldown">Cooldown: ${command.cooldown}</p>
+                ${command.description}
+            `;
+
+            const allCommands = document.querySelectorAll('.command');
+            allCommands.forEach(cmd => cmd.classList.remove('active'));
+            const selectedCommand = Array.from(allCommands).find(cmd => cmd.textContent === command.name);
+            if (selectedCommand) selectedCommand.classList.add('active');
+        }
+
+        // Initial load of commands
+        filterCommands();
+    </script>
+</body>
+</html>
