@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTD 6 Categories</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a2a, #1e1e3f);
+            font-family: 'Orbitron', 'Courier New', monospace;
+            color: #e0e0ff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff;
+            border-bottom: 2px solid #00ffff;
+        }
+
+        nav li {
+            display: inline-flex;
+        }
+
+        .category-link {
+            border: none;
+            background: none;
+            font-size: x-large;
+            color: #00ffff;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .category-link:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+            transform: scale(1.1);
+        }
+
+        .tucne {
+            font-size: larger;
+            font-weight: bold;
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+
+        .level {
+            font-size: medium;
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+            margin-right: 5px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .monkey {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ffff;
+            transition: transform 0.3s ease;
+        }
+
+        .monkey:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            margin-bottom: 20px;
+        }
+
+        .tutorial-section {
+            display: none;
+        }
+
+        .tutorial-section.active {
+            display: block;
+        }
+
+        .circular-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid #00ffff;
+        }
+
+        .circular-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 0;
+        }
+
+        .tutorial-section img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            border: 2px solid #00ffff;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .tutorial-section img:hover {
+            transform: scale(1.1);
+        }
+
+        .tutorial-section p {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #e0e0ff;
+        }
+
+        .additional-info {
+            display: none;
+            margin-top: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ff00ff;
+        }
+
+        .additional-info.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .additional-info ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 0;
+        }
+
+        .additional-info li {
+            margin: 5px 0;
+            padding-left: 10px;
+            border-left: 2px solid #00ffff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .category-link {
+                padding: 10px;
+            }
+
+            .circular-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><button class="category-link" data-target="heroes">Heroes</button></li>
+            <li><button class="category-link" data-target="primary">Primary</button></li>
+            <li><button class="category-link" data-target="military">Military</button></li>
+            <li><button class="category-link" data-target="magic">Magic</button></li>
+            <li><button class="category-link" data-target="support">Support</button></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="heroes" class="tutorial-section active">
+            <div class="circular-container">
+                <h2>Heroes</h2>
+                <div class="circular-layout">
+                    <!-- Quincy -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Quincy</p>
+                            <img src="quincy.png" alt="quincy" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Rapid Shot</div>
+                                <p class="smooth">Rychlopalba</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Storm of Arrows</div>
+                                <p class="smooth">zasype určitou oblast šípy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <!-- Gwendolin -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Gwendolin</p>
+                            <img src="gwendolin.png" alt="Gwendolin" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Cocktail of Fire</div>
+                                <p class="smooth">hodí ohnivý koktejl</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Fire Storm</div>
+                                <p class="smooth">plošný oheň, vše zapálí</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Striker Jones -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Striker Jones</p>
+                            <img src="striker_jones.png" alt="Striker Jones" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Concussive Shell</div>
+                                <p class="smooth">omráčí MOAB</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Artillery Command</div>
+                                <p class="smooth">odpálí všechny mortary a bomby</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Obyn Greenfoot -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Obyn Greenfoot</p>
+                            <img src="obyn_greenfoot.png" alt="Obyn Greenfoot" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Brambles</div>
+                                <p class="smooth">nastraží bramble</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Wall of Trees</div>
+                                <p class="smooth">strom pohltí bloony a dá cash</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Captain Churchill -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Captain Churchill</p>
+                            <img src="captain_churchill.png" alt="Captain Churchill" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Armor Piercing Shell</div>
+                                <p class="smooth">velký výstřel proti MOAB</p>
+                                <span class="level">Lvl 10</span><div class="tucne">MOAB Barrage</div>
+                                <p class="smooth">salvy raket na MOABy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benjamin -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Benjamin</p>
+                            <img src="benjamin.png" alt="Benjamin" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Biohack</div>
+                                <p class="smooth">buff 4 věžím extra damage</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Syphon Funding</div>
+                                <p class="smooth">sníží MOABy o úroveň</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ezili -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Ezili</p>
+                            <img src="ezili.png" alt="Ezili" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Heartstopper</div>
+                                <p class="smooth">zastaví regrow a camo</p>
+                                <span class="level">Lvl 7</span><div class="tucne">MOAB Hex</div>
+                                <p class="smooth">prokleje MOAB a pomalu ho zabije</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Sacrificial Totem</div>
+                                <p class="smooth">buff spojencům za životy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pat Fusty -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Pat Fusty</p>
+                            <img src="pat_fusty.png" alt="Pat Fusty" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Rallying Roar</div>
+                                <p class="smooth">buff okolním věžím</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Big Squeeze</div>
+                                <p class="smooth">sevře a zničí MOAB/BFB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adora -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Adora</p>
+                            <img src="adora.png" alt="Adora" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Ball of Light</div>
+                                <p class="smooth">rychlopalné koule</p>
+                                <span class="level">Lvl 7</span><div class="tucne">Blood Sacrifice</div>
+                                <p class="smooth">obětuje věže pro vlastní buff</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Spirit of the Sun</div>
+                                <p class="smooth">masivní plošný útok</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admiral Brickell -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Admiral Brickell</p>
+                            <img src="admiral_brickell.png" alt="Admiral Brickell" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Mega Mine</div>
+                                <p class="smooth">položí velkou minu</p>
+                                <span class="level">Lvl 7</span><div class="tucne">Naval Command</div>
+                                <p class="smooth">buff všem lodím a ponorkám</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Marine</div>
+                                <p class="smooth">povolá 3 mariňáky s kulomety</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Etienne -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Etienne</p>
+                            <img src="etienne.png" alt="Etienne" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">UCAV Ability</div>
+                                <p class="smooth">na omezený čas dron útočí</p>
+                                <span class="level">Lvl 10</span><div class="tucne">UCAV Permanent</div>
+                                <p class="smooth">dron útočí trvale</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sauda -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Sauda</p>
+                            <img src="sauda.png" alt="Sauda" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Leaping Sword Attack</div>
+                                <p class="smooth">skok a výpad mečem</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Sword Charge</div>
+                                <p class="smooth">proběhne mapou a ničí</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Psi -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Psi</p>
+                            <img src="psi.png" alt="Psi" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Psionic Blast</div>
+                                <p class="smooth">omráčí bloony</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Mind Control</div>
+                                <p class="smooth">ovládne jeden MOAB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Geraldo -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Geraldo</p>
+                            <img src="geraldo.png" alt="Geraldo" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 1</span><div class="tucne">Shop</div>
+                                <p class="smooth">speciální obchod; nové itemy se odemykají na různých levelech (žádná klasická 3/7/10 abilitka)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Corvus -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Corvus</p>
+                            <img src="corvus.png" alt="Corvus" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 1</span><div class="tucne">Spellbook</div>
+                                <p class="smooth">kouzla, další se přidávají na více levelech (3, 7, 10, 20)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Silas -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Silas</p>
+                            <img src="silas.png" alt="Silas" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Frostbite</div>
+                                <p class="smooth">odpálí všechny freeze efekty na cíli</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Ice Explosion (plná síla Frostbite)</div>
+                                <p class="smooth">plošné exploze freeze damage</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rosalia -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Rosalia</p>
+                            <img src="rosalia.png" alt="Rosalia" tabindex="0">
+                            <div class="additional-info">
+                                <span class="level">Lvl 3</span><div class="tucne">Scatter Missile</div>
+                                <p class="smooth">vystřelí více raket, AoE + stun</p>
+                                <span class="level">Lvl 10</span><div class="tucne">Kinetic Charge</div>
+                                <p class="smooth">přichytí na MOAB, nabíjí se a vybuchne s velkým dmg</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="primary" class="tutorial-section">
+            <div class="circular-container">
+                <h2>Primary Monkeys</h2>
+                <div class="circular-layout">
+                    <!-- Dart Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Dart Monkey</p>
+                            <img src="darty.png" alt="Dart Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">ULTRA-JUGGERNAUT - 502</div>
+                                <p class="smooth">Hodí se na mapy kde je hodně zdí, 1 ball se změní na 6 bouncing ones</p>
+                                <div class="tucne">PLASMA MONKEY FAN CLUB - 250</div>
+                                <p class="smooth">Potřebuješ k ní 10 dart monkeys bez vylepšení. Abilitka je změní na takové fufu super monkeys</p>
+                                <div class="tucne">CROSSBOW MASTER - 205</div>
+                                <p class="smooth">Nejlepší dart monkey v poměru speed + camo vision + range</p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Boomerang Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Boomerang Monkey</p>
+                            <img src="boomerang.png" alt="Boomerang Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">GLAIVE LORD - 502</div>
+                                <p class="smooth">Dá kolem sebe takové 3 zmrdy co rozdrtí všechny fanoušky 😎</p>
+                                <div class="tucne">PERMA CHARGE - 052</div>
+                                <p class="smooth">Super fast ultra giga pro attack</p>
+                                <div class="tucne">MOAB DOMINATION - 025</div>
+                                <p class="smooth">Knockback power a je dobrej na moaby</p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Bomb Shooter -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Bomb Shooter</p>
+                            <img src="bomb.png" alt="Bomb Shooter" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">BLOON CRUSH - 520</div>
+                                <p class="smooth">vhodný do nějakého rohu apod na plošnou damage. A ještě stunnuje </p>
+                                <div class="tucne">MOAB ELIMINATOR - 052</div>
+                                <p class="smooth">Dobré proti moabům, užitečná "ultimátka" která přidává 6x damage na určitou chvíli.</p>
+                                <div class="tucne">BOMB BLITZ - 205</div>
+                                <p class="smooth">Useless jak 80% Flygun moderátorů</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tack Shooter -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Tack Shooter</p>
+                            <img src="tack.png" alt="Tack Shooter" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">INFERNO RING - 502</div>
+                                <p class="smooth">FIREEEEEEEE</p>
+                                <div class="tucne">SUPER MAELSTORM - 250</div>
+                                <p class="smooth">Taková abilitka divná co zaspinuje jak fidget spinner</p>
+                                <div class="tucne">THE TACK ZONE - 205</div>
+                                <p class="smooth">Nejlepší Tack shooter ze všech. Protože HODNĚ HODNĚ ATTACK</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ice Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Ice Monkey</p>
+                            <img src="ice.png" alt="Ice Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">SUPER BRITTLE - 502</div>
+                                <p class="smooth">Pozastavuje balóny po zamražení (ale celkem mid)</p>
+                                <div class="tucne">ABSOLUTE ZERO - 052</div>
+                                <p class="smooth">Plně zamrazí a posune zpět balóny ve svém range + BONUS, pokud tuto opici dáš na vodu, tak na vodu budeš moct postavit opice co jinak na vodu nesmí</p>
+                                <div class="tucne">ICICLE IMPALE - 205</div>
+                                <p class="smooth">Mrazí moaby a dava jim to perdu jak backshoty. je to good shit lol</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Glue Gunner -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Glue Gunner</p>
+                            <img src="glue.png" alt="Glue Gunner" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">THE BLOON SOLVER - 520</div>
+                                <p class="smooth">Prostě vole lepí to a dává to demidž.</p>
+                                <div class="tucne">GLUE STORM - 052</div>
+                                <p class="smooth">Má ultimátku, která hodí lepidlo po celé mapě na 10s</p>
+                                <div class="tucne">SUPER GLUE - 205</div>
+                                <p class="smooth">Lepidlo na moaby a balóny a píšó tam že je tak dobré že je to immobilizuje či co</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desperado -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Desperado</p>
+                            <img src="desperado.png" alt="desperado" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">THE BLAZING SUN - 520</div>
+                                <p class="smooth">Double shot, dobrý na mid game.</p>
+                                <div class="tucne">GOLDEN JUSTICE - 250</div>
+                                <p class="smooth">Dobrej na větší vlny balónků + ultimátka co vylepšuje aim jakékoliv zvolené opičce 🤩</p>
+                                <div class="tucne">THE DESERT PHANTOM - 025</div>
+                                <p class="smooth">Mine blast</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="military" class="tutorial-section">
+            <div class="circular-container">
+                <h2>Military Monkeys</h2>
+                <div class="circular-layout">
+                    <!-- Sniper Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Sniper Monkey</p>
+                            <img src="sniper.png" alt="Sniper Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">CRIPPLE MOAB - 520</div>
+                                <p class="smooth">Sniper na moaby, střílí pomalu, a dává jim stun je to tuff as bricks</p>
+                                <div class="tucne">ELITE SNIPER - 052</div>
+                                <p class="smooth">střílí dobře a má ultimátku co přidává peníze/životy</p>
+                                <div class="tucne">ELITE DEFENDER - 025</div>
+                                <p class="smooth">Nejrychlejší sniper, OP na módy s 20K penězi level 31-60. Celkově se hodí na vše, je to good boy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monkey Sub -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Monkey Sub</p>
+                            <img src="sub.png" alt="Monkey Sub" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">ENERGIZER - 520</div>
+                                <p class="smooth">Odjebává to camo + jiné věci z balónů, Všechny ability maj 20% reduced timer a pokud je heroe v rangi tak dostává o 50% víc XP. Ale jak jsem psal předtím, je to mrdko chcaka</p>
+                                <div class="tucne">PRE-EMPTIVE STRIKE - 250</div>
+                                <p class="smooth">Je to OP na moaby, dává to na ně rakety jak ÍRÁN</p>
+                                <div class="tucne">SUB COMMANDER - 205</div>
+                                <p class="smooth">Rychle to střílí přes celú mapu lil bro</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monkey Buccaneer -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Monkey Buccaneer</p>
+                            <img src="buccaneer.png" alt="Monkey Buccaneer" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">CARRIER FLAGSHIP - 520</div>
+                                <p class="smooth">OP jak piča lol, má to heli a VELKOU damage</p>
+                                <div class="tucne">PIRATE LORD - 052</div>
+                                <p class="smooth">Musíš to dát s tou spodní 2, aby to mělo camo vision, střílí to rychle a abilitka SEŽERE modrý, červený i černý moab</p>
+                                <div class="tucne">TRADE EMPIRE - 025</div>
+                                <p class="smooth">Only fans prostě. Najebeš k tomu pár 024 a jsi jak Sophie Rain. + věci v range maj větší sellback value</p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Monkey Ace -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Monkey Ace</p>
+                            <img src="ace.png" alt="Monkey Ace" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">SKY SHREDDER - 520</div>
+                                <p class="smooth">celkem OP fast jak piča dyk ne</p>
+                                <div class="tucne">TSAR BOMBA - 052</div>
+                                <p class="smooth">nevím tuto mrdku používám jen když chcu Paragon. Ale asi to je good na mapy kde je cesta uprostřed bo to má abilitku co tam hodí bombu</p>
+                                <div class="tucne">FLYING FORTRESS - 025</div>
+                                <p class="smooth">Asi nejlepší z těch 3 lol nevím co ti k tomu říct</p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Heli Pilot -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Heli Pilot</p>
+                            <img src="heli.png" alt="Heli Pilot" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">APACHE PRIME - 502</div>
+                                <p class="smooth">Tuten kár je asi nejlepší heli</p>
+                                <div class="tucne">SPECIAL POPERATIONS - 250</div>
+                                <p class="smooth">Můžeš s tím přemístit OPICE + dostáváš bedny na životy+cash</p>
+                                <div class="tucne">COMANCHE COMMANDER - 205</div>
+                                <p class="smooth">Má 3 body guard jak kdyby na něj šli Paparazzi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mortar Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Mortar Monkey</p>
+                            <img src="mortar.png" alt="Mortar Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">THE BIGGEST ONE - (NEZNÁM, NEPOUŽÍVÁM)</div>
+                                <p class="smooth"></p>
+                                <div class="tucne">POP AND WAVE - (NEZNÁM, NEPOUŽÍVÁM)</div>
+                                <p class="smooth"></p>
+                                <div class="tucne">BLOONCINERATION - 205</div>
+                                <p class="smooth">střílí velké bum bum rakety (můžeš si nastavit přesnou pozici)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dartling Gunner -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Dartling Gunner</p>
+                            <img src="dartling.png" alt="Dartling Gunner" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">RAY OF DOOM - 520</div>
+                                <p class="smooth">OP laser, hodí se na mapy kde je DLOUHÁ LINE př.( horní část 'RESORT' mapy)</p>
+                                <div class="tucne">M.A.D - 250</div>
+                                <p class="smooth">Tuten čhávo shredne vše co vidí, ale je na kokot, že buď mu musíš dát konkrétní spot kde bude střílet nebo to hlídat myškou. Ale má good abilitku co mu zvedne procenta jak casina streamerům na sloty.</p>
+                                <div class="tucne">BLOON EXCLUSION ZONE - 025</div>
+                                <p class="smooth">takovej pěšák co si střílí jak chce a je good ngl icl</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="magic" class="tutorial-section">
+            <div class="circular-container">
+                <h2>Magic Monkeys</h2>
+                <div class="circular-layout">
+                    <!-- Wizard Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Wizard Monkey</p>
+                            <img src="wizardmonkey.png" alt="Wizard Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">ARCHMAGE - 502</div>
+                                <p class="smooth">Nejlepší na damage</p>
+                                <div class="tucne">WIZARD LORD PHOENIX - 052</div>
+                                <p class="smooth">OP + Velkej ohnivej pták</p>
+                                <div class="tucne">PRINCE OF DARKNESS - 025</div>
+                                <p class="smooth">Tento je good na začátky bo prostě vždy když něco hitne, tak spawne balóny a MOABY co následně ničí balóny a moaby lol</p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Super Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Super Monkey</p>
+                            <img src="super.png" alt="Super Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">TRUE SUN GOD - 502/520</div>
+                                <p class="smooth">Tady na to musíš vědět co sacrificenout, aby z něho byl TRUE SUB GOD, ale je to drahé jak píča, takže nedoporučuju.</p>
+                                <div class="tucne">THE ANTI-BLOON - 052</div>
+                                <p class="smooth">Dobrej na plošnou damage</p>
+                                <div class="tucne">LEGEND OF THE NIGHT - 025</div>
+                                <p class="smooth">Nejlepší z těch 3 pokud nechceš sacrifice + má ultimátku, že se může přemisťovat</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ninja Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Ninja Monkey</p>
+                            <img src="ninja.png" alt="Ninja Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">GRANDMASTER NINJA - 520</div>
+                                <p class="smooth">Fakt to hodně rozpaluje, je to zabijákos</p>
+                                <div class="tucne">GRAND SABOTEUR - 052</div>
+                                <p class="smooth">odsouvá balónky zpátky + abilitka co spawne balony a moaby s méně health</p>
+                                <div class="tucne">MASTER BOMBER - 025</div>
+                                <p class="smooth">good na moaby</p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Alchemist -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Alchemist</p>
+                            <img src="alchemist.png" alt="Alchemist" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">PERMANENT BREW - 520</div>
+                                <p class="smooth">320 - Na monkeys v okolí special range, speed atd, a když to je 520 tak je to PERMANENT a ne jen na x sekund</p>
+                                <div class="tucne">TOTAL TRANSFORMATION - 050</div>
+                                <p class="smooth">Transformers 20 nejbližších 000 alchemistů v Ondru Vlčka</p>
+                                <div class="tucne">BLOON MASTER ALCHEMIST - 025/205</div>
+                                <p class="smooth">Proměňuje vše co zničí na peníze + má ultra special good damage, ale je drahej jak kunda</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Druid -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Druid</p>
+                            <img src="druid.png" alt="Druid" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">SUPERSTORM - 520</div>
+                                <p class="smooth">Posílá vulkános na balónky, odsouvá je</p>
+                                <div class="tucne">SPIRIT OF THE FOREST - 250</div>
+                                <p class="smooth">250 Dokáže SAMO zničit 80. kolo- prostě bonbónek, max win</p>
+                                <div class="tucne">AVATAR OF WRATH - 205</div>
+                                <p class="smooth">Čím víc jich máš 204 v jeho blízkosti, tím lepší je. Takovej jakoby Ondra Vlček zas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mermonkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Mermonkey</p>
+                            <img src="mermonkey.png" alt="mermonkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">LORD OF THE ABYSS - 502</div>
+                                <p class="smooth">Demolishne upe jakože pew pew všecky balony nebo je aspoň zpomalí a zvyšuje to pierce opiček co jsou položeny BLÍZKO</p>
+                                <div class="tucne">POPSEIDON - 052</div>
+                                <p class="smooth">Toto si představ jako když máš držku co prská a prskáš všude na balony</p>
+                                <div class="tucne">THE FINAL HARMONIC - 205</div>
+                                <p class="smooth">Má nejoblíbenější, VĚTŠÍNA balónků a moabů v range, začne dělat kolečka okolo → víc času na zničení</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="tutorial-section">
+            <div class="circular-container">
+                <h2>Support Monkeys</h2>
+                <div class="circular-layout">
+                    <!-- Banana Farm -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Banana Farm</p>
+                            <img src="farm.png" alt="Banana Farm" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">BANANA CENTRAL - 502</div>
+                                <p class="smooth">Nejlepší na peníze</p>
+                                <div class="tucne">MONKEY-NOMICS - 250</div>
+                                <p class="smooth">Vydělává peníze + dává půjčku, kterou pak ale musíš vrátit :/</p>
+                                <div class="tucne">MONKEY WALL STREET - 025</div>
+                                <p class="smooth">Taky cinkačka. Nejlepší je začít hru 023 farmama</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spike Factory -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Spike Factory</p>
+                            <img src="spike.png" alt="Spike Factory" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">SUPER MINES - 520</div>
+                                <p class="smooth">Nejsilnější na damage</p>
+                                <div class="tucne">CARPET OF SPIKES - 052</div>
+                                <p class="smooth">ultimátka hází spikes po celé dráze</p>
+                                <div class="tucne">PERMA-SPIKE - 025</div>
+                                <p class="smooth">Prostě permanentní spikes. Damage jako kráva lol a prostě je to good asf. A je to i celkem levný, takže rozhodně toto dát ke konci mapy s 420 Alchemistou co mu dá speed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monkey Village -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Monkey Village</p>
+                            <img src="village.png" alt="Monkey Village" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">PRIMARY EXPERTISE - 500</div>
+                                <p class="smooth">TOTO JSEM SCHOPEN TI VYSVĚTLIT POUZE IN GAME A NA VOICE  CHATU, JE TO HARDCORE AND TUFF AS BRICKS</p>
+                                <div class="tucne">HOMELAND DEFENSE - 050</div>
+                                <p class="smooth">TOTO JSEM SCHOPEN TI VYSVĚTLIT POUZE IN GAME A NA VOICE  CHATU, JE TO HARDCORE AND TUFF AS BRICKS</p>
+                                <div class="tucne">MONKEYOPOLIS - 005</div>
+                                <p class="smooth">TOTO JSEM SCHOPEN TI VYSVĚTLIT POUZE IN GAME A NA VOICE  CHATU, JE TO HARDCORE AND TUFF AS BRICKS</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engineer Monkey -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Engineer Monkey</p>
+                            <img src="engineer.png" alt="Engineer Monkey" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">SENTRY CHAMPION - 502</div>
+                                <p class="smooth">dobrá damage lol - Hromada sentries</p>
+                                <div class="tucne">ULTRABOOST - 052</div>
+                                <p class="smooth">ultimátka "vylepšuje" vybranou opičku na určitou dobu</p>
+                                <div class="tucne">XXXL TRAPS - 025</div>
+                                <p class="smooth">Spawnuje trapku na balónky - A DÁVÁ TO MONEY 🤑🤑💸💰💰</p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Beast Handler -->
+                    <div class="monkey">
+                        <div class="monkey-info">
+                            <p>Beast Handler</p>
+                            <img src="beast.png" alt="Beast Handler" tabindex="0">
+                            <div class="additional-info">
+                                <div class="tucne">MEGALODON - 502/520</div>
+                                <p class="smooth">MUSÍŠ tu opicu dát k vodě → bude z toho velryba co je CELKEM DOOOOOOOOOOOST OP</p>
+                                <div class="tucne">PGIGANOTOSAURUS - 052/250</div>
+                                <p class="smooth">Dinosauras RAWR co shreduje a stunnuje balony a moaby lol</p>
+                                <div class="tucne">POUAKAI - 025/205</div>
+                                <p class="smooth">Pickupne balony a zničí je lol</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const categoryLinks = document.querySelectorAll(".category-link");
+            const sections = document.querySelectorAll(".tutorial-section");
+
+            categoryLinks.forEach(link => {
+                link.addEventListener("click", () => {
+                    const target = link.getAttribute("data-target");
+
+                    sections.forEach(section => {
+                        section.classList.remove("active");
+                    });
+
+                    const targetSection = document.getElementById(target);
+                    targetSection.classList.add("active");
+                });
+            });
+
+            const monkeyInfoDivs = document.querySelectorAll(".monkey-info");
+
+            monkeyInfoDivs.forEach(monkeyInfo => {
+                const image = monkeyInfo.querySelector("img");
+                const additionalInfo = monkeyInfo.querySelector(".additional-info");
+
+                image.addEventListener("click", () => {
+                    additionalInfo.classList.toggle("active");
+                });
+
+                image.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        additionalInfo.classList.toggle("active");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
